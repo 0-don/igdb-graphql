@@ -6,7 +6,7 @@ import { buildSchema } from 'type-graphql';
 import { RecipeResolver } from './resolvers/RecipeResolver';
 import { GameResolver } from './resolvers/GameResolver';
 import { AgeRating } from './entity/AgeRating';
-// import { AgeRatingContentDescription } from './entity/AgeRatingContentDescription';
+import { AgeRatingContentDescription } from './entity/AgeRatingContentDescription';
 
 async function start() {
   const schema = await buildSchema({
@@ -14,7 +14,7 @@ async function start() {
       RecipeResolver,
       GameResolver,
       AgeRating,
-      // AgeRatingContentDescription,
+      AgeRatingContentDescription,
     ],
   });
 
