@@ -3,20 +3,17 @@ import 'reflect-metadata';
 import { ApolloServer } from 'apollo-server';
 import responseCachePlugin from 'apollo-server-plugin-response-cache';
 import { buildSchema } from 'type-graphql';
-import { RecipeResolver } from './resolvers/recipe-resolver';
-// import { ApolloServerPluginCacheControl } from 'apollo-server-core';
+import { RecipeResolver } from './resolvers/RecipeResolver';
+import { GameResolver } from './resolvers/GameResolver';
 
 async function start() {
   const schema = await buildSchema({
-    resolvers: [RecipeResolver],
+    resolvers: [RecipeResolver, GameResolver],
   });
 
   const server = new ApolloServer({
     schema,
-    plugins: [
-      // ApolloServerPluginCacheControl({ defaultMaxAge: 5 }),
-      responseCachePlugin(),
-    ],
+    plugins: [responseCachePlugin()],
   });
 
   const { url } = await server.listen(4000);

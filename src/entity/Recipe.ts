@@ -1,5 +1,4 @@
 import { Field, ObjectType, Int, Float } from 'type-graphql';
-
 import { CacheControl } from '../utils/cache-control';
 import { getTime } from '../utils/utils';
 
