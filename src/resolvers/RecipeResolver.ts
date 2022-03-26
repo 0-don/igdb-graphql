@@ -1,5 +1,5 @@
 import { Resolver, Query, Arg } from 'type-graphql';
-import { Recipe } from '../entity/Recipe';
+import { Recipe } from '../entity/old';
 import { createRecipeSamples } from '../utils/recipe-samples';
 import { CacheControl } from '../utils/cache-control';
 import { getTime } from '../utils/utils';

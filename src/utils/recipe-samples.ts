@@ -1,4 +1,4 @@
-import { Recipe } from '../entity/Recipe';
+import { Recipe } from '../entity/old';
 
 export function createRecipeSamples() {
   return [

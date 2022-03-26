@@ -3,12 +3,12 @@ import { AgeRatingCategoryEnum, AgeRatingRatingEnum } from '../utils/enum';
 import { AgeRatingContentDescription } from './AgeRatingContentDescription';
 
 registerEnumType(AgeRatingCategoryEnum, {
-  name: 'Age Rating Category', // this one is mandatory
+  name: 'AgeRatingCategory', // this one is mandatory
   description: 'Age Rating Category', // this one is optional
 });
 
 registerEnumType(AgeRatingRatingEnum, {
-  name: 'Age Rating Rating', // this one is mandatory
+  name: 'AgeRatingRating', // this one is mandatory
   description: 'Age Rating Rating', // this one is optional
 });
 
@@ -18,13 +18,13 @@ export class AgeRating {
   id?: number;
 
   @Field(() => AgeRatingCategoryEnum, { nullable: true })
-  category?: number;
+  category?: AgeRatingCategoryEnum;
 
   @Field(() => [AgeRatingContentDescription], { nullable: true })
   content_descriptions?: AgeRatingContentDescription[];
 
   @Field(() => AgeRatingRatingEnum, { nullable: true })
-  rating?: string;
+  rating?: AgeRatingRatingEnum;
 
   @Field({ nullable: true })
   rating_cover_url?: string;

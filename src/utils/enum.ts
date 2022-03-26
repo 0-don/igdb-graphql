@@ -1,5 +1,3 @@
-// DO NOT EDIT! This is a generated file. Edit the JSDoc in src/*.js instead and run 'npm run types'.
-
 export enum AgeRatingCategoryEnum {
   AGERATING_CATEGORY_NULL = 0,
   ESRB = 1,
@@ -166,4 +164,26 @@ export enum TestDummyEnumTestEnum {
   TESTDUMMY_ENUM_TEST_NULL = 0,
   ENUM1 = 1,
   ENUM2 = 2,
+}
+
+export enum ExternalGameCategoryEnum {
+  EXTERNALGAME_CATEGORY_NULL = 0,
+  EXTERNALGAME_STEAM = 1,
+  EXTERNALGAME_GOG = 5,
+  EXTERNALGAME_YOUTUBE = 10,
+  EXTERNALGAME_MICROSOFT = 11,
+  EXTERNALGAME_APPLE = 13,
+  EXTERNALGAME_TWITCH = 14,
+  EXTERNALGAME_ANDROID = 15,
+  EXTERNALGAME_AMAZON_ASIN = 20,
+  EXTERNALGAME_AMAZON_LUNA = 22,
+  EXTERNALGAME_AMAZON_ADG = 23,
+  EXTERNALGAME_EPIC_GAME_STORE = 26,
+  EXTERNALGAME_OCULUS = 28,
+}
+
+export enum ExternalGameMediaEnum {
+  EXTERNALGAME_MEDIA_NULL = 0,
+  EXTERNALGAME_DIGITAL = 1,
+  EXTERNALGAME_PHYSICAL = 2,
 }
