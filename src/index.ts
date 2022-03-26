@@ -2,7 +2,7 @@ import 'reflect-metadata';
 import { ApolloServer } from 'apollo-server';
 import responseCachePlugin from 'apollo-server-plugin-response-cache';
 import { buildSchema } from 'type-graphql';
-import { RecipeResolver } from './recipe-resolver';
+import { RecipeResolver } from './resolvers/recipe-resolver';
 import { ApolloServerPluginCacheControl } from 'apollo-server-core';
 
 async function bootstrap() {

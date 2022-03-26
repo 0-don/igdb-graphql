@@ -17,6 +17,8 @@
   "dependencies": {
     "apollo-server": "^3.6.6",
     "apollo-server-plugin-response-cache": "^3.5.2",
+    "graphql": "^15.3.0",
+    "reflect-metadata": "^0.1.13",
     "type-graphql": "^1.1.1"
   }
 }

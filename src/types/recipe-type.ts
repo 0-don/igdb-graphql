@@ -1,7 +1,7 @@
 import { Field, ObjectType, Int, Float } from 'type-graphql';
 
-import { CacheControl } from './cache-control';
-import { getTime } from './utils';
+import { CacheControl } from '../utils/cache-control';
+import { getTime } from '../utils/utils';
 
 @ObjectType()
 export class Recipe {
