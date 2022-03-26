@@ -1,3 +1,4 @@
+import { proto } from 'ts-igdb-client/proto/compiled';
 import { Field, Int, ObjectType } from 'type-graphql';
 
 @ObjectType()

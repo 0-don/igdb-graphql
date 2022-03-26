@@ -5,10 +5,17 @@ import responseCachePlugin from 'apollo-server-plugin-response-cache';
 import { buildSchema } from 'type-graphql';
 import { RecipeResolver } from './resolvers/RecipeResolver';
 import { GameResolver } from './resolvers/GameResolver';
+import { AgeRating } from './entity/AgeRating';
+// import { AgeRatingContentDescription } from './entity/AgeRatingContentDescription';
 
 async function start() {
   const schema = await buildSchema({
-    resolvers: [RecipeResolver, GameResolver],
+    resolvers: [
+      RecipeResolver,
+      GameResolver,
+      AgeRating,
+      // AgeRatingContentDescription,
+    ],
   });
 
   const server = new ApolloServer({

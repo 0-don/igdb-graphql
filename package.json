@@ -1,9 +1,14 @@
 {
   "name": "igdb-graphql",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "./dist/index.js",
   "author": "Don-Cryptus <don.cryptus@gmail.com>",
   "license": "MIT",
+  "files": [
+    "dist",
+    "src",
+    "proto/compiled.d.ts"
+  ],
   "scripts": {
     "dev": "ts-node-dev --poll --respawn --transpile-only src/index.ts",
     "build": "tsc",

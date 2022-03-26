@@ -35,4 +35,5 @@ export const CheckToken: MiddlewareFn = async (_, next) => {
       throw error;
     }
   }
+  return next();
 };

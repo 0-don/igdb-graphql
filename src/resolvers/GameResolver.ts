@@ -2,7 +2,6 @@ import { twitchAccessToken, igdb, fields, where } from 'ts-igdb-client';
 import { Query, Resolver, UseMiddleware } from 'type-graphql';
 import { Game } from '../entity/Game';
 import { CacheControl } from '../utils/cache-control';
-
 import { CheckToken } from '../utils/tokenMiddleware';
 
 @Resolver(() => Game)
@@ -27,16 +26,13 @@ export class GameResolver {
   // @CacheControl({ maxAge: 60 })
   @UseMiddleware(CheckToken)
   async cachedGames() {
-    // const result = fs.readFileSync('token.json');
-    // console.log(result);
+    const client = igdb(process.env.CLIENT_ID!, process.env.ACCESS_TOKEN!);
 
-    // console.log(accessToken);
-    // const client = igdb(twitchSecrets.client_id, accessToken);
-    // const { data } = await client
-    //   .request('games')
-    //   .pipe(fields(['*']), where('created_at', '<', Date.now()))
-    //   .execute();
-
-    return [];
+    const { data } = await client
+      .request('games')
+      .pipe(fields(['*']), where('created_at', '<', Date.now()))
+      .execute();
+    // console.log(data);
+    return data;
   }
 }
