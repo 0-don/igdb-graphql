@@ -11,13 +11,13 @@ export class Recipe {
   @Field({ nullable: true })
   description?: string;
 
-  @Field((type) => [Int])
+  @Field(() => [Int])
   ratings: number[];
 
   @Field()
   creationDate: Date;
 
-  @Field((type) => Float, { nullable: true })
+  @Field(() => Float, { nullable: true })
   // will invalidate `cachedRecipe` cache with maxAge of 60 to 10
   // if the field is requested
   @CacheControl({ maxAge: 10 })
@@ -28,7 +28,7 @@ export class Recipe {
     return this.averageRating;
   }
 
-  @Field((type) => Float, { nullable: true })
+  @Field(() => Float, { nullable: true })
   get averageRating(): number | null {
     console.log(
       `Called 'averageRating' for recipe '${this.title}' on ${getTime()}`

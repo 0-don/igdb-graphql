@@ -1,8 +1,9 @@
 import { Resolver, Query, Arg } from 'type-graphql';
-import { Recipe } from '../types/recipe-type';
+import { Recipe } from '../entity/recipe-type';
 import { createRecipeSamples } from '../utils/recipe-samples';
 import { CacheControl } from '../utils/cache-control';
 import { getTime } from '../utils/utils';
+import { twitchAccessToken, igdb, fields, where } from 'ts-igdb-client';
 
 @Resolver(() => Recipe)
 export class RecipeResolver {
@@ -31,6 +32,18 @@ export class RecipeResolver {
 
   @Query(() => [Recipe])
   async games(): Promise<Recipe[]> {
-    return await this.items;
+    const twitchSecrets = {
+      client_id: process.env.CLIENT_ID!,
+      client_secret: process.env.CLIENT_SECRET!,
+    };
+
+    const accessToken = await twitchAccessToken(twitchSecrets);
+    const client = igdb(twitchSecrets.client_id, accessToken);
+    const { data } = await client
+      .request('games')
+      .pipe(fields(['name', '']), where('created_at', '<', Date.now()))
+      .execute();
+    console.log(data);
+    return [];
   }
 }

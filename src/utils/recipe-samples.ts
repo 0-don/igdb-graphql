@@ -1,11 +1,11 @@
-import { Recipe } from '../types/recipe-type';
+import { Recipe } from '../entity/recipe-type';
 
 export function createRecipeSamples() {
   return [
     createRecipe({
       title: 'Recipe 1',
       description: 'Desc 1',
-      ratings: [0, 3, 1],
+      ratings: [0, 3, 1, 2],
       creationDate: new Date('2018-04-11'),
     }),
     createRecipe({
