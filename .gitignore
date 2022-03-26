@@ -2,3 +2,7 @@ yarn.lock
 package-lock.json
 node_modules
 yarn-error.log
+
+.env*
+!.env.project
+.env

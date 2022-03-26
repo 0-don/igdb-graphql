@@ -5,7 +5,7 @@ export function CacheControl({ maxAge, scope }: CacheHint) {
   if (!maxAge && !scope) {
     throw new Error('Missing maxAge or scope param for @CacheControl');
   }
-  console.log(maxAge, scope);
+
   let sdl = '@cacheControl(';
   if (maxAge) {
     sdl += `maxAge: ${maxAge}`;

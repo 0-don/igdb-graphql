@@ -1,3 +1,4 @@
+require('dotenv').config();
 import 'reflect-metadata';
 import { ApolloServer } from 'apollo-server';
 import responseCachePlugin from 'apollo-server-plugin-response-cache';
