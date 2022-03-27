@@ -1,16 +1,12 @@
 import { Field, Int, ObjectType } from 'type-graphql';
-import { Game } from './Game/Game';
 
 @ObjectType()
-export class Collection {
+export class Keyword {
   @Field(() => Int, { nullable: true })
   id?: number;
 
   @Field(() => Int, { nullable: true })
   created_at?: number;
-
-  @Field(() => [Game], { nullable: true })
-  games?: Game[];
 
   @Field({ nullable: true })
   name?: string;

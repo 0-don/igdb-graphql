@@ -1,6 +1,6 @@
 import { twitchAccessToken, igdb, fields, where } from 'ts-igdb-client';
 import { Query, Resolver, UseMiddleware } from 'type-graphql';
-import { Game } from '../entity/Game';
+import { Game } from '../entity/Game/Game';
 import { CacheControl } from '../utils/cache-control';
 import { CheckToken } from '../utils/tokenMiddleware';
 

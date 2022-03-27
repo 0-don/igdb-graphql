@@ -1,6 +1,6 @@
 import { Field, Int, ObjectType, registerEnumType } from 'type-graphql';
 import { DateFormatChangeDateCategoryEnum } from '../../utils/enum';
-import { Game } from '../Game';
+import { Game } from '../Game/Game';
 import { CompanyLogo } from './CompanyLogo';
 import { CompanyWebsite } from './CompanyWebsite';
 

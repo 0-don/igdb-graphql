@@ -1,8 +1,7 @@
 import { Field, Int, ObjectType } from 'type-graphql';
-import { Game } from './Game/Game';
 
 @ObjectType()
-export class Cover {
+export class GameEngineLogo {
   @Field(() => Int, { nullable: true })
   id?: number;
 
@@ -11,9 +10,6 @@ export class Cover {
 
   @Field(() => Boolean, { nullable: true })
   animated?: boolean;
-
-  @Field(() => Game, { nullable: true })
-  game?: Game;
 
   @Field(() => Int, { nullable: true })
   height?: number;

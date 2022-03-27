@@ -1,6 +1,6 @@
 import { Field, Int, ObjectType, registerEnumType } from 'type-graphql';
 import { PlatformCategoryEnum } from '../../utils/enum';
-import { Game } from '../Game';
+import { Game } from '../Game/Game';
 import { PlatformFamily } from './PlatformFamily';
 import { PlatformLogo } from './PlatformLogo';
 

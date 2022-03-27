@@ -1,16 +1,12 @@
 import { Field, Int, ObjectType } from 'type-graphql';
-import { Game } from './Game/Game';
 
 @ObjectType()
-export class Collection {
+export class GameMode {
   @Field(() => Int, { nullable: true })
   id?: number;
 
   @Field(() => Int, { nullable: true })
   created_at?: number;
-
-  @Field(() => [Game], { nullable: true })
-  games?: Game[];
 
   @Field({ nullable: true })
   name?: string;
@@ -18,7 +14,7 @@ export class Collection {
   @Field({ nullable: true })
   slug?: string;
 
-  @Field(() => Int, { nullable: true })
+  @Field(() => Int,{ nullable: true })
   updated_at?: number;
 
   @Field({ nullable: true })
