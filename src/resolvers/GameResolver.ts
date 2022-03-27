@@ -41,12 +41,13 @@ export class GameResolver {
       .pipe(fields(['*']), whereIn('id', [...ageRatingIds], WhereInFlags.OR))
       .execute();
 
-    ageRatingList.forEach((r) => {
-      r.ageRatingId = r.ageRatingId.map((x) => data.find((d) => d.id === x));
-    });
-
-    console.log(util.inspect(ageRatingList, false, null, true));
-    return ageRatingList;
+    const newAgeRatingList = ageRatingList
+      .map((r) => {
+        r.ageRatingId = r.ageRatingId.map((x) => data.find((d) => d.id === x));
+        return r;
+      })
+      .map((r) => [...r.ageRatingId]);
+    return newAgeRatingList as AgeRating[][];
   })
   async age_ratings(@Root() root: Game) {
     return (dataloader: DataLoader<AgeRatingDataloader, AgeRating[]>) =>
