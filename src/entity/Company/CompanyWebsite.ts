@@ -1,11 +1,6 @@
-import { Field, Int, ObjectType, registerEnumType } from 'type-graphql';
-import { WebsiteCategoryEnum } from '../../utils/enum';
-import { Game } from '../Game/Game';
-
-registerEnumType(WebsiteCategoryEnum, {
-  name: 'WebsiteCategory', // this one is mandatory
-  description: 'Website Category', // this one is optional
-});
+import { Field, Int, ObjectType, registerEnumType } from "type-graphql";
+import { WebsiteCategoryEnum } from "../../utils/enum";
+import { Game } from "../Game/Game";
 
 @ObjectType()
 export class CompanyWebsite {

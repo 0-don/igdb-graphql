@@ -1,4 +1,4 @@
-import { Field, Int, ObjectType } from 'type-graphql';
+import { Field, Int, ObjectType } from "type-graphql";
 
 @ObjectType()
 export class Genre {
@@ -14,7 +14,7 @@ export class Genre {
   @Field({ nullable: true })
   slug?: string;
 
-  @Field(() => Int,{ nullable: true })
+  @Field(() => Int, { nullable: true })
   updated_at?: number;
 
   @Field({ nullable: true })

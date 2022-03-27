@@ -1,14 +1,9 @@
-import { Field, Int, ObjectType, registerEnumType } from 'type-graphql';
-import { PlatformCategoryEnum } from '../../utils/enum';
-import { PlatformFamily } from './PlatformFamily';
-import { PlatformLogo } from './PlatformLogo';
-import { PlatformVersion } from './PlatformVersion';
-import { PlatformWebsite } from './PlatformWebsite';
-
-registerEnumType(PlatformCategoryEnum, {
-  name: 'PlatformCategory', // this one is mandatory
-  description: 'Platform Category Enum', // this one is optional
-});
+import { Field, Int, ObjectType, registerEnumType } from "type-graphql";
+import { PlatformCategoryEnum } from "../../utils/enum";
+import { PlatformFamily } from "./PlatformFamily";
+import { PlatformLogo } from "./PlatformLogo";
+import { PlatformVersion } from "./PlatformVersion";
+import { PlatformWebsite } from "./PlatformWebsite";
 
 @ObjectType()
 export class Platform {

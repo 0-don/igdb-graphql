@@ -1,7 +1,7 @@
-import { Field, Int, ObjectType } from 'type-graphql';
-import { Company } from '../Company/Company';
-import { Game } from '../Game/Game';
-import { Platform } from '../Platform/Platform';
+import { Field, Int, ObjectType } from "type-graphql";
+import { Company } from "../Company/Company";
+import { Game } from "../Game/Game";
+import { Platform } from "../Platform/Platform";
 
 @ObjectType()
 export class InvolvedCompany {
@@ -20,13 +20,13 @@ export class InvolvedCompany {
   @Field(() => Game, { nullable: true })
   game?: Game;
 
-  @Field(() => Boolean,{ nullable: true })
+  @Field(() => Boolean, { nullable: true })
   porting?: boolean;
 
   @Field(() => Boolean, { nullable: true })
   publisher?: boolean;
 
-  @Field(() => Boolean,{ nullable: true })
+  @Field(() => Boolean, { nullable: true })
   supporting?: boolean;
 
   @Field(() => Int, { nullable: true })

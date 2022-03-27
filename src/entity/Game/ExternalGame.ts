@@ -1,17 +1,10 @@
-import { Field, Int, ObjectType, registerEnumType } from 'type-graphql';
-import { ExternalGameCategoryEnum, ExternalGameMediaEnum } from '../../utils/enum';
-import { Game } from './Game';
-import { Platform } from '../Platform/Platform';
-
-registerEnumType(ExternalGameCategoryEnum, {
-  name: 'ExternalGameCategory', // this one is mandatory
-  description: 'External Game Category', // this one is optional
-});
-
-registerEnumType(ExternalGameMediaEnum, {
-  name: 'ExternalGameMedia', // this one is mandatory
-  description: 'External Game Media', // this one is optional
-});
+import { Field, Int, ObjectType, registerEnumType } from "type-graphql";
+import {
+  ExternalGameCategoryEnum,
+  ExternalGameMediaEnum,
+} from "../../utils/enum";
+import { Game } from "./Game";
+import { Platform } from "../Platform/Platform";
 
 @ObjectType()
 export class ExternalGame {

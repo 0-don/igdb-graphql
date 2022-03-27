@@ -1,13 +1,8 @@
-import { Field, Int, ObjectType, registerEnumType } from 'type-graphql';
-import { DateFormatChangeDateCategoryEnum } from '../../utils/enum';
-import { Game } from '../Game/Game';
-import { CompanyLogo } from './CompanyLogo';
-import { CompanyWebsite } from './CompanyWebsite';
-
-registerEnumType(DateFormatChangeDateCategoryEnum, {
-  name: 'DateFormatChangeDateCategory', // this one is mandatory
-  description: 'Date Format Change Date Category', // this one is optional
-});
+import { Field, Int, ObjectType, registerEnumType } from "type-graphql";
+import { DateFormatChangeDateCategoryEnum } from "../../utils/enum";
+import { Game } from "../Game/Game";
+import { CompanyLogo } from "./CompanyLogo";
+import { CompanyWebsite } from "./CompanyWebsite";
 
 @ObjectType()
 export class Company {
@@ -62,7 +57,7 @@ export class Company {
   @Field({ nullable: true })
   url?: string;
 
-  @Field(() => [CompanyWebsite],{ nullable: true })
+  @Field(() => [CompanyWebsite], { nullable: true })
   websites?: CompanyWebsite[];
 
   @Field({ nullable: true })

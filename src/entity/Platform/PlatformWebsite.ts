@@ -1,10 +1,6 @@
-import { Field, Int, ObjectType, registerEnumType } from 'type-graphql';
-import { WebsiteCategoryEnum } from '../../utils/enum';
+import { Field, Int, ObjectType, registerEnumType } from "type-graphql";
+import { WebsiteCategoryEnum } from "../../utils/enum";
 
-registerEnumType(WebsiteCategoryEnum, {
-  name: 'WebsiteCategory', // this one is mandatory
-  description: 'Website Category', // this one is optional
-});
 @ObjectType()
 export class PlatformWebsite {
   @Field(() => Int, { nullable: true })

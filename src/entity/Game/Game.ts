@@ -1,35 +1,25 @@
-import { Field, Int, ObjectType, registerEnumType } from 'type-graphql';
-import { GameCategoryEnum, GameStatusEnum } from '../../utils/enum';
-import { AgeRating } from '../AgeRating';
-import { AlternativeName } from '../AlternativeName';
-import { Artwork } from '../Artworks';
-import { Collection } from '../Collection';
-import { Cover } from '../Cover';
-import { ExternalGame } from './ExternalGame';
-import { Franchise } from '../Franchise';
-import { Platform } from '../Platform/Platform';
-import { GameEngine } from './GameEngine';
-import { GameMode } from './GameMode';
-import { Genre } from '../Genre';
-import { InvolvedCompany } from '../Company/InvolvedCompany';
-import { Keyword } from '../Keyword';
-import { MultiplayerMode } from '../MultiplayerMode';
-import { PlayerPerspective } from '../PlayerPerspective';
-import { ReleaseDate } from '../ReleaseDate';
-import { Screenshot } from '../Screenshot';
-import { Theme } from '../Theme';
-import { GameVideo } from './GameVideo';
-import { Website } from '../Website';
-
-registerEnumType(GameCategoryEnum, {
-  name: 'GameCategory', // this one is mandatory
-  description: 'Game Category', // this one is optional
-});
-
-registerEnumType(GameStatusEnum, {
-  name: 'GameStatus', // this one is mandatory
-  description: 'Game Status', // this one is optional
-});
+import { Field, Int, ObjectType, registerEnumType } from "type-graphql";
+import { GameCategoryEnum, GameStatusEnum } from "../../utils/enum";
+import { AgeRating } from "../AgeRating";
+import { AlternativeName } from "../AlternativeName";
+import { Artwork } from "../Artworks";
+import { Collection } from "../Collection";
+import { Cover } from "../Cover";
+import { ExternalGame } from "./ExternalGame";
+import { Franchise } from "../Franchise";
+import { Platform } from "../Platform/Platform";
+import { GameEngine } from "./GameEngine";
+import { GameMode } from "./GameMode";
+import { Genre } from "../Genre";
+import { InvolvedCompany } from "../Company/InvolvedCompany";
+import { Keyword } from "../Keyword";
+import { MultiplayerMode } from "../MultiplayerMode";
+import { PlayerPerspective } from "../PlayerPerspective";
+import { ReleaseDate } from "../ReleaseDate";
+import { Screenshot } from "../Screenshot";
+import { Theme } from "../Theme";
+import { GameVideo } from "./GameVideo";
+import { Website } from "../Website";
 
 @ObjectType()
 export class Game {

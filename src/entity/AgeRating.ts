@@ -1,16 +1,6 @@
-import { Field, Int, ObjectType, registerEnumType } from 'type-graphql';
-import { AgeRatingCategoryEnum, AgeRatingRatingEnum } from '../utils/enum';
-import { AgeRatingContentDescription } from './AgeRatingContentDescription';
-
-registerEnumType(AgeRatingCategoryEnum, {
-  name: 'AgeRatingCategory', // this one is mandatory
-  description: 'Age Rating Category', // this one is optional
-});
-
-registerEnumType(AgeRatingRatingEnum, {
-  name: 'AgeRatingRating', // this one is mandatory
-  description: 'Age Rating Rating', // this one is optional
-});
+import { Field, Int, ObjectType, registerEnumType } from "type-graphql";
+import { AgeRatingCategoryEnum, AgeRatingRatingEnum } from "../utils/enum";
+import { AgeRatingContentDescription } from "./AgeRatingContentDescription";
 
 @ObjectType()
 export class AgeRating {

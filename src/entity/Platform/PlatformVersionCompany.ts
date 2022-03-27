@@ -1,5 +1,5 @@
-import { Field, Int, ObjectType } from 'type-graphql';
-import { Company } from '../Company/Company';
+import { Field, Int, ObjectType } from "type-graphql";
+import { Company } from "../Company/Company";
 
 @ObjectType()
 export class PlatformVersionCompany {

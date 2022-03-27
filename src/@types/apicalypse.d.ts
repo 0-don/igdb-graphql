@@ -1,1 +1,1 @@
-declare module 'apicalypse';
+declare module "apicalypse";

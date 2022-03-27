@@ -1,21 +1,13 @@
-require('dotenv').config();
-import 'reflect-metadata';
-import { ApolloServer } from 'apollo-server';
-import responseCachePlugin from 'apollo-server-plugin-response-cache';
-import { buildSchema } from 'type-graphql';
-import { RecipeResolver } from './resolvers/RecipeResolver';
-import { GameResolver } from './resolvers/GameResolver';
-import { AgeRating } from './entity/AgeRating';
-import { AgeRatingContentDescription } from './entity/AgeRatingContentDescription';
+require("dotenv").config();
+import "reflect-metadata";
+import { ApolloServer } from "apollo-server";
+import responseCachePlugin from "apollo-server-plugin-response-cache";
+import { buildSchema } from "type-graphql";
+import { Entities } from "./entity";
 
 async function start() {
   const schema = await buildSchema({
-    resolvers: [
-      RecipeResolver,
-      GameResolver,
-      AgeRating,
-      AgeRatingContentDescription,
-    ],
+    resolvers: [...Entities],
   });
 
   const server = new ApolloServer({

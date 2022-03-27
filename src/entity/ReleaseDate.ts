@@ -1,20 +1,10 @@
-import { Field, Int, ObjectType, registerEnumType } from 'type-graphql';
+import { Field, Int, ObjectType } from "type-graphql";
 import {
   DateFormatChangeDateCategoryEnum,
   RegionRegionEnum,
-} from '../utils/enum';
-import { Game } from './Game/Game';
-import { Platform } from './Platform/Platform';
-
-registerEnumType(DateFormatChangeDateCategoryEnum, {
-  name: 'DateFormatChangeDateCategory', // this one is mandatory
-  description: 'Date Format Change Date Category', // this one is optional
-});
-
-registerEnumType(RegionRegionEnum, {
-  name: 'RegionRegion', // this one is mandatory
-  description: 'Region Region', // this one is optional
-});
+} from "../utils/enum";
+import { Game } from "./Game/Game";
+import { Platform } from "./Platform/Platform";
 
 @ObjectType()
 export class ReleaseDate {
