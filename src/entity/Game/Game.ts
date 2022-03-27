@@ -14,6 +14,12 @@ import { Genre } from '../Genre';
 import { InvolvedCompany } from '../Company/InvolvedCompany';
 import { Keyword } from '../Keyword';
 import { MultiplayerMode } from '../MultiplayerMode';
+import { PlayerPerspective } from '../PlayerPerspective';
+import { ReleaseDate } from '../ReleaseDate';
+import { Screenshot } from '../Screenshot';
+import { Theme } from '../Theme';
+import { GameVideo } from './GameVideo';
+import { Website } from '../Website';
 
 registerEnumType(GameCategoryEnum, {
   name: 'GameCategory', // this one is mandatory
