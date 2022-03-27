@@ -1,8 +1,7 @@
-import { twitchAccessToken, igdb, fields, where } from "ts-igdb-client";
-import { Query, Resolver, UseMiddleware } from "type-graphql";
-import { Game } from "../entity/Game/Game";
-import { CacheControl } from "../utils/cache-control";
-import { CheckToken } from "../utils/tokenMiddleware";
+import { twitchAccessToken, igdb, fields, where } from 'ts-igdb-client';
+import { Query, Resolver } from 'type-graphql';
+import { Game } from '../entity/Game/Game';
+import { CacheControl } from '../utils/cache-control';
 
 @Resolver(() => Game)
 export class GameResolver {
@@ -16,21 +15,20 @@ export class GameResolver {
     const accessToken = await twitchAccessToken(twitchSecrets);
     const client = igdb(twitchSecrets.client_id, accessToken);
     const { data } = await client
-      .request("games")
-      .pipe(fields(["*"]), where("created_at", "<", Date.now()))
+      .request('games')
+      .pipe(fields(['*']), where('created_at', '<', Date.now()))
       .execute();
     return data;
   }
 
   @Query(() => [Game], { nullable: true })
   // @CacheControl({ maxAge: 60 })
-  @UseMiddleware(CheckToken)
   async cachedGames() {
     const client = igdb(process.env.CLIENT_ID!, process.env.ACCESS_TOKEN!);
 
     const { data } = await client
-      .request("games")
-      .pipe(fields(["*"]), where("created_at", "<", Date.now()))
+      .request('games')
+      .pipe(fields(['*']), where('created_at', '<', Date.now()))
       .execute();
     // console.log(data);
     return data;

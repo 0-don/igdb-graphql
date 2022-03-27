@@ -5,9 +5,11 @@ import { ApolloServer } from 'apollo-server';
 import responseCachePlugin from 'apollo-server-plugin-response-cache';
 import { buildSchema } from 'type-graphql';
 import { GameResolver } from './resolvers/GameResolver';
+import { CheckToken } from './utils/tokenMiddleware';
 
 async function start() {
   const schema = await buildSchema({
+    globalMiddlewares: [CheckToken],
     resolvers: [GameResolver],
   });
 
