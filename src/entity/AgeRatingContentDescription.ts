@@ -1,5 +1,5 @@
-import { Field, Int, ObjectType, registerEnumType } from "type-graphql";
-import { AgeRatingRatingEnum } from "../utils/enum";
+import { Field, Int, ObjectType } from 'type-graphql';
+import { AgeRatingRatingEnum } from '../utils/enum';
 
 @ObjectType()
 export class AgeRatingContentDescription {

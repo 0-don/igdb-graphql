@@ -35,7 +35,7 @@ export const CompanyEntities = [
   CompanyLogo,
   CompanyWebsite,
   InvolvedCompany,
-];
+] as const;
 
 export const GameEntities = [
   ExternalGame,
@@ -44,7 +44,7 @@ export const GameEntities = [
   GameEngineLogo,
   GameMode,
   GameVideo,
-];
+] as const;
 
 export const PlatformEntities = [
   Platform,
@@ -53,7 +53,7 @@ export const PlatformEntities = [
   PlatformVersion,
   PlatformVersionCompany,
   PlatformWebsite,
-];
+] as const;
 
 export const Entities = [
   AgeRating,
@@ -71,4 +71,4 @@ export const Entities = [
   Screenshot,
   Theme,
   Website,
-];
+] as const;
