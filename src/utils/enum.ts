@@ -187,3 +187,4 @@ export enum ExternalGameMediaEnum {
   EXTERNALGAME_DIGITAL = 1,
   EXTERNALGAME_PHYSICAL = 2,
 }
+
