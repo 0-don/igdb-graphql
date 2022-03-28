@@ -1,6 +1,5 @@
 import { MiddlewareFn } from 'type-graphql';
 import axios from 'axios';
-
 import dayjs from 'dayjs';
 
 export type AuthResponse = {
@@ -13,7 +12,7 @@ export const CheckToken: MiddlewareFn = async (_, next) => {
   const dateExpiresIn = dayjs(process.env.EXPIRES_IN);
   const now = dayjs();
   const token = process.env.ACCESS_TOKEN;
-  console.log('token');
+
   if (!token || dateExpiresIn.diff(now, 'd') < 5) {
     const searchParams = new URLSearchParams({
       client_id: process.env.CLIENT_ID!,
