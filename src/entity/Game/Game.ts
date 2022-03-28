@@ -1,4 +1,4 @@
-import { Field, ID, Int, ObjectType, registerEnumType } from 'type-graphql';
+import { Field, ID, Int, ObjectType } from 'type-graphql';
 import { GameCategoryEnum, GameStatusEnum } from '../../utils/enum';
 import { AgeRating } from '../AgeRating';
 import { AlternativeName } from '../AlternativeName';
