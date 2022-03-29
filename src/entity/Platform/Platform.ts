@@ -1,57 +1,57 @@
-import { Field, Int, ObjectType, registerEnumType } from "type-graphql";
-import { PlatformCategoryEnum } from "../../utils/enum";
-import { PlatformFamily } from "./PlatformFamily";
-import { PlatformLogo } from "./PlatformLogo";
-import { PlatformVersion } from "./PlatformVersion";
-import { PlatformWebsite } from "./PlatformWebsite";
+import {Field, Int, ObjectType} from 'type-graphql';
+import {PlatformCategoryEnum} from '../../utils/enum';
+import {PlatformFamily} from './PlatformFamily';
+import {PlatformLogo} from './PlatformLogo';
+import {PlatformVersion} from './PlatformVersion';
+import {PlatformWebsite} from './PlatformWebsite';
 
 @ObjectType()
 export class Platform {
-  @Field(() => Int, { nullable: true })
+  @Field(() => Int, {nullable: true})
   id?: number;
 
-  @Field({ nullable: true })
+  @Field({nullable: true})
   abbreviation?: string;
 
-  @Field({ nullable: true })
+  @Field({nullable: true})
   alternative_name?: string;
 
-  @Field(() => PlatformCategoryEnum, { nullable: true })
+  @Field(() => PlatformCategoryEnum, {nullable: true})
   category?: PlatformCategoryEnum;
 
-  @Field(() => Int, { nullable: true })
+  @Field(() => Int, {nullable: true})
   created_at?: number;
 
-  @Field(() => Int, { nullable: true })
+  @Field(() => Int, {nullable: true})
   generation?: number;
 
-  @Field({ nullable: true })
+  @Field({nullable: true})
   name?: string;
 
-  @Field(() => PlatformLogo, { nullable: true })
+  @Field(() => PlatformLogo, {nullable: true})
   platform_logo?: PlatformLogo;
 
-  @Field(() => PlatformFamily, { nullable: true })
+  @Field(() => PlatformFamily, {nullable: true})
   platform_family?: PlatformFamily;
 
-  @Field({ nullable: true })
+  @Field({nullable: true})
   slug?: string;
 
-  @Field({ nullable: true })
+  @Field({nullable: true})
   summary?: string;
 
-  @Field(() => Int, { nullable: true })
+  @Field(() => Int, {nullable: true})
   updated_at?: number;
 
-  @Field({ nullable: true })
+  @Field({nullable: true})
   url?: string;
 
-  @Field(() => [PlatformVersion], { nullable: true })
+  @Field(() => [PlatformVersion], {nullable: true})
   versions?: PlatformVersion[];
 
-  @Field(() => [PlatformWebsite], { nullable: true })
+  @Field(() => [PlatformWebsite], {nullable: true})
   websites?: PlatformWebsite[];
 
-  @Field({ nullable: true })
+  @Field({nullable: true})
   checksum?: string;
 }

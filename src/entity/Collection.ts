@@ -1,29 +1,29 @@
-import { Field, Int, ObjectType } from 'type-graphql';
-import { Game } from './Game/Game';
+import {Field, Int, ObjectType} from 'type-graphql';
+import {Game} from './Game/Game';
 
 @ObjectType()
 export class Collection {
-  @Field(() => Int, { nullable: true })
+  @Field(() => Int, {nullable: true})
   id?: number;
 
-  @Field(() => Int, { nullable: true })
+  @Field(() => Int, {nullable: true})
   created_at?: number;
 
-  @Field(() => [Game], { nullable: true })
+  @Field(() => [Game], {nullable: true})
   games?: Game[];
 
-  @Field({ nullable: true })
+  @Field({nullable: true})
   name?: string;
 
-  @Field({ nullable: true })
+  @Field({nullable: true})
   slug?: string;
 
-  @Field(() => Int, { nullable: true })
+  @Field(() => Int, {nullable: true})
   updated_at?: number;
 
-  @Field({ nullable: true })
+  @Field({nullable: true})
   url?: string;
 
-  @Field({ nullable: true })
+  @Field({nullable: true})
   checksum?: string;
 }

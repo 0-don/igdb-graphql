@@ -1,6 +1,6 @@
-import { MiddlewareFn } from 'type-graphql';
 import axios from 'axios';
 import dayjs from 'dayjs';
+import {MiddlewareFn} from 'type-graphql';
 
 export type AuthResponse = {
   access_token: string;
@@ -22,7 +22,7 @@ export const CheckToken: MiddlewareFn = async (_, next) => {
     const url = `https://id.twitch.tv/oauth2/token?${searchParams}`;
 
     try {
-      const { data } = await axios.post<AuthResponse>(url);
+      const {data} = await axios.post<AuthResponse>(url);
       if (data) {
         process.env.EXPIRES_IN = `${dayjs().add(data.expires_in, 's')}`;
         process.env.ACCESS_TOKEN = data.access_token;

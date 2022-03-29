@@ -1,49 +1,49 @@
-import { Field, Int, ObjectType, registerEnumType } from "type-graphql";
+import {Field, Int, ObjectType} from 'type-graphql';
 import {
   ExternalGameCategoryEnum,
   ExternalGameMediaEnum,
-} from "../../utils/enum";
-import { Game } from "./Game";
-import { Platform } from "../Platform/Platform";
+} from '../../utils/enum';
+import {Platform} from '../Platform/Platform';
+import {Game} from './Game';
 
 @ObjectType()
 export class ExternalGame {
-  @Field(() => Int, { nullable: true })
+  @Field(() => Int, {nullable: true})
   id?: number;
 
-  @Field(() => ExternalGameCategoryEnum, { nullable: true })
+  @Field(() => ExternalGameCategoryEnum, {nullable: true})
   category?: ExternalGameCategoryEnum;
 
-  @Field(() => Int, { nullable: true })
+  @Field(() => Int, {nullable: true})
   created_at?: number;
 
-  @Field(() => Game, { nullable: true })
+  @Field(() => Game, {nullable: true})
   game?: Game;
 
-  @Field({ nullable: true })
+  @Field({nullable: true})
   name?: string;
 
-  @Field({ nullable: true })
+  @Field({nullable: true})
   uid?: string;
 
-  @Field(() => Int, { nullable: true })
+  @Field(() => Int, {nullable: true})
   updated_at?: number;
 
-  @Field(() => Int, { nullable: true })
+  @Field(() => Int, {nullable: true})
   url?: number;
 
-  @Field(() => Int, { nullable: true })
+  @Field(() => Int, {nullable: true})
   year?: number;
 
-  @Field(() => ExternalGameMediaEnum, { nullable: true })
+  @Field(() => ExternalGameMediaEnum, {nullable: true})
   media?: ExternalGameMediaEnum;
 
-  @Field(() => Platform, { nullable: true })
+  @Field(() => Platform, {nullable: true})
   platform?: Platform;
 
-  @Field(() => [Int], { nullable: true })
+  @Field(() => [Int], {nullable: true})
   countries?: number[];
 
-  @Field({ nullable: true })
+  @Field({nullable: true})
   checksum?: string;
 }

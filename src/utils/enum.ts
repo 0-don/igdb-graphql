@@ -1,4 +1,4 @@
-import { registerEnumType } from "type-graphql";
+import {registerEnumType} from 'type-graphql';
 
 export enum AgeRatingCategoryEnum {
   AGERATING_CATEGORY_NULL = 0,
@@ -191,51 +191,51 @@ export enum ExternalGameMediaEnum {
 }
 
 registerEnumType(ExternalGameCategoryEnum, {
-  name: "ExternalGameCategory", // this one is mandatory
-  description: "External Game Category", // this one is optional
+  name: 'ExternalGameCategory', // this one is mandatory
+  description: 'External Game Category', // this one is optional
 });
 
 registerEnumType(ExternalGameMediaEnum, {
-  name: "ExternalGameMedia", // this one is mandatory
-  description: "External Game Media", // this one is optional
+  name: 'ExternalGameMedia', // this one is mandatory
+  description: 'External Game Media', // this one is optional
 });
 
 registerEnumType(GameCategoryEnum, {
-  name: "GameCategory", // this one is mandatory
-  description: "Game Category", // this one is optional
+  name: 'GameCategory', // this one is mandatory
+  description: 'Game Category', // this one is optional
 });
 
 registerEnumType(GameStatusEnum, {
-  name: "GameStatus", // this one is mandatory
-  description: "Game Status", // this one is optional
+  name: 'GameStatus', // this one is mandatory
+  description: 'Game Status', // this one is optional
 });
 
 registerEnumType(PlatformCategoryEnum, {
-  name: "PlatformCategory", // this one is mandatory
-  description: "Platform Category", // this one is optional
+  name: 'PlatformCategory', // this one is mandatory
+  description: 'Platform Category', // this one is optional
 });
 
 registerEnumType(WebsiteCategoryEnum, {
-  name: "WebsiteCategory", // this one is mandatory
-  description: "Website Category", // this one is optional
+  name: 'WebsiteCategory', // this one is mandatory
+  description: 'Website Category', // this one is optional
 });
 
 registerEnumType(AgeRatingCategoryEnum, {
-  name: "AgeRatingCategory", // this one is mandatory
-  description: "Age Rating Category", // this one is optional
+  name: 'AgeRatingCategory', // this one is mandatory
+  description: 'Age Rating Category', // this one is optional
 });
 
 registerEnumType(AgeRatingRatingEnum, {
-  name: "AgeRatingRating", // this one is mandatory
-  description: "Age Rating Rating", // this one is optional
+  name: 'AgeRatingRating', // this one is mandatory
+  description: 'Age Rating Rating', // this one is optional
 });
 
 registerEnumType(DateFormatChangeDateCategoryEnum, {
-  name: "DateFormatChangeDateCategory", // this one is mandatory
-  description: "Date Format Change Date Category", // this one is optional
+  name: 'DateFormatChangeDateCategory', // this one is mandatory
+  description: 'Date Format Change Date Category', // this one is optional
 });
 
 registerEnumType(RegionRegionEnum, {
-  name: "RegionRegion", // this one is mandatory
-  description: "Region Region", // this one is optional
+  name: 'RegionRegion', // this one is mandatory
+  description: 'Region Region', // this one is optional
 });

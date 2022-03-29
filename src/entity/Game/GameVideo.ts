@@ -1,20 +1,20 @@
-import { Field, Int, ObjectType } from 'type-graphql';
-import { Game } from './Game';
+import {Field, Int, ObjectType} from 'type-graphql';
+import {Game} from './Game';
 
 @ObjectType()
 export class GameVideo {
-  @Field(() => Int, { nullable: true })
+  @Field(() => Int, {nullable: true})
   id?: number;
 
-  @Field(() => Game, { nullable: true })
+  @Field(() => Game, {nullable: true})
   game?: Game;
 
-  @Field({ nullable: true })
+  @Field({nullable: true})
   name?: string;
 
-  @Field({ nullable: true })
+  @Field({nullable: true})
   video_id?: string;
 
-  @Field({ nullable: true })
+  @Field({nullable: true})
   checksum?: string;
 }

@@ -1,27 +1,27 @@
-import { Field, ID, ObjectType } from 'type-graphql';
-import { AgeRatingCategoryEnum, AgeRatingRatingEnum } from '../utils/enum';
-import { AgeRatingContentDescription } from './AgeRatingContentDescription';
+import {Field, ID, ObjectType} from 'type-graphql';
+import {AgeRatingCategoryEnum, AgeRatingRatingEnum} from '../utils/enum';
+import {AgeRatingContentDescription} from './AgeRatingContentDescription';
 
 @ObjectType()
 export class AgeRating {
   @Field(() => ID)
   id: number;
 
-  @Field(() => AgeRatingCategoryEnum, { nullable: true })
+  @Field(() => AgeRatingCategoryEnum, {nullable: true})
   category?: AgeRatingCategoryEnum;
 
-  @Field(() => [AgeRatingContentDescription], { nullable: true })
+  @Field(() => [AgeRatingContentDescription], {nullable: true})
   content_descriptions?: AgeRatingContentDescription[];
 
-  @Field(() => AgeRatingRatingEnum, { nullable: true })
+  @Field(() => AgeRatingRatingEnum, {nullable: true})
   rating?: AgeRatingRatingEnum;
 
-  @Field({ nullable: true })
+  @Field({nullable: true})
   rating_cover_url?: string;
 
-  @Field({ nullable: true })
+  @Field({nullable: true})
   synopsis?: string;
 
-  @Field({ nullable: true })
+  @Field({nullable: true})
   checksum?: string;
 }

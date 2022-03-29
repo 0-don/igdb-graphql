@@ -1,15 +1,15 @@
-import { igdb, fields, whereIn, WhereInFlags, limit } from 'ts-igdb-client';
-import { RawRoutes } from 'ts-igdb-client/dist/types';
+import {fields, igdb, limit, whereIn, WhereInFlags} from 'ts-igdb-client';
+import {RawRoutes} from 'ts-igdb-client/dist/types';
 
 export const loaderResolver = async (
   ids: readonly RLoader<number>[] | readonly RLoader<number[]>[],
-  request: keyof RawRoutes
+  request: keyof RawRoutes,
 ) => {
   const extractedIds = new Set(
     ids
-      .map(({ ids }) => ids)
+      .map(({ids}) => ids)
       .flat()
-      .filter((id) => id)
+      .filter(id => id),
   );
 
   if (extractedIds.size) {
@@ -20,21 +20,21 @@ export const loaderResolver = async (
       .pipe(
         fields(['*']),
         whereIn('id', Array.from(extractedIds), WhereInFlags.OR),
-        limit(500)
+        limit(500),
       );
 
-    const { data } = await req.execute();
+    const {data} = await req.execute();
 
-    const result = ids.map((r) =>
+    const result = ids.map(r =>
       Array.isArray(r.ids)
-        ? r.ids.map((x) => data.find((d) => d.id === x)).filter((i) => i)
-        : data.find((d) => d.id === r.ids) ?? null
+        ? r.ids.map(x => data.find(d => d.id === x)).filter(i => i)
+        : data.find(d => d.id === r.ids) ?? null,
     ) as RawRoutes[][];
 
     return result;
   }
 
-  return ids.map((_) => null) as unknown as RawRoutes[][];
+  return ids.map(_ => null) as unknown as RawRoutes[][];
 };
 
 export type RLoader<T> = {

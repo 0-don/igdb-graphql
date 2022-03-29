@@ -8,13 +8,16 @@
     "dev": "ts-node-dev --poll --respawn --transpile-only src/index.ts",
     "build": "tsc",
     "start": "cross-env NODE_ENV=production node dist/index.js",
-    "env": "npx @dotenv/cli pull"
+    "env": "npx @dotenv/cli pull",
+    "prettier": "npx prettier --write ./src"
   },
   "devDependencies": {
     "@types/node": "^17.0.23",
     "cross-env": "^7.0.3",
     "dotenv": "^16.0.0",
     "dotenv-cli": "^5.1.0",
+    "prettier": "^2.6.1",
+    "prettier-plugin-organize-imports": "^2.3.4",
     "ts-node-dev": "^1.1.8",
     "typescript": "^4.6.3"
   },
