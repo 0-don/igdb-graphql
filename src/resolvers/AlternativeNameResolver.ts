@@ -9,27 +9,23 @@ import {
   UseMiddleware,
 } from 'type-graphql';
 import {Loader} from 'type-graphql-dataloader';
-import {AgeRating} from '../entity/AgeRating';
-import {AgeRatingContentDescription} from '../entity/AgeRatingContentDescription';
+import {AlternativeName} from '../entity/AlternativeName';
+import {Game} from '../entity/Game/Game';
 import {CheckToken} from '../utils/tokenMiddleware';
 import {loaderResolver, RLoader} from '../utils/utils';
 
-@Resolver(() => AgeRating)
-export class AgeRatingResolver {
+@Resolver(() => AlternativeName)
+export class AlternativeNameResolver {
   @FieldResolver()
   @Loader<RLoader, RawRoutes[]>(
-    async content_descriptions =>
-      await loaderResolver(
-        content_descriptions,
-        'age_rating_content_descriptions',
-      ),
+    async game => await loaderResolver(game, 'games'),
   )
-  async content_descriptions(@Root() {id, content_descriptions}: AgeRating) {
-    return (dataloader: DataLoader<RLoader, AgeRatingContentDescription[]>) =>
-      dataloader.load({id, ids: content_descriptions});
+  async content_descriptions(@Root() {id, game}: AlternativeName) {
+    return (dataloader: DataLoader<RLoader, Game[]>) =>
+      dataloader.load({id, ids: game});
   }
 
-  @Query(() => [AgeRating], {nullable: true})
+  @Query(() => [AlternativeName], {nullable: true})
   @UseMiddleware(CheckToken)
   // @CacheControl({ maxAge: 1 })
   async ageRatings() {

@@ -3,8 +3,8 @@ import {Game} from './Game/Game';
 
 @ObjectType()
 export class Artwork {
-  @Field(() => Int, {nullable: true})
-  id?: number;
+  @Field(() => Int)
+  id: number;
 
   @Field(() => Boolean, {nullable: true})
   alpha_channel?: boolean;

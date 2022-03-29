@@ -2,7 +2,7 @@ import {fields, igdb, limit, whereIn, WhereInFlags} from 'ts-igdb-client';
 import {RawRoutes} from 'ts-igdb-client/dist/types';
 
 export const loaderResolver = async (
-  ids: readonly RLoader<number>[] | readonly RLoader<number[]>[],
+  ids: readonly RLoader[],
   request: keyof RawRoutes,
 ) => {
   const extractedIds = new Set(
@@ -37,7 +37,7 @@ export const loaderResolver = async (
   return ids.map(_ => null) as unknown as RawRoutes[][];
 };
 
-export type RLoader<T> = {
+export type RLoader = {
   id: number;
-  ids: T;
+  ids: number[] | number | undefined | any;
 };

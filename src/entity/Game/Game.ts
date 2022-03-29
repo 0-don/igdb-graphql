@@ -27,7 +27,7 @@ export class Game {
   id: number;
 
   @Field(() => [AgeRating], {nullable: true})
-  age_ratings?: AgeRating[];
+  age_ratings?: AgeRating[] | number[];
 
   @Field(() => Int, {nullable: true})
   aggregated_rating?: number;

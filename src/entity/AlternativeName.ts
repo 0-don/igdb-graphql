@@ -1,10 +1,10 @@
-import {Field, Int, ObjectType} from 'type-graphql';
+import {Field, ID, ObjectType} from 'type-graphql';
 import {Game} from './Game/Game';
 
 @ObjectType()
 export class AlternativeName {
-  @Field(() => Int, {nullable: true})
-  id?: number;
+  @Field(() => ID)
+  id: number;
 
   @Field({nullable: true})
   comment?: string;
