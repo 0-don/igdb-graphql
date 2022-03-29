@@ -1,9 +1,9 @@
-import {Field, Int, ObjectType} from 'type-graphql';
+import {Field, ID, Int, ObjectType} from 'type-graphql';
 
 @ObjectType()
 export class Theme {
-  @Field(() => Int, {nullable: true})
-  id?: number;
+  @Field(() => ID)
+  id: number;
 
   @Field(() => Int, {nullable: true})
   created_at?: number;

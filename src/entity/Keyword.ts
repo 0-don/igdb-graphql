@@ -1,8 +1,8 @@
-import {Field, Int, ObjectType} from 'type-graphql';
+import {Field, ID, Int, ObjectType} from 'type-graphql';
 
 @ObjectType()
 export class Keyword {
-  @Field(() => Int, {nullable: true})
+  @Field(() => ID)
   id?: number;
 
   @Field(() => Int, {nullable: true})

@@ -7,7 +7,7 @@ import {PlatformWebsite} from './PlatformWebsite';
 
 @ObjectType()
 export class Platform {
-  @Field(() => ID) 
+  @Field(() => ID)
   id: number;
 
   @Field({nullable: true})
@@ -54,5 +54,4 @@ export class Platform {
 
   @Field({nullable: true})
   checksum?: string;
-
 }

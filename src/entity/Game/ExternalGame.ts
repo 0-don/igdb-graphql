@@ -1,4 +1,4 @@
-import {Field, Int, ObjectType} from 'type-graphql';
+import {Field, ID, Int, ObjectType} from 'type-graphql';
 import {
   ExternalGameCategoryEnum,
   ExternalGameMediaEnum,
@@ -8,8 +8,8 @@ import {Game} from './Game';
 
 @ObjectType()
 export class ExternalGame {
-  @Field(() => Int, {nullable: true})
-  id?: number;
+  @Field(() => ID)
+  id: number;
 
   @Field(() => ExternalGameCategoryEnum, {nullable: true})
   category?: ExternalGameCategoryEnum;

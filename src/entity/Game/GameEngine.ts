@@ -1,12 +1,12 @@
-import {Field, Int, ObjectType} from 'type-graphql';
+import {Field, ID, Int, ObjectType} from 'type-graphql';
 import {Company} from '../Company/Company';
 import {Platform} from '../Platform/Platform';
 import {GameEngineLogo} from './GameEngineLogo';
 
 @ObjectType()
 export class GameEngine {
-  @Field(() => Int, {nullable: true})
-  id?: number;
+  @Field(() => ID)
+  id: number;
 
   @Field(() => [Company], {nullable: true})
   companies?: Company[];

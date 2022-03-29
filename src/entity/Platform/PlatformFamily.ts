@@ -1,9 +1,9 @@
-import {Field, Int, ObjectType} from 'type-graphql';
+import {Field, ID, ObjectType} from 'type-graphql';
 
 @ObjectType()
 export class PlatformFamily {
-  @Field(() => Int, {nullable: true})
-  id?: number;
+  @Field(() => ID)
+  id: number;
 
   @Field({nullable: true})
   name?: string;

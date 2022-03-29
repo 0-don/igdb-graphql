@@ -1,9 +1,9 @@
-import {Field, Int, ObjectType} from 'type-graphql';
+import {Field, ID, Int, ObjectType} from 'type-graphql';
 import {Game} from './Game/Game';
 
 @ObjectType()
 export class Artwork {
-  @Field(() => Int)
+  @Field(() => ID)
   id: number;
 
   @Field(() => Boolean, {nullable: true})

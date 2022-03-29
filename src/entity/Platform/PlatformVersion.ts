@@ -1,4 +1,4 @@
-import {Field, Int, ObjectType} from 'type-graphql';
+import {Field, ID, Int, ObjectType} from 'type-graphql';
 import {PlatformCategoryEnum} from '../../utils/enum';
 import {Game} from '../Game/Game';
 import {PlatformFamily} from './PlatformFamily';
@@ -6,8 +6,8 @@ import {PlatformLogo} from './PlatformLogo';
 
 @ObjectType()
 export class PlatformVersion {
-  @Field(() => Int, {nullable: true})
-  id?: number;
+  @Field(() => ID)
+  id: number;
 
   @Field({nullable: true})
   companies?: string;
