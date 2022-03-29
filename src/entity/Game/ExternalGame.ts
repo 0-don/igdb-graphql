@@ -18,7 +18,7 @@ export class ExternalGame {
   created_at?: number;
 
   @Field(() => Game, {nullable: true})
-  game?: Game;
+  game?: Game | number;
 
   @Field({nullable: true})
   name?: string;
@@ -39,7 +39,7 @@ export class ExternalGame {
   media?: ExternalGameMediaEnum;
 
   @Field(() => Platform, {nullable: true})
-  platform?: Platform;
+  platform?: Platform | number;
 
   @Field(() => [Int], {nullable: true})
   countries?: number[];

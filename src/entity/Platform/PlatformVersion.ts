@@ -28,10 +28,10 @@ export class PlatformVersion {
   media?: string;
 
   @Field(() => PlatformLogo, {nullable: true})
-  memory?: PlatformLogo;
+  memory?: PlatformLogo | number;
 
   @Field(() => PlatformFamily, {nullable: true})
-  name?: PlatformFamily;
+  name?: PlatformFamily | number;
 
   @Field({nullable: true})
   online?: string;
@@ -49,7 +49,7 @@ export class PlatformVersion {
   platform_version_release_dates?: number;
 
   @Field(() => [Game], {nullable: true})
-  resolutions?: Game[];
+  resolutions?: Game[] | number[];
 
   @Field({nullable: true})
   slug?: string;

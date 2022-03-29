@@ -29,10 +29,10 @@ export class Platform {
   name?: string;
 
   @Field(() => PlatformLogo, {nullable: true})
-  platform_logo?: PlatformLogo;
+  platform_logo?: PlatformLogo | number;
 
   @Field(() => PlatformFamily, {nullable: true})
-  platform_family?: PlatformFamily;
+  platform_family?: PlatformFamily | number;
 
   @Field({nullable: true})
   slug?: string;
@@ -47,10 +47,10 @@ export class Platform {
   url?: string;
 
   @Field(() => [PlatformVersion], {nullable: true})
-  versions?: PlatformVersion[];
+  versions?: PlatformVersion[] | number[];
 
   @Field(() => [PlatformWebsite], {nullable: true})
-  websites?: PlatformWebsite[];
+  websites?: PlatformWebsite[] | number[];
 
   @Field({nullable: true})
   checksum?: string;

@@ -10,7 +10,7 @@ export class AlternativeName {
   comment?: string;
 
   @Field(() => [Game], {nullable: true})
-  game?: Game[];
+  game?: Game[] | number[];
 
   @Field({nullable: true})
   name?: string;

@@ -39,31 +39,31 @@ export class Game {
   alternative_names?: AlternativeName[];
 
   @Field(() => [Artwork], {nullable: true})
-  artworks?: Artwork[];
+  artworks?: Artwork[] | number[];
 
   @Field(() => [Game], {nullable: true})
-  bundles?: Game[];
+  bundles?: Game[] | number[];
 
   @Field(() => GameCategoryEnum, {nullable: true})
   category?: GameCategoryEnum;
 
   @Field(() => Collection, {nullable: true})
-  collection?: Collection;
+  collection?: Collection | number;
 
   @Field(() => Cover, {nullable: true})
-  cover?: Cover;
+  cover?: Cover | number;
 
   @Field(() => Int, {nullable: true})
   created_at?: number;
 
   @Field(() => [Game], {nullable: true})
-  dlcs?: Game[];
+  dlcs?: Game[] | number[];
 
   @Field(() => [Game], {nullable: true})
-  expansions?: Game[];
+  expansions?: Game[] | number[];
 
   @Field(() => [ExternalGame], {nullable: true})
-  external_games?: ExternalGame[];
+  external_games?: ExternalGame[] | number[];
 
   @Field(() => Int, {nullable: true})
   first_release_date?: number;
@@ -75,40 +75,40 @@ export class Game {
   franchise?: Franchise;
 
   @Field(() => [Franchise], {nullable: true})
-  franchises?: Franchise[];
+  franchises?: Franchise[] | number[];
 
   @Field(() => [GameEngine], {nullable: true})
-  game_engines?: GameEngine[];
+  game_engines?: GameEngine[] | number[];
 
   @Field(() => [GameMode], {nullable: true})
-  game_modes?: GameMode[];
+  game_modes?: GameMode[] | number[];
 
   @Field(() => [Genre], {nullable: true})
-  genres?: Genre[];
+  genres?: Genre[] | number[];
 
   @Field(() => Int, {nullable: true})
   hypes?: number;
 
   @Field(() => [InvolvedCompany], {nullable: true})
-  involved_companies?: InvolvedCompany[];
+  involved_companies?: InvolvedCompany[] | number[];
 
   @Field(() => [Keyword], {nullable: true})
-  keywords?: Keyword[];
+  keywords?: Keyword[] | number[];
 
   @Field(() => [MultiplayerMode], {nullable: true})
-  multiplayer_modes?: MultiplayerMode[];
+  multiplayer_modes?: MultiplayerMode[] | number[];
 
   @Field({nullable: true})
   name?: string;
 
   @Field(() => Game, {nullable: true})
-  parent_game?: Game;
+  parent_game?: Game | number;
 
   @Field(() => [Platform], {nullable: true})
-  platforms?: Platform[];
+  platforms?: Platform[] | number[];
 
   @Field(() => [PlayerPerspective], {nullable: true})
-  player_perspectives?: PlayerPerspective[];
+  player_perspectives?: PlayerPerspective[] | number[];
 
   @Field(() => Int, {nullable: true})
   rating?: number;
@@ -117,19 +117,19 @@ export class Game {
   rating_count?: number;
 
   @Field(() => [ReleaseDate], {nullable: true})
-  release_dates?: ReleaseDate[];
+  release_dates?: ReleaseDate[] | number[];
 
   @Field(() => [Screenshot], {nullable: true})
-  screenshots?: Screenshot[];
+  screenshots?: Screenshot[] | number[];
 
   @Field(() => [Game], {nullable: true})
-  similar_games?: Game[];
+  similar_games?: Game[] | number[];
 
   @Field({nullable: true})
   slug?: string;
 
   @Field(() => [Game], {nullable: true})
-  standalone_expansions?: Game[];
+  standalone_expansions?: Game[] | number[];
 
   @Field(() => GameStatusEnum, {nullable: true})
   status?: GameStatusEnum;
@@ -141,10 +141,10 @@ export class Game {
   summary?: string;
 
   @Field(() => [Int], {nullable: true})
-  tags?: number[];
+  tags?: number[] | number;
 
   @Field(() => [Theme], {nullable: true})
-  themes?: Theme[];
+  themes?: Theme[] | number[];
 
   @Field(() => Int, {nullable: true})
   total_rating?: number;
@@ -159,32 +159,32 @@ export class Game {
   url?: string;
 
   @Field(() => Game, {nullable: true})
-  version_parent?: Game;
+  version_parent?: Game | number;
 
   @Field({nullable: true})
   version_title?: string;
 
   @Field(() => [GameVideo], {nullable: true})
-  videos?: GameVideo[];
+  videos?: GameVideo[] | number[];
 
   @Field(() => [Website], {nullable: true})
-  websites?: Website[];
+  websites?: Website[] | number[];
 
   @Field({nullable: true})
   checksum?: string;
 
   @Field(() => [Game], {nullable: true})
-  remakes?: Game[];
+  remakes?: Game[] | number[];
 
   @Field(() => [Game], {nullable: true})
-  remasters?: Game[];
+  remasters?: Game[] | number[];
 
   @Field(() => [Game], {nullable: true})
-  expanded_games?: Game[];
+  expanded_games?: Game[] | number[];
 
   @Field(() => [Game], {nullable: true})
-  ports?: Game[];
+  ports?: Game[] | number[];
 
   @Field(() => [Game], {nullable: true})
-  forks?: Game[];
+  forks?: Game[] | number[];
 }

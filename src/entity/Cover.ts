@@ -13,7 +13,7 @@ export class Cover {
   animated?: boolean;
 
   @Field(() => Game, {nullable: true})
-  game?: Game;
+  game?: Game | number;
 
   @Field(() => Int, {nullable: true})
   height?: number;

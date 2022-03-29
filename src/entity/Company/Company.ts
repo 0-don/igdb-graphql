@@ -16,7 +16,7 @@ export class Company {
   change_date_category?: DateFormatChangeDateCategoryEnum;
 
   @Field(() => Company, {nullable: true})
-  changed_company_id?: Company;
+  changed_company_id?: Company | number;
 
   @Field(() => Int, {nullable: true})
   country?: number;
@@ -28,19 +28,19 @@ export class Company {
   description?: string;
 
   @Field(() => [Game], {nullable: true})
-  developed?: Game[];
+  developed?: Game[] | number[];
 
   @Field(() => CompanyLogo, {nullable: true})
-  logo?: CompanyLogo;
+  logo?: CompanyLogo | number;
 
   @Field({nullable: true})
   name?: string;
 
   @Field(() => Company, {nullable: true})
-  parent?: Company;
+  parent?: Company | number;
 
   @Field(() => [Game], {nullable: true})
-  published?: Game[];
+  published?: Game[] | number[];
 
   @Field({nullable: true})
   slug?: string;
@@ -58,7 +58,7 @@ export class Company {
   url?: string;
 
   @Field(() => [CompanyWebsite], {nullable: true})
-  websites?: CompanyWebsite[];
+  websites?: CompanyWebsite[] | number[];
 
   @Field({nullable: true})
   checksum?: string;

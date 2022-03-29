@@ -10,7 +10,7 @@ export class Franchise {
   created_at?: number;
 
   @Field(() => [Game], {nullable: true})
-  games?: Game[];
+  games?: Game[] | number[];
 
   @Field({nullable: true})
   name?: string;

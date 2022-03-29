@@ -30,7 +30,7 @@ export class ReleaseDate {
   m?: number;
 
   @Field(() => Platform, {nullable: true})
-  platform?: Platform;
+  platform?: Platform | number;
 
   @Field(() => RegionRegionEnum, {nullable: true})
   region?: RegionRegionEnum;

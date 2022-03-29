@@ -9,7 +9,7 @@ export class GameEngine {
   id: number;
 
   @Field(() => [Company], {nullable: true})
-  companies?: Company[];
+  companies?: Company[] | number[];
 
   @Field(() => Int, {nullable: true})
   created_at?: number;
@@ -18,13 +18,13 @@ export class GameEngine {
   description?: string;
 
   @Field(() => GameEngineLogo, {nullable: true})
-  logo?: GameEngineLogo;
+  logo?: GameEngineLogo | number;
 
   @Field({nullable: true})
   name?: string;
 
   @Field(() => [Platform], {nullable: true})
-  platforms?: Platform[];
+  platforms?: Platform[] | number[];
 
   @Field({nullable: true})
   slug?: string;

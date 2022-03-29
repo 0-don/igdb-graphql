@@ -8,7 +8,7 @@ export class InvolvedCompany {
   id: number;
 
   @Field(() => Company, {nullable: true})
-  company?: Company;
+  company?: Company | number;
 
   @Field(() => Int, {nullable: true})
   created_at?: number;

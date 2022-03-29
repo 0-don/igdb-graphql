@@ -11,10 +11,10 @@ export class MultiplayerMode {
   campaigncoop?: boolean;
 
   @Field(() => [Game], {nullable: true})
-  dropin?: Game[];
+  dropin?: Game[] | number[];
 
   @Field(() => Game, {nullable: true})
-  game?: Game;
+  game?: Game | number;
 
   @Field(() => Boolean, {nullable: true})
   lancoop?: string;
@@ -38,7 +38,7 @@ export class MultiplayerMode {
   onlinemax?: number;
 
   @Field(() => Platform, {nullable: true})
-  platform?: Platform;
+  platform?: Platform | number;
 
   @Field(() => Boolean, {nullable: true})
   splitscreen?: boolean;

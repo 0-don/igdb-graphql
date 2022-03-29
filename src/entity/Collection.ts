@@ -10,7 +10,7 @@ export class Collection {
   created_at?: number;
 
   @Field(() => [Game], {nullable: true})
-  games?: Game[];
+  games?: Game[] | number[];
 
   @Field({nullable: true})
   name?: string;

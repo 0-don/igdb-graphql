@@ -10,7 +10,7 @@ export class PlatformVersionCompany {
   comment?: string;
 
   @Field(() => Company, {nullable: true})
-  company?: Company;
+  company?: Company | number;
 
   @Field(() => Boolean, {nullable: true})
   developer?: boolean;

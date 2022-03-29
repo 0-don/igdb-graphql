@@ -9,32 +9,32 @@ import {
   UseMiddleware,
 } from 'type-graphql';
 import {Loader} from 'type-graphql-dataloader';
-import {Platform} from '../entity/Platform/Platform';
-import {PlatformFamily} from '../entity/Platform/PlatformFamily';
-import {PlatformLogo} from '../entity/Platform/PlatformLogo';
-import {CheckToken} from '../utils/tokenMiddleware';
-import {loaderResolver, RLoader} from '../utils/utils';
+import {Platform} from '../../entity/Platform/Platform';
+import {PlatformFamily} from '../../entity/Platform/PlatformFamily';
+import {PlatformLogo} from '../../entity/Platform/PlatformLogo';
+import {CheckToken} from '../../utils/tokenMiddleware';
+import {loaderResolver, RLoader} from '../../utils/utils';
 
 @Resolver(() => Platform)
 export class PlatformResolver {
   @FieldResolver()
-  @Loader<RLoader<number>, RawRoutes[]>(
+  @Loader<RLoader, RawRoutes[]>(
     async platform_logo =>
       await loaderResolver(platform_logo, 'platform_logos'),
   )
   async platform_logo(@Root() {id, platform_logo}: Platform) {
-    return (dataloader: DataLoader<RLoader<number>, PlatformLogo[]>) =>
-      dataloader.load({id, ids: platform_logo as number});
+    return (dataloader: DataLoader<RLoader, PlatformLogo[]>) =>
+      dataloader.load({id, ids: platform_logo});
   }
 
   @FieldResolver()
-  @Loader<RLoader<number>, RawRoutes[]>(
+  @Loader<RLoader, RawRoutes[]>(
     async platform_family =>
       await loaderResolver(platform_family, 'platform_families'),
   )
   async platform_family(@Root() {id, platform_family}: Platform) {
-    return (dataloader: DataLoader<RLoader<number>, PlatformFamily[]>) =>
-      dataloader.load({id, ids: platform_family as number});
+    return (dataloader: DataLoader<RLoader, PlatformFamily[]>) =>
+      dataloader.load({id, ids: platform_family});
   }
 
   @Query(() => [Platform], {nullable: true})
@@ -47,7 +47,6 @@ export class PlatformResolver {
       .pipe(fields(['*']))
       .execute();
 
-    // console.log(data);
     return data;
   }
 }

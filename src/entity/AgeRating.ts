@@ -11,7 +11,7 @@ export class AgeRating {
   category?: AgeRatingCategoryEnum;
 
   @Field(() => [AgeRatingContentDescription], {nullable: true})
-  content_descriptions?: AgeRatingContentDescription[];
+  content_descriptions?: AgeRatingContentDescription[] | number[];
 
   @Field(() => AgeRatingRatingEnum, {nullable: true})
   rating?: AgeRatingRatingEnum;

@@ -11,7 +11,7 @@ export class Website {
   category?: WebsiteCategoryEnum;
 
   @Field(() => Game, {nullable: true})
-  game?: Game;
+  game?: Game | number;
 
   @Field(() => Boolean, {nullable: true})
   trusted?: boolean;
