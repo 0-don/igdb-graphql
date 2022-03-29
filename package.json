@@ -11,7 +11,6 @@
     "env": "npx @dotenv/cli pull"
   },
   "devDependencies": {
-    "@types/lodash": "^4.14.180",
     "@types/node": "^17.0.23",
     "cross-env": "^7.0.3",
     "dotenv": "^16.0.0",
@@ -24,7 +23,6 @@
     "apollo-server-plugin-response-cache": "^3.5.2",
     "dayjs": "^1.11.0",
     "graphql": "^15.3.0",
-    "lodash": "^4.17.21",
     "reflect-metadata": "^0.1.13",
     "ts-igdb-client": "^0.2.4",
     "type-graphql": "^1.1.1",
