@@ -1,5 +1,5 @@
 import { Field, Int, ObjectType } from 'type-graphql';
-// import { Game } from './Game/Game';
+import { Game } from './Game/Game';
 
 @ObjectType()
 export class AlternativeName {
@@ -9,8 +9,8 @@ export class AlternativeName {
   @Field({ nullable: true })
   comment?: string;
 
-  // @Field(() => [Game], { nullable: true })
-  // game?: Game[];
+  @Field(() => [Game], { nullable: true })
+  game?: Game[];
 
   @Field({ nullable: true })
   name?: string;

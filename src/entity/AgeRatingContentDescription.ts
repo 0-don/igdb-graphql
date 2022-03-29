@@ -10,7 +10,7 @@ export class AgeRatingContentDescription {
   category?: AgeRatingRatingEnum;
 
   @Field({ nullable: true })
-  description?: number;
+  description?: string;
 
   @Field({ nullable: true })
   checksum?: string;

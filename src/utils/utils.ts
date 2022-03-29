@@ -1,6 +1,5 @@
 import { igdb, fields, whereIn, WhereInFlags, limit } from 'ts-igdb-client';
 import { RawRoutes } from 'ts-igdb-client/dist/types';
-import { RLoader } from '../resolvers/GameResolver';
 
 export const loaderResolver = async (
   ids: readonly RLoader<number>[] | readonly RLoader<number[]>[],
@@ -36,4 +35,9 @@ export const loaderResolver = async (
   }
 
   return ids.map((_) => null) as unknown as RawRoutes[][];
+};
+
+export type RLoader<T> = {
+  id: number;
+  ids: T;
 };

@@ -4,17 +4,14 @@ import './utils/enum';
 import { ApolloServer } from 'apollo-server';
 import responseCachePlugin from 'apollo-server-plugin-response-cache';
 import { buildSchema } from 'type-graphql';
-import { GameResolver } from './resolvers/GameResolver';
+import resolvers from './resolvers';
 import { ApolloServerLoaderPlugin } from 'type-graphql-dataloader';
 
 async function start() {
-  const schema = await buildSchema({
-    resolvers: [GameResolver],
-  });
+  const schema = await buildSchema({ resolvers });
 
   const server = new ApolloServer({
     schema,
-
     plugins: [ApolloServerLoaderPlugin(), responseCachePlugin()],
   });
 

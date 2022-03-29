@@ -15,7 +15,7 @@ import { Artwork } from '../entity/Artworks';
 import { Game } from '../entity/Game/Game';
 import { Collection } from '../entity/Collection';
 import { CheckToken } from '../utils/tokenMiddleware';
-import { loaderResolver } from '../utils/utils';
+import { loaderResolver, RLoader } from '../utils/utils';
 import { Cover } from '../entity/Cover';
 import { ExternalGame } from '../entity/Game/ExternalGame';
 import { Franchise } from '../entity/Franchise';
@@ -32,10 +32,6 @@ import { Theme } from '../entity/Theme';
 import { GameVideo } from '../entity/Game/GameVideo';
 import { Website } from '../entity/Website';
 
-export type RLoader<T> = {
-  id: number;
-  ids: T;
-};
 
 @Resolver(() => Game)
 export class GameResolver {
@@ -45,7 +41,7 @@ export class GameResolver {
   )
   async age_ratings(@Root() { id, age_ratings }: Game) {
     return (dataloader: DataLoader<RLoader<number[]>, AgeRating[]>) =>
-      dataloader.load({ id, ids: age_ratings as number[] });
+      dataloader.load({ id, ids: age_ratings as unknown as number[] });
   }
 
   @FieldResolver()
