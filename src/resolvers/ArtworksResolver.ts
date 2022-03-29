@@ -9,9 +9,7 @@ import {
   UseMiddleware,
 } from 'type-graphql';
 import {Loader} from 'type-graphql-dataloader';
-import {AgeRating} from '../entity/AgeRating';
-import {Artwork} from '../entity/Artworks';
-import {Game} from '../entity/Game/Game';
+import {AgeRating, Artwork, Game} from '../entity';
 import {CheckToken} from '../utils/tokenMiddleware';
 import {loaderResolver, RLoader} from '../utils/utils';
 

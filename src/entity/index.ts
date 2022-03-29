@@ -30,7 +30,7 @@ import {Screenshot} from './Screenshot';
 import {Theme} from './Theme';
 import {Website} from './Website';
 
-export default {
+export {
   Company,
   CompanyLogo,
   CompanyWebsite,

@@ -9,26 +9,28 @@ import {
   UseMiddleware,
 } from 'type-graphql';
 import {Loader} from 'type-graphql-dataloader';
-import {AgeRating} from '../../entity/AgeRating';
-import {AlternativeName} from '../../entity/AlternativeName';
-import {Artwork} from '../../entity/Artworks';
-import {Collection} from '../../entity/Collection';
-import {InvolvedCompany} from '../../entity/Company/InvolvedCompany';
-import {Cover} from '../../entity/Cover';
-import {Franchise} from '../../entity/Franchise';
-import {ExternalGame} from '../../entity/Game/ExternalGame';
-import {Game} from '../../entity/Game/Game';
-import {GameEngine} from '../../entity/Game/GameEngine';
-import {GameMode} from '../../entity/Game/GameMode';
-import {GameVideo} from '../../entity/Game/GameVideo';
-import {Genre} from '../../entity/Genre';
-import {Keyword} from '../../entity/Keyword';
-import {Platform} from '../../entity/Platform/Platform';
-import {PlayerPerspective} from '../../entity/PlayerPerspective';
-import {ReleaseDate} from '../../entity/ReleaseDate';
-import {Screenshot} from '../../entity/Screenshot';
-import {Theme} from '../../entity/Theme';
-import {Website} from '../../entity/Website';
+import {
+  AgeRating,
+  AlternativeName,
+  Artwork,
+  Collection,
+  Cover,
+  ExternalGame,
+  Franchise,
+  Game,
+  GameEngine,
+  GameMode,
+  GameVideo,
+  Genre,
+  InvolvedCompany,
+  Keyword,
+  Platform,
+  PlayerPerspective,
+  ReleaseDate,
+  Screenshot,
+  Theme,
+  Website,
+} from '../../entity';
 import {CheckToken} from '../../utils/tokenMiddleware';
 import {loaderResolver, RLoader} from '../../utils/utils';
 

@@ -9,9 +9,7 @@ import {
   UseMiddleware,
 } from 'type-graphql';
 import {Loader} from 'type-graphql-dataloader';
-import {Platform} from '../../entity/Platform/Platform';
-import {PlatformFamily} from '../../entity/Platform/PlatformFamily';
-import {PlatformLogo} from '../../entity/Platform/PlatformLogo';
+import {Platform, PlatformFamily, PlatformLogo} from '../../entity';
 import {CheckToken} from '../../utils/tokenMiddleware';
 import {loaderResolver, RLoader} from '../../utils/utils';
 
