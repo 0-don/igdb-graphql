@@ -1,4 +1,4 @@
-import {Field, Int, ObjectType} from 'type-graphql';
+import {Field, ID, Int, ObjectType} from 'type-graphql';
 import {PlatformCategoryEnum} from '../../utils/enum';
 import {PlatformFamily} from './PlatformFamily';
 import {PlatformLogo} from './PlatformLogo';
@@ -7,8 +7,8 @@ import {PlatformWebsite} from './PlatformWebsite';
 
 @ObjectType()
 export class Platform {
-  @Field(() => Int, {nullable: true})
-  id?: number;
+  @Field(() => ID) 
+  id: number;
 
   @Field({nullable: true})
   abbreviation?: string;
@@ -54,4 +54,5 @@ export class Platform {
 
   @Field({nullable: true})
   checksum?: string;
+
 }
