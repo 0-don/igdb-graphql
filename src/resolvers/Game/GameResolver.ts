@@ -1,38 +1,12 @@
 import DataLoader from 'dataloader';
-import {fields, igdb, where, WhereFlags} from 'ts-igdb-client';
-import {RawRoutes} from 'ts-igdb-client/dist/types';
-import {
-  FieldResolver,
-  Query,
-  Resolver,
-  Root,
-  UseMiddleware,
-} from 'type-graphql';
-import {Loader} from 'type-graphql-dataloader';
-import {
-  AgeRating,
-  AlternativeName,
-  Artwork,
-  Collection,
-  Cover,
-  ExternalGame,
-  Franchise,
-  Game,
-  GameEngine,
-  GameMode,
-  GameVideo,
-  Genre,
-  InvolvedCompany,
-  Keyword,
-  Platform,
-  PlayerPerspective,
-  ReleaseDate,
-  Screenshot,
-  Theme,
-  Website,
-} from '../../entity';
-import {CheckToken} from '../../utils/tokenMiddleware';
-import {loaderResolver, RLoader} from '../../utils/utils';
+import { fields, igdb, where, WhereFlags } from 'ts-igdb-client';
+import { RawRoutes } from 'ts-igdb-client/dist/types';
+import { FieldResolver, Query, Resolver, Root, UseMiddleware } from 'type-graphql';
+import { Loader } from 'type-graphql-dataloader';
+
+import { AgeRating, AlternativeName, Artwork, Collection, Cover, ExternalGame, Franchise, Game, GameEngine, GameMode, GameVideo, Genre, InvolvedCompany, Keyword, Platform, PlayerPerspective, ReleaseDate, Screenshot, Theme, Website } from '../../entity';
+import { CheckToken } from '../../utils/tokenMiddleware';
+import { loaderResolver, RLoader } from '../../utils/utils';
 
 @Resolver(() => Game)
 export class GameResolver {
@@ -336,9 +310,14 @@ export class GameResolver {
   // @CacheControl({ maxAge: 1 })
   async games() {
     const client = igdb(process.env.CLIENT_ID!, process.env.ACCESS_TOKEN!);
+
+    const array = [
+      fields(['*']),
+      where('name', '=', 'cs', WhereFlags.CONTAINS),
+    ];
     const {data} = await client
       .request('games')
-      .pipe(fields(['*']), where('name', '=', 'cs', WhereFlags.CONTAINS))
+      .pipe(...array)
       .execute();
 
     return data;

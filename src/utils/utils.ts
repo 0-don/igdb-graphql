@@ -1,5 +1,7 @@
-import {fields, igdb, limit, whereIn, WhereInFlags} from 'ts-igdb-client';
-import {RawRoutes} from 'ts-igdb-client/dist/types';
+import { fields, igdb, limit, whereIn, WhereInFlags } from 'ts-igdb-client';
+import { RawRoutes } from 'ts-igdb-client/dist/types';
+
+import * as entities from '../entity';
 
 export const loaderResolver = async (
   ids: readonly RLoader[],
@@ -39,5 +41,10 @@ export const loaderResolver = async (
 
 export type RLoader = {
   id: number;
-  ids: number[] | number | undefined | any;
+  ids:
+    | number[]
+    | number
+    | undefined
+    | InstanceType<typeof entities[keyof typeof entities]>
+    | InstanceType<typeof entities[keyof typeof entities]>[];
 };
