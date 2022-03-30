@@ -8,6 +8,7 @@ import {FranchiseResolver} from './FranchiseResolver';
 import {ExternalGameResolver} from './Game/ExternalGameResolver';
 import {GameEngineLogoResolver} from './Game/GameEngineLogoResolver';
 import {GameEngineResolver} from './Game/GameEngineResolver';
+import {GameModeResolver} from './Game/GameModeResolver';
 import {GameResolver} from './Game/GameResolver';
 import {PlatformResolver} from './Platform/PlatformResolver';
 
@@ -21,6 +22,7 @@ export default [
   GameResolver,
   GameEngineResolver,
   GameEngineLogoResolver,
+  GameModeResolver,
   ExternalGameResolver,
   PlatformResolver,
 ] as NonEmptyArray<Function>;
