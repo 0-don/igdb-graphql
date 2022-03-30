@@ -27,7 +27,7 @@
     "dayjs": "^1.11.0",
     "graphql": "^15.3.0",
     "reflect-metadata": "^0.1.13",
-    "ts-igdb-client": "^0.2.4",
+    "ts-igdb-client": "^0.2.5",
     "type-graphql": "^1.1.1",
     "type-graphql-dataloader": "^0.5.0"
   }
