@@ -39,12 +39,9 @@ export const loaderResolver = async (
   return ids.map(_ => null) as unknown as RawRoutes[][];
 };
 
+export type EnitityTypes = InstanceType<typeof entities[keyof typeof entities]>;
+
 export type RLoader = {
   id: number;
-  ids:
-    | number[]
-    | number
-    | undefined
-    | InstanceType<typeof entities[keyof typeof entities]>
-    | InstanceType<typeof entities[keyof typeof entities]>[];
+  ids: number[] | number | undefined | EnitityTypes | EnitityTypes[];
 };

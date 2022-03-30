@@ -4,28 +4,28 @@ import { RawRoutes } from 'ts-igdb-client/dist/types';
 import { FieldResolver, Query, Resolver, Root, UseMiddleware } from 'type-graphql';
 import { Loader } from 'type-graphql-dataloader';
 
-import { Cover, Game } from '../entity';
+import { Franchise, Game } from '../entity';
 import { CheckToken } from '../utils/tokenMiddleware';
 import { loaderResolver, RLoader } from '../utils/utils';
 
-@Resolver(() => Cover)
-export class CoverResolver {
+@Resolver(() => Franchise)
+export class FranchiseResolver {
   @FieldResolver()
   @Loader<RLoader, RawRoutes[]>(
-    async game => await loaderResolver(game, 'games'),
+    async games => await loaderResolver(games, 'games'),
   )
-  async game(@Root() {id, game}: Cover) {
+  async games(@Root() {id, games}: Franchise) {
     return (dataloader: DataLoader<RLoader, Game[]>) =>
-      dataloader.load({id, ids: game});
+      dataloader.load({id, ids: games});
   }
 
-  @Query(() => [Cover], {nullable: true})
+  @Query(() => [Franchise], {nullable: true})
   @UseMiddleware(CheckToken)
   // @CacheControl({ maxAge: 1 })
-  async covers() {
+  async franchises() {
     const client = igdb(process.env.CLIENT_ID!, process.env.ACCESS_TOKEN!);
     const {data} = await client
-      .request('covers')
+      .request('franchises')
       .pipe(fields(['*']))
       .execute();
 

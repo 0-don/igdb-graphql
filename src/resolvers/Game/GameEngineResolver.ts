@@ -9,28 +9,28 @@ import {
   UseMiddleware,
 } from 'type-graphql';
 import {Loader} from 'type-graphql-dataloader';
-import {AgeRating, Artwork, Game} from '../entity';
-import {CheckToken} from '../utils/tokenMiddleware';
-import {loaderResolver, RLoader} from '../utils/utils';
+import {Company, GameEngine} from '../../entity';
+import {CheckToken} from '../../utils/tokenMiddleware';
+import {loaderResolver, RLoader} from '../../utils/utils';
 
-@Resolver(() => Artwork)
-export class ArtworkResolver {
+@Resolver(() => GameEngine)
+export class GameEngineResolver {
   @FieldResolver()
   @Loader<RLoader, RawRoutes[]>(
-    async game => await loaderResolver(game, 'games'),
+    async companies => await loaderResolver(companies, 'companies'),
   )
-  async content_descriptions(@Root() {id, game}: Artwork) {
-    return (dataloader: DataLoader<RLoader, Game[]>) =>
-      dataloader.load({id, ids: game});
+  async companies(@Root() {id, companies}: GameEngine) {
+    return (dataloader: DataLoader<RLoader, Company[]>) =>
+      dataloader.load({id, ids: companies});
   }
 
-  @Query(() => [AgeRating], {nullable: true})
+  @Query(() => [GameEngine], {nullable: true})
   @UseMiddleware(CheckToken)
   // @CacheControl({ maxAge: 1 })
-  async artworks() {
+  async gameEngines() {
     const client = igdb(process.env.CLIENT_ID!, process.env.ACCESS_TOKEN!);
     const {data} = await client
-      .request('artworks')
+      .request('game_engines')
       .pipe(fields(['*']))
       .execute();
 
