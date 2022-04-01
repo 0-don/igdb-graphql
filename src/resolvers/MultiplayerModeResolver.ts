@@ -25,7 +25,7 @@ export class MultiplayerModeResolver {
   async multiplayerModes() {
     const client = igdb(process.env.CLIENT_ID!, process.env.ACCESS_TOKEN!);
     const {data} = await client
-      .request('artworks')
+      .request('multiplayer_modes')
       .pipe(fields(['*']))
       .execute();
 

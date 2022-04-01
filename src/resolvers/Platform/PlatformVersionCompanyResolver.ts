@@ -22,7 +22,7 @@ export class PlatformVersionCompanyResolver {
   @Query(() => [PlatformVersionCompany], {nullable: true})
   @UseMiddleware(CheckToken)
   // @CacheControl({ maxAge: 1 })
-  async platformLogos() {
+  async platformVersionCompanies() {
     const client = igdb(process.env.CLIENT_ID!, process.env.ACCESS_TOKEN!);
     const {data} = await client
       .request('platform_version_companies')
