@@ -1,17 +1,12 @@
 import DataLoader from 'dataloader';
-import {fields, igdb} from 'ts-igdb-client';
-import {RawRoutes} from 'ts-igdb-client/dist/types';
-import {
-  FieldResolver,
-  Query,
-  Resolver,
-  Root,
-  UseMiddleware,
-} from 'type-graphql';
-import {Loader} from 'type-graphql-dataloader';
-import {Platform, PlatformFamily, PlatformLogo} from '../../entity';
-import {CheckToken} from '../../utils/tokenMiddleware';
-import {loaderResolver, RLoader} from '../../utils/utils';
+import { fields, igdb } from 'ts-igdb-client';
+import { RawRoutes } from 'ts-igdb-client/dist/types';
+import { FieldResolver, Query, Resolver, Root, UseMiddleware } from 'type-graphql';
+import { Loader } from 'type-graphql-dataloader';
+
+import { Platform, PlatformFamily, PlatformLogo, PlatformVersion, PlatformWebsite } from '../../entity';
+import { CheckToken } from '../../utils/tokenMiddleware';
+import { loaderResolver, RLoader } from '../../utils/utils';
 
 @Resolver(() => Platform)
 export class PlatformResolver {
@@ -33,6 +28,24 @@ export class PlatformResolver {
   async platform_family(@Root() {id, platform_family}: Platform) {
     return (dataloader: DataLoader<RLoader, PlatformFamily[]>) =>
       dataloader.load({id, ids: platform_family});
+  }
+
+  @FieldResolver()
+  @Loader<RLoader, RawRoutes[]>(
+    async versions => await loaderResolver(versions, 'platform_versions'),
+  )
+  async versions(@Root() {id, versions}: Platform) {
+    return (dataloader: DataLoader<RLoader, PlatformVersion[]>) =>
+      dataloader.load({id, ids: versions});
+  }
+
+  @FieldResolver()
+  @Loader<RLoader, RawRoutes[]>(
+    async websites => await loaderResolver(websites, 'platform_websites'),
+  )
+  async websites(@Root() {id, websites}: Platform) {
+    return (dataloader: DataLoader<RLoader, PlatformWebsite[]>) =>
+      dataloader.load({id, ids: websites});
   }
 
   @Query(() => [Platform], {nullable: true})
