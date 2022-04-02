@@ -22,7 +22,7 @@ export class Screenshot {
   image_id?: string;
 
   @Field(() => String, {nullable: true})
-  url: string;
+  url?: string;
 
   @Field(() => Int, {nullable: true})
   width?: number;

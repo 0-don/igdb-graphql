@@ -294,6 +294,24 @@ export enum ExternalGameMediaEnum {
   EXTERNALGAME_PHYSICAL = 2,
 }
 
+export enum ImageTypeEnum {
+  'cover_small' = 'cover_small',
+  'screenshot_med' = 'screenshot_med',
+  'cover_big' = 'cover_big',
+  'logo_med' = 'logo_med',
+  'screenshot_big' = 'screenshot_big',
+  'screenshot_huge' = 'screenshot_huge',
+  'thumb' = 'thumb',
+  'micro' = 'micro',
+  'HD' = '720p',
+  'FullHD' = '1080p',
+}
+
+registerEnumType(ImageTypeEnum, {
+  name: 'ImageTypeEnum', // this one is mandatory
+  description: 'Image Type', // this one is optional
+});
+
 registerEnumType(ExternalGameCategoryEnum, {
   name: 'ExternalGameCategory', // this one is mandatory
   description: 'External Game Category', // this one is optional

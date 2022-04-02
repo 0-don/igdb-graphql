@@ -1,5 +1,6 @@
-import {fields, igdb} from 'ts-igdb-client';
-import {Query, Resolver, UseMiddleware} from 'type-graphql';
+import {fields} from 'ts-igdb-client';
+import {Ctx, Query, Resolver, UseMiddleware} from 'type-graphql';
+import {MyContext} from '../../@types/types';
 import {PlatformFamily} from '../../entity';
 import {CheckToken} from '../../utils/tokenMiddleware';
 
@@ -8,8 +9,7 @@ export class PlatformFamilyResolver {
   @Query(() => [PlatformFamily], {nullable: true})
   @UseMiddleware(CheckToken)
   // @CacheControl({ maxAge: 1 })
-  async platformFamilies() {
-    const client = igdb(process.env.CLIENT_ID!, process.env.ACCESS_TOKEN!);
+  async platformFamilies(@Ctx() {client}: MyContext) {
     const {data} = await client
       .request('platform_families')
       .pipe(fields(['*']))

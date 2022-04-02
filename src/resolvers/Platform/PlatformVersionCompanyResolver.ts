@@ -1,7 +1,8 @@
 import DataLoader from 'dataloader';
-import {fields, igdb} from 'ts-igdb-client';
+import {fields} from 'ts-igdb-client';
 import {RawRoutes} from 'ts-igdb-client/dist/types';
 import {
+  Ctx,
   FieldResolver,
   Query,
   Resolver,
@@ -9,7 +10,7 @@ import {
   UseMiddleware,
 } from 'type-graphql';
 import {Loader} from 'type-graphql-dataloader';
-import {RLoader} from '../../@types/types';
+import {MyContext, RLoader} from '../../@types/types';
 import {Company, PlatformVersionCompany} from '../../entity';
 import {CheckToken} from '../../utils/tokenMiddleware';
 import {loaderResolver} from '../../utils/utils';
@@ -29,8 +30,7 @@ export class PlatformVersionCompanyResolver {
   @Query(() => [PlatformVersionCompany], {nullable: true})
   @UseMiddleware(CheckToken)
   // @CacheControl({ maxAge: 1 })
-  async platformVersionCompanies() {
-    const client = igdb(process.env.CLIENT_ID!, process.env.ACCESS_TOKEN!);
+  async platformVersionCompanies(@Ctx() {client}: MyContext) {
     const {data} = await client
       .request('platform_version_companies')
       .pipe(fields(['*']))
