@@ -1,10 +1,11 @@
-import {Field, ID, Int, ObjectType} from 'type-graphql';
-import {Game} from './Game/Game';
+import { Field, ID, Int, ObjectType } from 'type-graphql';
+
+import { Game } from './Game/Game';
 
 @ObjectType()
 export class Artwork {
-  @Field(() => ID)
-  id: number;
+  @Field(() => ID, {nullable: true})
+  id?: number;
 
   @Field(() => Boolean, {nullable: true})
   alpha_channel?: boolean;
@@ -12,8 +13,8 @@ export class Artwork {
   @Field(() => Boolean, {nullable: true})
   animated?: boolean;
 
-  @Field(() => [Game], {nullable: true})
-  game?: Game[] | number[];
+  @Field(() => Game, {nullable: true})
+  game?: Game | number;
 
   @Field(() => Int, {nullable: true})
   height?: number;

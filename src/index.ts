@@ -1,6 +1,7 @@
 require('dotenv').config();
 import {ApolloServer} from 'apollo-server';
 import responseCachePlugin from 'apollo-server-plugin-response-cache';
+import {log} from 'console';
 import 'reflect-metadata';
 import {buildSchema} from 'type-graphql';
 import {ApolloServerLoaderPlugin} from 'type-graphql-dataloader';
@@ -16,7 +17,7 @@ async function start() {
   });
 
   const {url} = await server.listen(4000);
-  console.log(`Server is running, GraphQL Playground available at ${url}`);
+  log(`Server is running, GraphQL Playground available at ${url}`);
 }
 
 start();

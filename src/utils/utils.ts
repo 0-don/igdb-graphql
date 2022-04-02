@@ -42,6 +42,6 @@ export const loaderResolver = async (
 export type EnitityTypes = InstanceType<typeof entities[keyof typeof entities]>;
 
 export type RLoader = {
-  id: number;
+  id: number | undefined;
   ids: number[] | number | undefined | EnitityTypes | EnitityTypes[];
 };

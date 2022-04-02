@@ -1,10 +1,11 @@
-import {Field, ID, Int, ObjectType} from 'type-graphql';
-import {Game} from './Game/Game';
+import { Field, ID, Int, ObjectType } from 'type-graphql';
+
+import { Game } from './Game/Game';
 
 @ObjectType()
 export class Collection {
-  @Field(() => ID)
-  id: number;
+  @Field(() => ID, {nullable: true})
+  id?: number;
 
   @Field(() => Int, {nullable: true})
   created_at?: number;

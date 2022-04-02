@@ -1,9 +1,9 @@
-import {Field, ID, Int, ObjectType} from 'type-graphql';
+import { Field, ID, Int, ObjectType } from 'type-graphql';
 
 @ObjectType()
 export class GameMode {
-  @Field(() => ID)
-  id: number;
+  @Field(() => ID, {nullable: true})
+  id?: number;
 
   @Field(() => Int, {nullable: true})
   created_at?: number;

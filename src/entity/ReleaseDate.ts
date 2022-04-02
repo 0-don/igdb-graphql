@@ -1,15 +1,13 @@
-import {Field, ID, Int, ObjectType} from 'type-graphql';
-import {
-  DateFormatChangeDateCategoryEnum,
-  RegionRegionEnum,
-} from '../utils/enum';
-import {Game} from './Game/Game';
-import {Platform} from './Platform/Platform';
+import { Field, ID, Int, ObjectType } from 'type-graphql';
+
+import { DateFormatChangeDateCategoryEnum, RegionRegionEnum } from '../utils/enum';
+import { Game } from './Game/Game';
+import { Platform } from './Platform/Platform';
 
 @ObjectType()
 export class ReleaseDate {
-  @Field(() => ID)
-  id: number;
+  @Field(() => ID, {nullable: true})
+  id?: number;
 
   @Field(() => DateFormatChangeDateCategoryEnum, {nullable: true})
   category?: DateFormatChangeDateCategoryEnum;

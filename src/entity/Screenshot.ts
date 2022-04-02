@@ -1,10 +1,11 @@
-import {Field, ID, Int, ObjectType} from 'type-graphql';
-import {Game} from './Game/Game';
+import { Field, ID, Int, ObjectType } from 'type-graphql';
+
+import { Game } from './Game/Game';
 
 @ObjectType()
 export class Screenshot {
-  @Field(() => ID)
-  id: number;
+  @Field(() => ID, {nullable: true})
+  id?: number;
 
   @Field(() => Boolean, {nullable: true})
   alpha_channel?: boolean;

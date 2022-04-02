@@ -1,11 +1,12 @@
-import {Field, ID, Int, ObjectType} from 'type-graphql';
-import {Company} from '../Company/Company';
-import {Game} from '../Game/Game';
+import { Field, ID, Int, ObjectType } from 'type-graphql';
+
+import { Company } from '../Company/Company';
+import { Game } from '../Game/Game';
 
 @ObjectType()
 export class InvolvedCompany {
-  @Field(() => ID)
-  id: number;
+  @Field(() => ID, {nullable: true})
+  id?: number;
 
   @Field(() => Company, {nullable: true})
   company?: Company | number;
