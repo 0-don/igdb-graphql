@@ -9,6 +9,7 @@ import {
   UseMiddleware,
 } from 'type-graphql';
 import {Loader} from 'type-graphql-dataloader';
+import {RLoader} from '../../@types/types';
 import {
   PlatformLogo,
   PlatformVersion,
@@ -16,15 +17,14 @@ import {
   PlatformVersionReleaseDate,
 } from '../../entity';
 import {CheckToken} from '../../utils/tokenMiddleware';
-import {RLoader} from '../../@types/types';
 import {loaderResolver} from '../../utils/utils';
 
 @Resolver(() => PlatformVersion)
 export class PlatformVersionResolver {
   @FieldResolver()
   @Loader<RLoader, RawRoutes[]>(
-    async companies =>
-      await loaderResolver(companies, 'platform_version_companies'),
+    async (companies, {context}) =>
+      await loaderResolver(companies, 'platform_version_companies', context),
   )
   async companies(@Root() {id, companies}: PlatformVersion) {
     return (dataloader: DataLoader<RLoader, PlatformVersionCompany[]>) =>
@@ -33,8 +33,12 @@ export class PlatformVersionResolver {
 
   @FieldResolver()
   @Loader<RLoader, RawRoutes[]>(
-    async main_manufacturer =>
-      await loaderResolver(main_manufacturer, 'platform_version_companies'),
+    async (main_manufacturer, {context}) =>
+      await loaderResolver(
+        main_manufacturer,
+        'platform_version_companies',
+        context,
+      ),
   )
   async main_manufacturer(@Root() {id, main_manufacturer}: PlatformVersion) {
     return (dataloader: DataLoader<RLoader, PlatformVersionCompany[]>) =>
@@ -43,8 +47,8 @@ export class PlatformVersionResolver {
 
   @FieldResolver()
   @Loader<RLoader, RawRoutes[]>(
-    async platform_logo =>
-      await loaderResolver(platform_logo, 'platform_logos'),
+    async (platform_logo, {context}) =>
+      await loaderResolver(platform_logo, 'platform_logos', context),
   )
   async platform_logo(@Root() {id, platform_logo}: PlatformVersion) {
     return (dataloader: DataLoader<RLoader, PlatformLogo[]>) =>
@@ -53,10 +57,11 @@ export class PlatformVersionResolver {
 
   @FieldResolver()
   @Loader<RLoader, RawRoutes[]>(
-    async platform_version_release_dates =>
+    async (platform_version_release_dates, {context}) =>
       await loaderResolver(
         platform_version_release_dates,
         'platform_version_release_dates',
+        context,
       ),
   )
   async platform_version_release_dates(

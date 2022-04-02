@@ -10,16 +10,16 @@ import {
   UseMiddleware,
 } from 'type-graphql';
 import {Loader} from 'type-graphql-dataloader';
+import {MyContext, RLoader} from '../@types/types';
 import {Game, Website} from '../entity';
 import {CheckToken} from '../utils/tokenMiddleware';
-import {MyContext, RLoader} from '../@types/types';
 import {loaderResolver} from '../utils/utils';
 
 @Resolver(() => Website)
 export class WebsiteResolver {
   @FieldResolver()
   @Loader<RLoader, RawRoutes[]>(
-    async game => await loaderResolver(game, 'games'),
+    async (game, {context}) => await loaderResolver(game, 'games', context),
   )
   async game(@Root() {id, game}: Website) {
     return (dataloader: DataLoader<RLoader, Game[]>) =>

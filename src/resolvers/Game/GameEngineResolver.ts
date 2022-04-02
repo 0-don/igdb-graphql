@@ -10,16 +10,17 @@ import {
   UseMiddleware,
 } from 'type-graphql';
 import {Loader} from 'type-graphql-dataloader';
+import {MyContext, RLoader} from '../../@types/types';
 import {Company, GameEngine, Platform} from '../../entity';
 import {CheckToken} from '../../utils/tokenMiddleware';
-import {MyContext, RLoader} from '../../@types/types';
 import {loaderResolver} from '../../utils/utils';
 
 @Resolver(() => GameEngine)
 export class GameEngineResolver {
   @FieldResolver()
   @Loader<RLoader, RawRoutes[]>(
-    async companies => await loaderResolver(companies, 'companies'),
+    async (companies, {context}) =>
+      await loaderResolver(companies, 'companies', context),
   )
   async companies(@Root() {id, companies}: GameEngine) {
     return (dataloader: DataLoader<RLoader, Company[]>) =>
@@ -28,7 +29,8 @@ export class GameEngineResolver {
 
   @FieldResolver()
   @Loader<RLoader, RawRoutes[]>(
-    async platforms => await loaderResolver(platforms, 'platforms'),
+    async (platforms, {context}) =>
+      await loaderResolver(platforms, 'platforms', context),
   )
   async platforms(@Root() {id, platforms}: GameEngine) {
     return (dataloader: DataLoader<RLoader, Platform[]>) =>

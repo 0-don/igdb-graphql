@@ -1,11 +1,12 @@
 import {AxiosResponse} from 'axios';
-import {fields, igdb, limit, whereIn, WhereInFlags} from 'ts-igdb-client';
+import {fields, limit, whereIn, WhereInFlags} from 'ts-igdb-client';
 import {RawRoutes} from 'ts-igdb-client/dist/types';
-import {RLoader} from '../@types/types';
+import {MyContext, RLoader} from '../@types/types';
 
 export const loaderResolver = async (
   ids: readonly RLoader[],
   request: keyof RawRoutes,
+  {client}: MyContext,
 ) => {
   const extractedIds = new Set(
     ids
@@ -15,8 +16,6 @@ export const loaderResolver = async (
   );
 
   if (extractedIds.size) {
-    const client = igdb(process.env.CLIENT_ID, process.env.ACCESS_TOKEN);
-
     const req = client
       .request(request)
       .pipe(

@@ -10,17 +10,17 @@ import {
   UseMiddleware,
 } from 'type-graphql';
 import {Loader} from 'type-graphql-dataloader';
+import {MyContext, RLoader} from '../../@types/types';
 import {Company, CompanyLogo, CompanyWebsite, Game} from '../../entity';
 import {CheckToken} from '../../utils/tokenMiddleware';
-import {MyContext, RLoader} from '../../@types/types';
 import {loaderResolver} from '../../utils/utils';
 
 @Resolver(() => Company)
 export class CompanyResolver {
   @FieldResolver()
   @Loader<RLoader, RawRoutes[]>(
-    async changed_company_id =>
-      await loaderResolver(changed_company_id, 'companies'),
+    async (changed_company_id, {context}) =>
+      await loaderResolver(changed_company_id, 'companies', context),
   )
   async changed_company_id(@Root() {id, changed_company_id}: Company) {
     return (dataloader: DataLoader<RLoader, Company[]>) =>
@@ -29,7 +29,8 @@ export class CompanyResolver {
 
   @FieldResolver()
   @Loader<RLoader, RawRoutes[]>(
-    async developed => await loaderResolver(developed, 'games'),
+    async (developed, {context}) =>
+      await loaderResolver(developed, 'games', context),
   )
   async developed(@Root() {id, developed}: Company) {
     return (dataloader: DataLoader<RLoader, Game[]>) =>
@@ -38,7 +39,8 @@ export class CompanyResolver {
 
   @FieldResolver()
   @Loader<RLoader, RawRoutes[]>(
-    async logo => await loaderResolver(logo, 'company_logos'),
+    async (logo, {context}) =>
+      await loaderResolver(logo, 'company_logos', context),
   )
   async logo(@Root() {id, logo}: Company) {
     return (dataloader: DataLoader<RLoader, CompanyLogo[]>) =>
@@ -47,7 +49,8 @@ export class CompanyResolver {
 
   @FieldResolver()
   @Loader<RLoader, RawRoutes[]>(
-    async parent => await loaderResolver(parent, 'companies'),
+    async (parent, {context}) =>
+      await loaderResolver(parent, 'companies', context),
   )
   async parent(@Root() {id, parent}: Company) {
     return (dataloader: DataLoader<RLoader, Company[]>) =>
@@ -56,7 +59,8 @@ export class CompanyResolver {
 
   @FieldResolver()
   @Loader<RLoader, RawRoutes[]>(
-    async published => await loaderResolver(published, 'games'),
+    async (published, {context}) =>
+      await loaderResolver(published, 'games', context),
   )
   async published(@Root() {id, published}: Company) {
     return (dataloader: DataLoader<RLoader, Game[]>) =>
@@ -65,7 +69,8 @@ export class CompanyResolver {
 
   @FieldResolver()
   @Loader<RLoader, RawRoutes[]>(
-    async websites => await loaderResolver(websites, 'company_websites'),
+    async (websites, {context}) =>
+      await loaderResolver(websites, 'company_websites', context),
   )
   async websites(@Root() {id, websites}: Company) {
     return (dataloader: DataLoader<RLoader, CompanyWebsite[]>) =>

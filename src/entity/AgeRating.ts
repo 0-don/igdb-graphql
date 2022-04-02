@@ -1,7 +1,6 @@
-import { Field, ID, ObjectType } from 'type-graphql';
-
-import { AgeRatingCategoryEnum, AgeRatingRatingEnum } from '../utils/enum';
-import { AgeRatingContentDescription } from './AgeRatingContentDescription';
+import {Field, ID, ObjectType} from 'type-graphql';
+import {AgeRatingCategoryEnum, AgeRatingRatingEnum} from '../utils/enum';
+import {AgeRatingContentDescription} from './AgeRatingContentDescription';
 
 @ObjectType()
 export class AgeRating {

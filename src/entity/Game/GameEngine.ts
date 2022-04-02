@@ -1,8 +1,7 @@
-import { Field, ID, Int, ObjectType } from 'type-graphql';
-
-import { Company } from '../Company/Company';
-import { Platform } from '../Platform/Platform';
-import { GameEngineLogo } from './GameEngineLogo';
+import {Field, ID, Int, ObjectType} from 'type-graphql';
+import {Company} from '../Company/Company';
+import {Platform} from '../Platform/Platform';
+import {GameEngineLogo} from './GameEngineLogo';
 
 @ObjectType()
 export class GameEngine {

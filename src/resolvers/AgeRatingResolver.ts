@@ -10,19 +10,20 @@ import {
   UseMiddleware,
 } from 'type-graphql';
 import {Loader} from 'type-graphql-dataloader';
+import {MyContext, RLoader} from '../@types/types';
 import {AgeRating, AgeRatingContentDescription} from '../entity';
 import {CheckToken} from '../utils/tokenMiddleware';
-import {MyContext, RLoader} from '../@types/types';
 import {loaderResolver} from '../utils/utils';
 
 @Resolver(() => AgeRating)
 export class AgeRatingResolver {
   @FieldResolver()
   @Loader<RLoader, RawRoutes[]>(
-    async content_descriptions =>
+    async (content_descriptions, {context}) =>
       await loaderResolver(
         content_descriptions,
         'age_rating_content_descriptions',
+        context,
       ),
   )
   async content_descriptions(@Root() {id, content_descriptions}: AgeRating) {

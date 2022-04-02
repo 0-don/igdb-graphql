@@ -1,7 +1,6 @@
-import { Field, ID, Int, ObjectType } from 'type-graphql';
-
-import { Game } from './Game/Game';
-import { Platform } from './Platform/Platform';
+import {Field, ID, Int, ObjectType} from 'type-graphql';
+import {Game} from './Game/Game';
+import {Platform} from './Platform/Platform';
 
 @ObjectType()
 export class MultiplayerMode {

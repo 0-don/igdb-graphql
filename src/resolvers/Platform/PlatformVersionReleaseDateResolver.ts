@@ -9,17 +9,17 @@ import {
   UseMiddleware,
 } from 'type-graphql';
 import {Loader} from 'type-graphql-dataloader';
+import {RLoader} from '../../@types/types';
 import {PlatformVersion, PlatformVersionReleaseDate} from '../../entity';
 import {CheckToken} from '../../utils/tokenMiddleware';
-import {RLoader} from '../../@types/types';
 import {loaderResolver} from '../../utils/utils';
 
 @Resolver(() => PlatformVersionReleaseDate)
 export class PlatformVersionReleaseDateResolver {
   @FieldResolver()
   @Loader<RLoader, RawRoutes[]>(
-    async platform_version =>
-      await loaderResolver(platform_version, 'platform_versions'),
+    async (platform_version, {context}) =>
+      await loaderResolver(platform_version, 'platform_versions', context),
   )
   async platform_version(
     @Root() {id, platform_version}: PlatformVersionReleaseDate,

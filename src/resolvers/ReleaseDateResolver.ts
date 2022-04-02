@@ -10,16 +10,16 @@ import {
   UseMiddleware,
 } from 'type-graphql';
 import {Loader} from 'type-graphql-dataloader';
+import {MyContext, RLoader} from '../@types/types';
 import {Game, Platform, ReleaseDate} from '../entity';
 import {CheckToken} from '../utils/tokenMiddleware';
-import {MyContext, RLoader} from '../@types/types';
 import {loaderResolver} from '../utils/utils';
 
 @Resolver(() => ReleaseDate)
 export class ReleaseDateResolver {
   @FieldResolver()
   @Loader<RLoader, RawRoutes[]>(
-    async game => await loaderResolver(game, 'games'),
+    async (game, {context}) => await loaderResolver(game, 'games', context),
   )
   async game(@Root() {id, game}: ReleaseDate) {
     return (dataloader: DataLoader<RLoader, Game[]>) =>
@@ -28,7 +28,8 @@ export class ReleaseDateResolver {
 
   @FieldResolver()
   @Loader<RLoader, RawRoutes[]>(
-    async platform => await loaderResolver(platform, 'platforms'),
+    async (platform, {context}) =>
+      await loaderResolver(platform, 'platforms', context),
   )
   async platform(@Root() {id, platform}: ReleaseDate) {
     return (dataloader: DataLoader<RLoader, Platform[]>) =>

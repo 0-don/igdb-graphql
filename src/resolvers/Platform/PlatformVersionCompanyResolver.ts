@@ -9,16 +9,17 @@ import {
   UseMiddleware,
 } from 'type-graphql';
 import {Loader} from 'type-graphql-dataloader';
+import {RLoader} from '../../@types/types';
 import {Company, PlatformVersionCompany} from '../../entity';
 import {CheckToken} from '../../utils/tokenMiddleware';
-import {RLoader} from '../../@types/types';
 import {loaderResolver} from '../../utils/utils';
 
 @Resolver(() => PlatformVersionCompany)
 export class PlatformVersionCompanyResolver {
   @FieldResolver()
   @Loader<RLoader, RawRoutes[]>(
-    async company => await loaderResolver(company, 'companies'),
+    async (company, {context}) =>
+      await loaderResolver(company, 'companies', context),
   )
   async company(@Root() {id, company}: PlatformVersionCompany) {
     return (dataloader: DataLoader<RLoader, Company[]>) =>

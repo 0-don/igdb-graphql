@@ -10,16 +10,16 @@ import {
   UseMiddleware,
 } from 'type-graphql';
 import {Loader} from 'type-graphql-dataloader';
-import {Game, MultiplayerMode} from '../entity';
-import {CheckToken} from '../utils/tokenMiddleware';
 import {MyContext, RLoader} from '../@types/types';
+import {Game, MultiplayerMode, Platform} from '../entity';
+import {CheckToken} from '../utils/tokenMiddleware';
 import {loaderResolver} from '../utils/utils';
 
 @Resolver(() => MultiplayerMode)
 export class MultiplayerModeResolver {
   @FieldResolver()
   @Loader<RLoader, RawRoutes[]>(
-    async game => await loaderResolver(game, 'games'),
+    async (game, {context}) => await loaderResolver(game, 'games', context),
   )
   async game(@Root() {id, game}: MultiplayerMode) {
     return (dataloader: DataLoader<RLoader, Game[]>) =>
@@ -28,10 +28,11 @@ export class MultiplayerModeResolver {
 
   @FieldResolver()
   @Loader<RLoader, RawRoutes[]>(
-    async platform => await loaderResolver(platform, 'platforms'),
+    async (platform, {context}) =>
+      await loaderResolver(platform, 'platforms', context),
   )
   async platform(@Root() {id, platform}: MultiplayerMode) {
-    return (dataloader: DataLoader<RLoader, Game[]>) =>
+    return (dataloader: DataLoader<RLoader, Platform[]>) =>
       dataloader.load({id, ids: platform});
   }
 

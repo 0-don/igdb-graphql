@@ -1,8 +1,7 @@
-import { fields, igdb } from 'ts-igdb-client';
-import { Query, Resolver, UseMiddleware } from 'type-graphql';
-
-import { PlatformLogo } from '../../entity';
-import { CheckToken } from '../../utils/tokenMiddleware';
+import {fields, igdb} from 'ts-igdb-client';
+import {Query, Resolver, UseMiddleware} from 'type-graphql';
+import {PlatformLogo} from '../../entity';
+import {CheckToken} from '../../utils/tokenMiddleware';
 
 @Resolver(() => PlatformLogo)
 export class PlatformLogoResolver {

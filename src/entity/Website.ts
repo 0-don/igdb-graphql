@@ -1,7 +1,6 @@
-import { Field, ID, ObjectType } from 'type-graphql';
-
-import { WebsiteCategoryEnum } from '../utils/enum';
-import { Game } from './Game/Game';
+import {Field, ID, ObjectType} from 'type-graphql';
+import {WebsiteCategoryEnum} from '../utils/enum';
+import {Game} from './Game/Game';
 
 @ObjectType()
 export class Website {

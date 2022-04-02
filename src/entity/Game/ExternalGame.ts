@@ -1,8 +1,10 @@
-import { Field, ID, Int, ObjectType } from 'type-graphql';
-
-import { ExternalGameCategoryEnum, ExternalGameMediaEnum } from '../../utils/enum';
-import { Platform } from '../Platform/Platform';
-import { Game } from './Game';
+import {Field, ID, Int, ObjectType} from 'type-graphql';
+import {
+  ExternalGameCategoryEnum,
+  ExternalGameMediaEnum,
+} from '../../utils/enum';
+import {Platform} from '../Platform/Platform';
+import {Game} from './Game';
 
 @ObjectType()
 export class ExternalGame {
@@ -27,7 +29,7 @@ export class ExternalGame {
   @Field(() => Int, {nullable: true})
   updated_at?: number;
 
-  @Field( {nullable: true})
+  @Field({nullable: true})
   url?: string;
 
   @Field(() => Int, {nullable: true})

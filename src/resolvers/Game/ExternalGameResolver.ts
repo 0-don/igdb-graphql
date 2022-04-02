@@ -10,16 +10,16 @@ import {
   UseMiddleware,
 } from 'type-graphql';
 import {Loader} from 'type-graphql-dataloader';
+import {MyContext, RLoader} from '../../@types/types';
 import {ExternalGame, Game} from '../../entity';
 import {CheckToken} from '../../utils/tokenMiddleware';
-import {MyContext, RLoader} from '../../@types/types';
 import {loaderResolver} from '../../utils/utils';
 
 @Resolver(() => ExternalGame)
 export class ExternalGameResolver {
   @FieldResolver()
   @Loader<RLoader, RawRoutes[]>(
-    async game => await loaderResolver(game, 'games'),
+    async (game, {context}) => await loaderResolver(game, 'games', context),
   )
   async game(@Root() {id, game}: ExternalGame) {
     return (dataloader: DataLoader<RLoader, Game[]>) =>
@@ -28,7 +28,8 @@ export class ExternalGameResolver {
 
   @FieldResolver()
   @Loader<RLoader, RawRoutes[]>(
-    async platform => await loaderResolver(platform, 'platforms'),
+    async (platform, {context}) =>
+      await loaderResolver(platform, 'platforms', context),
   )
   async platform(@Root() {id, platform}: ExternalGame) {
     return (dataloader: DataLoader<RLoader, Game[]>) =>

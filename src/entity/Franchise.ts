@@ -1,6 +1,5 @@
-import { Field, ID, Int, ObjectType } from 'type-graphql';
-
-import { Game } from './Game/Game';
+import {Field, ID, Int, ObjectType} from 'type-graphql';
+import {Game} from './Game/Game';
 
 @ObjectType()
 export class Franchise {

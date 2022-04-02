@@ -10,6 +10,7 @@ import {
   UseMiddleware,
 } from 'type-graphql';
 import {Loader} from 'type-graphql-dataloader';
+import {MyContext, RLoader} from '../../@types/types';
 import {
   AgeRating,
   AlternativeName,
@@ -35,14 +36,14 @@ import {
 } from '../../entity';
 import {CacheControl} from '../../utils/cache-control';
 import {CheckToken} from '../../utils/tokenMiddleware';
-import {MyContext, RLoader} from '../../@types/types';
 import {loaderResolver} from '../../utils/utils';
 
 @Resolver(() => Game)
 export class GameResolver {
   @FieldResolver()
   @Loader<RLoader, RawRoutes[]>(
-    async age_ratings => await loaderResolver(age_ratings, 'age_ratings'),
+    async (age_ratings, {context}) =>
+      await loaderResolver(age_ratings, 'age_ratings', context),
   )
   async age_ratings(@Root() {id, age_ratings}: Game) {
     return (dataloader: DataLoader<RLoader, AgeRating[]>) =>
@@ -51,8 +52,8 @@ export class GameResolver {
 
   @FieldResolver()
   @Loader<RLoader, RawRoutes[]>(
-    async alternative_names =>
-      await loaderResolver(alternative_names, 'alternative_names'),
+    async (alternative_names, {context}) =>
+      await loaderResolver(alternative_names, 'alternative_names', context),
   )
   async alternative_names(@Root() {id, alternative_names}: Game) {
     return (dataloader: DataLoader<RLoader, AlternativeName[]>) =>
@@ -61,7 +62,8 @@ export class GameResolver {
 
   @FieldResolver()
   @Loader<RLoader, RawRoutes[]>(
-    async artworks => await loaderResolver(artworks, 'artworks'),
+    async (artworks, {context}) =>
+      await loaderResolver(artworks, 'artworks', context),
   )
   async artworks(@Root() {id, artworks}: Game) {
     return (dataloader: DataLoader<RLoader, Artwork[]>) =>
@@ -70,7 +72,8 @@ export class GameResolver {
 
   @FieldResolver()
   @Loader<RLoader, RawRoutes[]>(
-    async bundles => await loaderResolver(bundles, 'games'),
+    async (bundles, {context}) =>
+      await loaderResolver(bundles, 'games', context),
   )
   async bundles(@Root() {id, bundles}: Game) {
     return (dataloader: DataLoader<RLoader, Game[]>) =>
@@ -79,7 +82,8 @@ export class GameResolver {
 
   @FieldResolver()
   @Loader<RLoader, RawRoutes[]>(
-    async collection => await loaderResolver(collection, 'collections'),
+    async (collection, {context}) =>
+      await loaderResolver(collection, 'collections', context),
   )
   async collection(@Root() {id, collection}: Game) {
     return (dataloader: DataLoader<RLoader, Collection[]>) =>
@@ -88,7 +92,7 @@ export class GameResolver {
 
   @FieldResolver()
   @Loader<RLoader, RawRoutes[]>(
-    async cover => await loaderResolver(cover, 'covers'),
+    async (cover, {context}) => await loaderResolver(cover, 'covers', context),
   )
   async cover(@Root() {id, cover}: Game) {
     return (dataloader: DataLoader<RLoader, Cover[]>) =>
@@ -97,7 +101,7 @@ export class GameResolver {
 
   @FieldResolver()
   @Loader<RLoader, RawRoutes[]>(
-    async dlcs => await loaderResolver(dlcs, 'games'),
+    async (dlcs, {context}) => await loaderResolver(dlcs, 'games', context),
   )
   async dlcs(@Root() {id, dlcs}: Game) {
     return (dataloader: DataLoader<RLoader, Game[]>) =>
@@ -106,7 +110,8 @@ export class GameResolver {
 
   @FieldResolver()
   @Loader<RLoader, RawRoutes[]>(
-    async expansions => await loaderResolver(expansions, 'games'),
+    async (expansions, {context}) =>
+      await loaderResolver(expansions, 'games', context),
   )
   async expansions(@Root() {id, expansions}: Game) {
     return (dataloader: DataLoader<RLoader, Game[]>) =>
@@ -115,8 +120,8 @@ export class GameResolver {
 
   @FieldResolver()
   @Loader<RLoader, RawRoutes[]>(
-    async external_games =>
-      await loaderResolver(external_games, 'external_games'),
+    async (external_games, {context}) =>
+      await loaderResolver(external_games, 'external_games', context),
   )
   async external_games(@Root() {id, external_games}: Game) {
     return (dataloader: DataLoader<RLoader, ExternalGame[]>) =>
@@ -125,7 +130,8 @@ export class GameResolver {
 
   @FieldResolver()
   @Loader<RLoader, RawRoutes[]>(
-    async franchise => await loaderResolver(franchise, 'franchises'),
+    async (franchise, {context}) =>
+      await loaderResolver(franchise, 'franchises', context),
   )
   async franchise(@Root() {id, franchise}: Game) {
     return (dataloader: DataLoader<RLoader, Franchise[]>) =>
@@ -134,7 +140,8 @@ export class GameResolver {
 
   @FieldResolver()
   @Loader<RLoader, RawRoutes[]>(
-    async franchises => await loaderResolver(franchises, 'franchises'),
+    async (franchises, {context}) =>
+      await loaderResolver(franchises, 'franchises', context),
   )
   async franchises(@Root() {id, franchises}: Game) {
     return (dataloader: DataLoader<RLoader, Franchise[]>) =>
@@ -143,8 +150,8 @@ export class GameResolver {
 
   @FieldResolver()
   @Loader<RLoader, RawRoutes[]>(
-    async gameEnginesIds =>
-      await loaderResolver(gameEnginesIds, 'game_engines'),
+    async (gameEnginesIds, {context}) =>
+      await loaderResolver(gameEnginesIds, 'game_engines', context),
   )
   async game_engines(@Root() {id, game_engines}: Game) {
     return (dataloader: DataLoader<RLoader, GameEngine[]>) =>
@@ -153,7 +160,8 @@ export class GameResolver {
 
   @FieldResolver()
   @Loader<RLoader, RawRoutes[]>(
-    async game_modes => await loaderResolver(game_modes, 'game_modes'),
+    async (game_modes, {context}) =>
+      await loaderResolver(game_modes, 'game_modes', context),
   )
   async game_modes(@Root() {id, game_modes}: Game) {
     return (dataloader: DataLoader<RLoader, GameMode[]>) =>
@@ -162,7 +170,8 @@ export class GameResolver {
 
   @FieldResolver()
   @Loader<RLoader, RawRoutes[]>(
-    async genres => await loaderResolver(genres, 'genres'),
+    async (genres, {context}) =>
+      await loaderResolver(genres, 'genres', context),
   )
   async genres(@Root() {id, genres}: Game) {
     return (dataloader: DataLoader<RLoader, Genre[]>) =>
@@ -171,8 +180,8 @@ export class GameResolver {
 
   @FieldResolver()
   @Loader<RLoader, RawRoutes[]>(
-    async involved_companies =>
-      await loaderResolver(involved_companies, 'involved_companies'),
+    async (involved_companies, {context}) =>
+      await loaderResolver(involved_companies, 'involved_companies', context),
   )
   async involved_companies(@Root() {id, involved_companies}: Game) {
     return (dataloader: DataLoader<RLoader, InvolvedCompany[]>) =>
@@ -181,7 +190,8 @@ export class GameResolver {
 
   @FieldResolver()
   @Loader<RLoader, RawRoutes[]>(
-    async keywords => await loaderResolver(keywords, 'keywords'),
+    async (keywords, {context}) =>
+      await loaderResolver(keywords, 'keywords', context),
   )
   async keywords(@Root() {id, keywords}: Game) {
     return (dataloader: DataLoader<RLoader, Keyword[]>) =>
@@ -190,8 +200,8 @@ export class GameResolver {
 
   @FieldResolver()
   @Loader<RLoader, RawRoutes[]>(
-    async multiplayer_modes =>
-      await loaderResolver(multiplayer_modes, 'multiplayer_modes'),
+    async (multiplayer_modes, {context}) =>
+      await loaderResolver(multiplayer_modes, 'multiplayer_modes', context),
   )
   async multiplayer_modes(@Root() {id, multiplayer_modes}: Game) {
     return (dataloader: DataLoader<RLoader, MultiplayerMode[]>) =>
@@ -200,7 +210,8 @@ export class GameResolver {
 
   @FieldResolver()
   @Loader<RLoader, RawRoutes[]>(
-    async parent_game => await loaderResolver(parent_game, 'games'),
+    async (parent_game, {context}) =>
+      await loaderResolver(parent_game, 'games', context),
   )
   async parent_game(@Root() {id, parent_game}: Game) {
     return (dataloader: DataLoader<RLoader, Game[]>) =>
@@ -209,7 +220,8 @@ export class GameResolver {
 
   @FieldResolver()
   @Loader<RLoader, RawRoutes[]>(
-    async platforms => await loaderResolver(platforms, 'platforms'),
+    async (platforms, {context}) =>
+      await loaderResolver(platforms, 'platforms', context),
   )
   async platforms(@Root() {id, platforms}: Game) {
     return (dataloader: DataLoader<RLoader, Platform[]>) =>
@@ -218,8 +230,8 @@ export class GameResolver {
 
   @FieldResolver()
   @Loader<RLoader, RawRoutes[]>(
-    async player_perspectives =>
-      await loaderResolver(player_perspectives, 'player_perspectives'),
+    async (player_perspectives, {context}) =>
+      await loaderResolver(player_perspectives, 'player_perspectives', context),
   )
   async player_perspectives(@Root() {id, player_perspectives}: Game) {
     return (dataloader: DataLoader<RLoader, PlayerPerspective[]>) =>
@@ -228,7 +240,8 @@ export class GameResolver {
 
   @FieldResolver()
   @Loader<RLoader, RawRoutes[]>(
-    async release_dates => await loaderResolver(release_dates, 'release_dates'),
+    async (release_dates, {context}) =>
+      await loaderResolver(release_dates, 'release_dates', context),
   )
   async release_dates(@Root() {id, release_dates}: Game) {
     return (dataloader: DataLoader<RLoader, ReleaseDate[]>) =>
@@ -237,7 +250,8 @@ export class GameResolver {
 
   @FieldResolver()
   @Loader<RLoader, RawRoutes[]>(
-    async screenshots => await loaderResolver(screenshots, 'screenshots'),
+    async (screenshots, {context}) =>
+      await loaderResolver(screenshots, 'screenshots', context),
   )
   async screenshots(@Root() {id, screenshots}: Game) {
     return (dataloader: DataLoader<RLoader, Screenshot[]>) =>
@@ -246,7 +260,8 @@ export class GameResolver {
 
   @FieldResolver()
   @Loader<RLoader, RawRoutes[]>(
-    async similar_games => await loaderResolver(similar_games, 'games'),
+    async (similar_games, {context}) =>
+      await loaderResolver(similar_games, 'games', context),
   )
   async similar_games(@Root() {id, similar_games}: Game) {
     return (dataloader: DataLoader<RLoader, Game[]>) =>
@@ -255,8 +270,8 @@ export class GameResolver {
 
   @FieldResolver()
   @Loader<RLoader, RawRoutes[]>(
-    async standalone_expansions =>
-      await loaderResolver(standalone_expansions, 'games'),
+    async (standalone_expansions, {context}) =>
+      await loaderResolver(standalone_expansions, 'games', context),
   )
   async standalone_expansions(@Root() {id, standalone_expansions}: Game) {
     return (dataloader: DataLoader<RLoader, Game[]>) =>
@@ -265,7 +280,8 @@ export class GameResolver {
 
   @FieldResolver()
   @Loader<RLoader, RawRoutes[]>(
-    async themes => await loaderResolver(themes, 'themes'),
+    async (themes, {context}) =>
+      await loaderResolver(themes, 'themes', context),
   )
   async themes(@Root() {id, themes}: Game) {
     return (dataloader: DataLoader<RLoader, Theme[]>) =>
@@ -274,7 +290,8 @@ export class GameResolver {
 
   @FieldResolver()
   @Loader<RLoader, RawRoutes[]>(
-    async version_parent => await loaderResolver(version_parent, 'games'),
+    async (version_parent, {context}) =>
+      await loaderResolver(version_parent, 'games', context),
   )
   async version_parent(@Root() {id, version_parent}: Game) {
     return (dataloader: DataLoader<RLoader, Game[]>) =>
@@ -283,7 +300,8 @@ export class GameResolver {
 
   @FieldResolver()
   @Loader<RLoader, RawRoutes[]>(
-    async videos => await loaderResolver(videos, 'game_videos'),
+    async (videos, {context}) =>
+      await loaderResolver(videos, 'game_videos', context),
   )
   async videos(@Root() {id, videos}: Game) {
     return (dataloader: DataLoader<RLoader, GameVideo[]>) =>
@@ -292,7 +310,8 @@ export class GameResolver {
 
   @FieldResolver()
   @Loader<RLoader, RawRoutes[]>(
-    async websites => await loaderResolver(websites, 'websites'),
+    async (websites, {context}) =>
+      await loaderResolver(websites, 'websites', context),
   )
   async websites(@Root() {id, websites}: Game) {
     return (dataloader: DataLoader<RLoader, Website[]>) =>
@@ -301,7 +320,8 @@ export class GameResolver {
 
   @FieldResolver()
   @Loader<RLoader, RawRoutes[]>(
-    async remakes => await loaderResolver(remakes, 'games'),
+    async (remakes, {context}) =>
+      await loaderResolver(remakes, 'games', context),
   )
   async remakes(@Root() {id, remakes}: Game) {
     return (dataloader: DataLoader<RLoader, Game[]>) =>
@@ -310,7 +330,8 @@ export class GameResolver {
 
   @FieldResolver()
   @Loader<RLoader, RawRoutes[]>(
-    async remasters => await loaderResolver(remasters, 'games'),
+    async (remasters, {context}) =>
+      await loaderResolver(remasters, 'games', context),
   )
   async remasters(@Root() {id, remasters}: Game) {
     return (dataloader: DataLoader<RLoader, Game[]>) =>
@@ -319,7 +340,8 @@ export class GameResolver {
 
   @FieldResolver()
   @Loader<RLoader, RawRoutes[]>(
-    async expanded_games => await loaderResolver(expanded_games, 'games'),
+    async (expanded_games, {context}) =>
+      await loaderResolver(expanded_games, 'games', context),
   )
   async expanded_games(@Root() {id, expanded_games}: Game) {
     return (dataloader: DataLoader<RLoader, Game[]>) =>
@@ -328,7 +350,7 @@ export class GameResolver {
 
   @FieldResolver()
   @Loader<RLoader, RawRoutes[]>(
-    async ports => await loaderResolver(ports, 'games'),
+    async (ports, {context}) => await loaderResolver(ports, 'games', context),
   )
   async ports(@Root() {id, ports}: Game) {
     return (dataloader: DataLoader<RLoader, Game[]>) =>
@@ -337,7 +359,7 @@ export class GameResolver {
 
   @FieldResolver()
   @Loader<RLoader, RawRoutes[]>(
-    async forks => await loaderResolver(forks, 'games'),
+    async (forks, {context}) => await loaderResolver(forks, 'games', context),
   )
   async forks(@Root() {id, forks}: Game) {
     return (dataloader: DataLoader<RLoader, Game[]>) =>
