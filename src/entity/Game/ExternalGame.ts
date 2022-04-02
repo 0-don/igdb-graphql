@@ -27,8 +27,8 @@ export class ExternalGame {
   @Field(() => Int, {nullable: true})
   updated_at?: number;
 
-  @Field(() => Int, {nullable: true})
-  url?: number;
+  @Field( {nullable: true})
+  url?: string;
 
   @Field(() => Int, {nullable: true})
   year?: number;

@@ -1,13 +1,12 @@
-import { Field, ID, Int, ObjectType } from 'type-graphql';
-
-import { DateFormatChangeDateCategoryEnum } from '../../utils/enum';
-import { Game } from '../Game/Game';
-import { CompanyLogo } from './CompanyLogo';
-import { CompanyWebsite } from './CompanyWebsite';
+import {Field, ID, Int, ObjectType} from 'type-graphql';
+import {DateFormatChangeDateCategoryEnum} from '../../utils/enum';
+import {Game} from '../Game/Game';
+import {CompanyLogo} from './CompanyLogo';
+import {CompanyWebsite} from './CompanyWebsite';
 
 @ObjectType()
 export class Company {
-  @Field(() => ID, { nullable: true })
+  @Field(() => ID, {nullable: true})
   id?: number;
 
   @Field(() => Int, {nullable: true})
@@ -46,8 +45,8 @@ export class Company {
   @Field({nullable: true})
   slug?: string;
 
-  @Field(() => Int, {nullable: true})
-  start_date?: number;
+  @Field({nullable: true})
+  start_date?: string;
 
   @Field(() => DateFormatChangeDateCategoryEnum, {nullable: true})
   start_date_category?: DateFormatChangeDateCategoryEnum;

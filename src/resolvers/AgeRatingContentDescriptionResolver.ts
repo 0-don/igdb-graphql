@@ -1,12 +1,11 @@
-import { fields, igdb } from 'ts-igdb-client';
-import { Query, Resolver, UseMiddleware } from 'type-graphql';
-
-import { AgeRating, AgeRatingContentDescription } from '../entity';
-import { CheckToken } from '../utils/tokenMiddleware';
+import {fields, igdb} from 'ts-igdb-client';
+import {Query, Resolver, UseMiddleware} from 'type-graphql';
+import {AgeRatingContentDescription} from '../entity';
+import {CheckToken} from '../utils/tokenMiddleware';
 
 @Resolver(() => AgeRatingContentDescription)
 export class AgeRatingContentDescriptionResolver {
-  @Query(() => [AgeRating], {nullable: true})
+  @Query(() => [AgeRatingContentDescription], {nullable: true})
   @UseMiddleware(CheckToken)
   // @CacheControl({ maxAge: 1 })
   async ageRatingContentDescriptions() {

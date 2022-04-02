@@ -9,7 +9,7 @@ import {
   UseMiddleware,
 } from 'type-graphql';
 import {Loader} from 'type-graphql-dataloader';
-import {Company, PlatformVersionReleaseDate} from '../../entity';
+import {PlatformVersion, PlatformVersionReleaseDate} from '../../entity';
 import {CheckToken} from '../../utils/tokenMiddleware';
 import {loaderResolver, RLoader} from '../../utils/utils';
 
@@ -23,7 +23,7 @@ export class PlatformVersionReleaseDateResolver {
   async platform_version(
     @Root() {id, platform_version}: PlatformVersionReleaseDate,
   ) {
-    return (dataloader: DataLoader<RLoader, Company[]>) =>
+    return (dataloader: DataLoader<RLoader, PlatformVersion[]>) =>
       dataloader.load({id, ids: platform_version});
   }
 

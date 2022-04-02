@@ -25,8 +25,8 @@ export class PlatformVersionReleaseDate {
   @Field(() => Int, {nullable: true})
   m?: number;
 
-  @Field(() => PlatformVersion, {nullable: true})
-  platform_version?: PlatformVersion;
+  @Field(() => [PlatformVersion], {nullable: true})
+  platform_version?: PlatformVersion | number[];
 
   @Field(() => RegionRegionEnum, {nullable: true})
   region?: RegionRegionEnum;

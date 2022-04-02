@@ -1,4 +1,4 @@
-import { Field, ID, Int, ObjectType } from 'type-graphql';
+import { Field, Float, ID, Int, ObjectType } from 'type-graphql';
 
 import { GameCategoryEnum, GameStatusEnum } from '../../utils/enum';
 import { AgeRating } from '../AgeRating';
@@ -30,7 +30,7 @@ export class Game {
   @Field(() => [AgeRating], {nullable: true})
   age_ratings?: AgeRating[] | number[];
 
-  @Field(() => Int, {nullable: true})
+  @Field(() => Float, {nullable: true})
   aggregated_rating?: number;
 
   @Field(() => Int, {nullable: true})
@@ -111,7 +111,7 @@ export class Game {
   @Field(() => [PlayerPerspective], {nullable: true})
   player_perspectives?: PlayerPerspective[] | number[];
 
-  @Field(() => Int, {nullable: true})
+  @Field(() => Float, {nullable: true})
   rating?: number;
 
   @Field(() => Int, {nullable: true})
@@ -147,7 +147,7 @@ export class Game {
   @Field(() => [Theme], {nullable: true})
   themes?: Theme[] | number[];
 
-  @Field(() => Int, {nullable: true})
+  @Field(() => Float, {nullable: true})
   total_rating?: number;
 
   @Field(() => Int, {nullable: true})

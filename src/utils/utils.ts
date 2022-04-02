@@ -1,6 +1,6 @@
-import { fields, igdb, limit, whereIn, WhereInFlags } from 'ts-igdb-client';
-import { RawRoutes } from 'ts-igdb-client/dist/types';
-
+import {AxiosResponse} from 'axios';
+import {fields, igdb, limit, whereIn, WhereInFlags} from 'ts-igdb-client';
+import {RawRoutes} from 'ts-igdb-client/dist/types';
 import * as entities from '../entity';
 
 export const loaderResolver = async (
@@ -25,8 +25,19 @@ export const loaderResolver = async (
         limit(500),
       );
 
-    const {data} = await req.execute();
+    let res: AxiosResponse<RawRoutes[keyof RawRoutes][]>;
+    let statusCode = 0;
+    while (statusCode === 429 || statusCode === 0) {
+      try {
+        res = await req.execute();
+        statusCode = res.status;
+      } catch (error) {
+        statusCode = error.response.status;
+      }
+    }
 
+    const {data} = res!;
+    // [[], [], [], ...] vs [{}, {}, {}, ...]
     const result = ids.map(r =>
       Array.isArray(r.ids)
         ? r.ids.map(x => data.find(d => d.id === x)).filter(i => i)
