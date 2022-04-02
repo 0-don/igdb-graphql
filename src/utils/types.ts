@@ -10,7 +10,7 @@ export type AuthResponse = {
 export type MyContext = {
   req: Request;
   res: Response;
-  client: () => ReturnType<typeof igdb>;
+  client: ReturnType<typeof igdb>;
 };
 
 export type EnitityTypes = InstanceType<typeof entities[keyof typeof entities]>;

@@ -28,12 +28,8 @@ export class ScreenshotResolver {
   }
 
   @FieldResolver()
-  @Loader<string, string[]>(async (url, test) => {
-    return [['']];
-  })
   async url(@Root() {url}: Screenshot, @Arg('type') type: string) {
-    return (dataloader: DataLoader<string, string[]>) =>
-      dataloader.load(url || '');
+    return '';
   }
 
   @Query(() => [Screenshot], {nullable: true})

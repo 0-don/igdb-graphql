@@ -34,6 +34,7 @@ export const loaderResolver = async (
       } catch (error) {
         statusCode = error.response.status;
       }
+      console.log(statusCode)
     }
 
     const {data} = res!;

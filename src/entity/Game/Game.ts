@@ -1,26 +1,25 @@
-import { Field, Float, ID, Int, ObjectType } from 'type-graphql';
-
-import { GameCategoryEnum, GameStatusEnum } from '../../utils/enum';
-import { AgeRating } from '../AgeRating';
-import { AlternativeName } from '../AlternativeName';
-import { Artwork } from '../Artworks';
-import { Collection } from '../Collection';
-import { InvolvedCompany } from '../Company/InvolvedCompany';
-import { Cover } from '../Cover';
-import { Franchise } from '../Franchise';
-import { Genre } from '../Genre';
-import { Keyword } from '../Keyword';
-import { MultiplayerMode } from '../MultiplayerMode';
-import { Platform } from '../Platform/Platform';
-import { PlayerPerspective } from '../PlayerPerspective';
-import { ReleaseDate } from '../ReleaseDate';
-import { Screenshot } from '../Screenshot';
-import { Theme } from '../Theme';
-import { Website } from '../Website';
-import { ExternalGame } from './ExternalGame';
-import { GameEngine } from './GameEngine';
-import { GameMode } from './GameMode';
-import { GameVideo } from './GameVideo';
+import {Field, Float, ID, Int, ObjectType} from 'type-graphql';
+import {GameCategoryEnum, GameStatusEnum} from '../../utils/enum';
+import {AgeRating} from '../AgeRating';
+import {AlternativeName} from '../AlternativeName';
+import {Artwork} from '../Artworks';
+import {Collection} from '../Collection';
+import {InvolvedCompany} from '../Company/InvolvedCompany';
+import {Cover} from '../Cover';
+import {Franchise} from '../Franchise';
+import {Genre} from '../Genre';
+import {Keyword} from '../Keyword';
+import {MultiplayerMode} from '../MultiplayerMode';
+import {Platform} from '../Platform/Platform';
+import {PlayerPerspective} from '../PlayerPerspective';
+import {ReleaseDate} from '../ReleaseDate';
+import {Screenshot} from '../Screenshot';
+import {Theme} from '../Theme';
+import {Website} from '../Website';
+import {ExternalGame} from './ExternalGame';
+import {GameEngine} from './GameEngine';
+import {GameMode} from './GameMode';
+import {GameVideo} from './GameVideo';
 
 @ObjectType()
 export class Game {

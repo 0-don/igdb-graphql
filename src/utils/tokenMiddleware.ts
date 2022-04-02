@@ -1,12 +1,13 @@
 import axios from 'axios';
 import dayjs from 'dayjs';
+import {igdb} from 'ts-igdb-client';
 import {MiddlewareFn, NextFn} from 'type-graphql';
 import {AuthResponse, MyContext} from './types';
 
-export const CheckToken: MiddlewareFn<MyContext> = async (_, next) =>
-  await createToken(next);
+export const CheckToken: MiddlewareFn<MyContext> = async ({context}, next) =>
+  await createToken(context, next);
 
-export const createToken = async (next?: NextFn) => {
+export const createToken = async (context?: MyContext, next?: NextFn) => {
   const dateExpiresIn = dayjs(process.env.EXPIRES_IN);
   const now = dayjs();
   const token = process.env.ACCESS_TOKEN;
@@ -24,6 +25,13 @@ export const createToken = async (next?: NextFn) => {
       if (data) {
         process.env.EXPIRES_IN = `${dayjs().add(data.expires_in, 's')}`;
         process.env.ACCESS_TOKEN = data.access_token;
+
+        if (context) {
+          context.client = igdb(
+            process.env.CLIENT_ID!,
+            process.env.ACCESS_TOKEN,
+          );
+        }
         return next ? next() : null;
       }
       throw new Error('No data');

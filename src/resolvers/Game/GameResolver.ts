@@ -32,6 +32,7 @@ import {
   Theme,
   Website,
 } from '../../entity';
+import { CacheControl } from '../../utils/cache-control';
 import {CheckToken} from '../../utils/tokenMiddleware';
 import {RLoader} from '../../utils/types';
 import {loaderResolver} from '../../utils/utils';
@@ -344,7 +345,7 @@ export class GameResolver {
 
   @Query(() => [Game], {nullable: true})
   @UseMiddleware(CheckToken)
-  // @CacheControl({ maxAge: 1 })
+  @CacheControl({ maxAge: 20 })
   async games() {
     const client = igdb(process.env.CLIENT_ID!, process.env.ACCESS_TOKEN!);
 
