@@ -1,12 +1,24 @@
 import DataLoader from 'dataloader';
-import { fields, igdb } from 'ts-igdb-client';
-import { RawRoutes } from 'ts-igdb-client/dist/types';
-import { FieldResolver, Query, Resolver, Root, UseMiddleware } from 'type-graphql';
-import { Loader } from 'type-graphql-dataloader';
-
-import { Platform, PlatformFamily, PlatformLogo, PlatformVersion, PlatformWebsite } from '../../entity';
-import { CheckToken } from '../../utils/tokenMiddleware';
-import { loaderResolver, RLoader } from '../../utils/utils';
+import {fields, igdb} from 'ts-igdb-client';
+import {RawRoutes} from 'ts-igdb-client/dist/types';
+import {
+  FieldResolver,
+  Query,
+  Resolver,
+  Root,
+  UseMiddleware,
+} from 'type-graphql';
+import {Loader} from 'type-graphql-dataloader';
+import {
+  Platform,
+  PlatformFamily,
+  PlatformLogo,
+  PlatformVersion,
+  PlatformWebsite,
+} from '../../entity';
+import {CheckToken} from '../../utils/tokenMiddleware';
+import {RLoader} from '../../utils/types';
+import {loaderResolver} from '../../utils/utils';
 
 @Resolver(() => Platform)
 export class PlatformResolver {

@@ -1,6 +1,5 @@
-import { Field, ID, Int, ObjectType } from 'type-graphql';
-
-import { Game } from './Game/Game';
+import {Field, ID, Int, ObjectType} from 'type-graphql';
+import {Game} from './Game/Game';
 
 @ObjectType()
 export class Screenshot {
@@ -22,8 +21,8 @@ export class Screenshot {
   @Field({nullable: true})
   image_id?: string;
 
-  @Field({nullable: true})
-  url?: string;
+  @Field(() => String, {nullable: true})
+  url: string;
 
   @Field(() => Int, {nullable: true})
   width?: number;

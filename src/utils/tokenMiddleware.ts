@@ -1,14 +1,12 @@
 import axios from 'axios';
 import dayjs from 'dayjs';
-import {MiddlewareFn} from 'type-graphql';
+import {MiddlewareFn, NextFn} from 'type-graphql';
+import {AuthResponse, MyContext} from './types';
 
-export type AuthResponse = {
-  access_token: string;
-  expires_in: number;
-  token_type: string;
-};
+export const CheckToken: MiddlewareFn<MyContext> = async (_, next) =>
+  await createToken(next);
 
-export const CheckToken: MiddlewareFn = async (_, next) => {
+export const createToken = async (next?: NextFn) => {
   const dateExpiresIn = dayjs(process.env.EXPIRES_IN);
   const now = dayjs();
   const token = process.env.ACCESS_TOKEN;
@@ -26,7 +24,7 @@ export const CheckToken: MiddlewareFn = async (_, next) => {
       if (data) {
         process.env.EXPIRES_IN = `${dayjs().add(data.expires_in, 's')}`;
         process.env.ACCESS_TOKEN = data.access_token;
-        return next();
+        return next ? next() : null;
       }
       throw new Error('No data');
     } catch (error) {
@@ -34,5 +32,5 @@ export const CheckToken: MiddlewareFn = async (_, next) => {
       throw error;
     }
   }
-  return next();
+  return next ? next() : null;
 };

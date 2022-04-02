@@ -11,7 +11,8 @@ import {
 import {Loader} from 'type-graphql-dataloader';
 import {AgeRating, AgeRatingContentDescription} from '../entity';
 import {CheckToken} from '../utils/tokenMiddleware';
-import {loaderResolver, RLoader} from '../utils/utils';
+import {RLoader} from '../utils/types';
+import {loaderResolver} from '../utils/utils';
 
 @Resolver(() => AgeRating)
 export class AgeRatingResolver {

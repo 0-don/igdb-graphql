@@ -33,7 +33,8 @@ import {
   Website,
 } from '../../entity';
 import {CheckToken} from '../../utils/tokenMiddleware';
-import {loaderResolver, RLoader} from '../../utils/utils';
+import {RLoader} from '../../utils/types';
+import {loaderResolver} from '../../utils/utils';
 
 @Resolver(() => Game)
 export class GameResolver {

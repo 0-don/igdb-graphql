@@ -1,7 +1,7 @@
 import {AxiosResponse} from 'axios';
 import {fields, igdb, limit, whereIn, WhereInFlags} from 'ts-igdb-client';
 import {RawRoutes} from 'ts-igdb-client/dist/types';
-import * as entities from '../entity';
+import {RLoader} from './types';
 
 export const loaderResolver = async (
   ids: readonly RLoader[],
@@ -48,11 +48,4 @@ export const loaderResolver = async (
   }
 
   return ids.map(_ => null) as unknown as RawRoutes[][];
-};
-
-export type EnitityTypes = InstanceType<typeof entities[keyof typeof entities]>;
-
-export type RLoader = {
-  id: number | undefined;
-  ids: number[] | number | undefined | EnitityTypes | EnitityTypes[];
 };

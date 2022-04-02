@@ -11,7 +11,8 @@ import {
 import {Loader} from 'type-graphql-dataloader';
 import {Artwork, Game} from '../entity';
 import {CheckToken} from '../utils/tokenMiddleware';
-import {loaderResolver, RLoader} from '../utils/utils';
+import {RLoader} from '../utils/types';
+import {loaderResolver} from '../utils/utils';
 
 @Resolver(() => Artwork)
 export class ArtworkResolver {
