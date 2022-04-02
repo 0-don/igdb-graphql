@@ -1,5 +1,5 @@
 import {Field, ID, ObjectType} from 'type-graphql';
-import {AgeRatingCategoryEnum, AgeRatingRatingEnum} from '../utils/enum';
+import {AgeRatingCategoryEnum, AgeRatingRatingEnum} from '../@types/enum';
 import {AgeRatingContentDescription} from './AgeRatingContentDescription';
 
 @ObjectType()

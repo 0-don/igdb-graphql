@@ -1,5 +1,5 @@
 import {Field, ID, ObjectType} from 'type-graphql';
-import {WebsiteCategoryEnum} from '../utils/enum';
+import {WebsiteCategoryEnum} from '../@types/enum';
 import {Game} from './Game/Game';
 
 @ObjectType()

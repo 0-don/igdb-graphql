@@ -2,7 +2,7 @@ import {Field, ID, Int, ObjectType} from 'type-graphql';
 import {
   ExternalGameCategoryEnum,
   ExternalGameMediaEnum,
-} from '../../utils/enum';
+} from '../../@types/enum';
 import {Platform} from '../Platform/Platform';
 import {Game} from './Game';
 

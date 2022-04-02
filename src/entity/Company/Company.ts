@@ -1,5 +1,5 @@
 import {Field, ID, Int, ObjectType} from 'type-graphql';
-import {DateFormatChangeDateCategoryEnum} from '../../utils/enum';
+import {DateFormatChangeDateCategoryEnum} from '../../@types/enum';
 import {Game} from '../Game/Game';
 import {CompanyLogo} from './CompanyLogo';
 import {CompanyWebsite} from './CompanyWebsite';

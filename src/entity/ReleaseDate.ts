@@ -2,7 +2,7 @@ import {Field, ID, Int, ObjectType} from 'type-graphql';
 import {
   DateFormatChangeDateCategoryEnum,
   RegionRegionEnum,
-} from '../utils/enum';
+} from '../@types/enum';
 import {Game} from './Game/Game';
 import {Platform} from './Platform/Platform';
 

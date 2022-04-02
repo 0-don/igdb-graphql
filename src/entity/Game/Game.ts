@@ -1,5 +1,5 @@
 import {Field, Float, ID, Int, ObjectType} from 'type-graphql';
-import {GameCategoryEnum, GameStatusEnum} from '../../utils/enum';
+import {GameCategoryEnum, GameStatusEnum} from '../../@types/enum';
 import {AgeRating} from '../AgeRating';
 import {AlternativeName} from '../AlternativeName';
 import {Artwork} from '../Artworks';

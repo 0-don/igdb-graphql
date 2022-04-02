@@ -7,7 +7,7 @@ import {igdb} from 'ts-igdb-client';
 import {buildSchema} from 'type-graphql';
 import {ApolloServerLoaderPlugin} from 'type-graphql-dataloader';
 import resolvers from './resolvers';
-import './utils/enum';
+import './@types/enum';
 import {createToken} from './utils/tokenMiddleware';
 
 async function start() {

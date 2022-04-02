@@ -1,5 +1,5 @@
 import {Field, ID, Int, ObjectType} from 'type-graphql';
-import {PlatformCategoryEnum} from '../../utils/enum';
+import {PlatformCategoryEnum} from '../../@types/enum';
 import {PlatformFamily} from './PlatformFamily';
 import {PlatformLogo} from './PlatformLogo';
 import {PlatformVersion} from './PlatformVersion';
