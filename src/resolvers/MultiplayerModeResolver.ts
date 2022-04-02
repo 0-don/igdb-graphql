@@ -19,6 +19,15 @@ export class MultiplayerModeResolver {
       dataloader.load({id, ids: game});
   }
 
+  @FieldResolver()
+  @Loader<RLoader, RawRoutes[]>(
+    async platform => await loaderResolver(platform, 'platforms'),
+  )
+  async platform(@Root() {id, platform}: MultiplayerMode) {
+    return (dataloader: DataLoader<RLoader, Game[]>) =>
+      dataloader.load({id, ids: platform});
+  }
+
   @Query(() => [MultiplayerMode], {nullable: true})
   @UseMiddleware(CheckToken)
   // @CacheControl({ maxAge: 1 })

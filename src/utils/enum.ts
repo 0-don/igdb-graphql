@@ -1,4 +1,4 @@
-import { registerEnumType } from 'type-graphql';
+import {registerEnumType} from 'type-graphql';
 
 export enum AgeRatingCategoryEnum {
   AGERATING_CATEGORY_NULL = 0,
@@ -52,7 +52,7 @@ export enum AgeRatingRatingEnum {
   ACB_R18 = 37,
   ACB_RC = 38,
   TEST = 50,
-  TESTING = 58
+  TESTING = 58,
 }
 
 export enum GenderGenderEnum {

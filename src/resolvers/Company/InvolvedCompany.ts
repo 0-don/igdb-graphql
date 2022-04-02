@@ -4,7 +4,7 @@ import { RawRoutes } from 'ts-igdb-client/dist/types';
 import { FieldResolver, Query, Resolver, Root, UseMiddleware } from 'type-graphql';
 import { Loader } from 'type-graphql-dataloader';
 
-import { Company, InvolvedCompany } from '../../entity';
+import { Company, Game, InvolvedCompany } from '../../entity';
 import { CheckToken } from '../../utils/tokenMiddleware';
 import { loaderResolver, RLoader } from '../../utils/utils';
 
@@ -14,9 +14,18 @@ export class InvolvedCompanyResolver {
   @Loader<RLoader, RawRoutes[]>(
     async company => await loaderResolver(company, 'companies'),
   )
-  async game(@Root() {id, company}: InvolvedCompany) {
+  async company(@Root() {id, company}: InvolvedCompany) {
     return (dataloader: DataLoader<RLoader, Company[]>) =>
       dataloader.load({id, ids: company});
+  }
+
+  @FieldResolver()
+  @Loader<RLoader, RawRoutes[]>(
+    async game => await loaderResolver(game, 'games'),
+  )
+  async game(@Root() {id, game}: InvolvedCompany) {
+    return (dataloader: DataLoader<RLoader, Game[]>) =>
+      dataloader.load({id, ids: game});
   }
 
   @Query(() => [InvolvedCompany], {nullable: true})

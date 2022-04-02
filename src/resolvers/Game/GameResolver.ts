@@ -1,12 +1,39 @@
 import DataLoader from 'dataloader';
-import { fields, igdb, where } from 'ts-igdb-client';
-import { RawRoutes } from 'ts-igdb-client/dist/types';
-import { FieldResolver, Query, Resolver, Root, UseMiddleware } from 'type-graphql';
-import { Loader } from 'type-graphql-dataloader';
-
-import { AgeRating, AlternativeName, Artwork, Collection, Cover, ExternalGame, Franchise, Game, GameEngine, GameMode, GameVideo, Genre, InvolvedCompany, Keyword, MultiplayerMode, Platform, PlayerPerspective, ReleaseDate, Screenshot, Theme, Website } from '../../entity';
-import { CheckToken } from '../../utils/tokenMiddleware';
-import { loaderResolver, RLoader } from '../../utils/utils';
+import {fields, igdb, where} from 'ts-igdb-client';
+import {RawRoutes} from 'ts-igdb-client/dist/types';
+import {
+  FieldResolver,
+  Query,
+  Resolver,
+  Root,
+  UseMiddleware,
+} from 'type-graphql';
+import {Loader} from 'type-graphql-dataloader';
+import {
+  AgeRating,
+  AlternativeName,
+  Artwork,
+  Collection,
+  Cover,
+  ExternalGame,
+  Franchise,
+  Game,
+  GameEngine,
+  GameMode,
+  GameVideo,
+  Genre,
+  InvolvedCompany,
+  Keyword,
+  MultiplayerMode,
+  Platform,
+  PlayerPerspective,
+  ReleaseDate,
+  Screenshot,
+  Theme,
+  Website,
+} from '../../entity';
+import {CheckToken} from '../../utils/tokenMiddleware';
+import {loaderResolver, RLoader} from '../../utils/utils';
 
 @Resolver(() => Game)
 export class GameResolver {
@@ -240,6 +267,15 @@ export class GameResolver {
   async themes(@Root() {id, themes}: Game) {
     return (dataloader: DataLoader<RLoader, Theme[]>) =>
       dataloader.load({id, ids: themes});
+  }
+
+  @FieldResolver()
+  @Loader<RLoader, RawRoutes[]>(
+    async version_parent => await loaderResolver(version_parent, 'games'),
+  )
+  async version_parent(@Root() {id, version_parent}: Game) {
+    return (dataloader: DataLoader<RLoader, Game[]>) =>
+      dataloader.load({id, ids: version_parent});
   }
 
   @FieldResolver()

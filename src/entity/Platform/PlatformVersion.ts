@@ -1,38 +1,36 @@
-import { Field, ID, Int, ObjectType } from 'type-graphql';
-
-import { PlatformCategoryEnum } from '../../utils/enum';
-import { Game } from '../Game/Game';
-import { PlatformFamily } from './PlatformFamily';
-import { PlatformLogo } from './PlatformLogo';
+import {Field, ID, ObjectType} from 'type-graphql';
+import {PlatformLogo} from './PlatformLogo';
+import {PlatformVersionCompany} from './PlatformVersionCompany';
+import {PlatformVersionReleaseDate} from './PlatformVersionReleaseDate';
 
 @ObjectType()
 export class PlatformVersion {
   @Field(() => ID, {nullable: true})
   id?: number;
 
-  @Field({nullable: true})
-  companies?: string;
+  @Field(() => [PlatformVersionCompany], {nullable: true})
+  companies?: PlatformVersionCompany[];
 
   @Field({nullable: true})
   connectivity?: string;
 
-  @Field(() => PlatformCategoryEnum, {nullable: true})
-  cpu?: PlatformCategoryEnum;
+  @Field({nullable: true})
+  cpu?: string;
 
-  @Field(() => Int, {nullable: true})
-  graphics?: number;
+  @Field({nullable: true})
+  graphics?: string;
 
-  @Field(() => Int, {nullable: true})
-  main_manufacturer?: number;
+  @Field(() => PlatformVersionCompany, {nullable: true})
+  main_manufacturer?: PlatformVersionCompany;
 
   @Field({nullable: true})
   media?: string;
 
-  @Field(() => PlatformLogo, {nullable: true})
-  memory?: PlatformLogo | number;
+  @Field({nullable: true})
+  memory?: string;
 
-  @Field(() => PlatformFamily, {nullable: true})
-  name?: PlatformFamily | number;
+  @Field({nullable: true})
+  name?: string;
 
   @Field({nullable: true})
   online?: string;
@@ -40,17 +38,17 @@ export class PlatformVersion {
   @Field({nullable: true})
   os?: string;
 
-  @Field(() => Int, {nullable: true})
-  output?: number;
+  @Field({nullable: true})
+  output?: string;
+
+  @Field(() => PlatformLogo, {nullable: true})
+  platform_logo?: PlatformLogo;
+
+  @Field(() => [PlatformVersionReleaseDate], {nullable: true})
+  platform_version_release_dates?: PlatformVersionReleaseDate[];
 
   @Field({nullable: true})
-  platform_logo?: string;
-
-  @Field({nullable: true})
-  platform_version_release_dates?: number;
-
-  @Field(() => [Game], {nullable: true})
-  resolutions?: Game[] | number[];
+  resolutions?: string;
 
   @Field({nullable: true})
   slug?: string;
