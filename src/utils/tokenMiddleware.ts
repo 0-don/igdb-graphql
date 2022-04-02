@@ -14,8 +14,8 @@ export const createToken = async (context?: MyContext, next?: NextFn) => {
 
   if (!token || dateExpiresIn.diff(now, 'd') < 5) {
     const searchParams = new URLSearchParams({
-      client_id: process.env.CLIENT_ID!,
-      client_secret: process.env.CLIENT_SECRET!,
+      client_id: process.env.CLIENT_ID,
+      client_secret: process.env.CLIENT_SECRET,
       grant_type: 'client_credentials',
     });
     const url = `https://id.twitch.tv/oauth2/token?${searchParams}`;
@@ -28,7 +28,7 @@ export const createToken = async (context?: MyContext, next?: NextFn) => {
 
         if (context) {
           context.client = igdb(
-            process.env.CLIENT_ID!,
+            process.env.CLIENT_ID,
             process.env.ACCESS_TOKEN,
           );
         }

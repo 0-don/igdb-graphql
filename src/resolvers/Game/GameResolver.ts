@@ -1,7 +1,8 @@
 import DataLoader from 'dataloader';
-import {fields, igdb, where} from 'ts-igdb-client';
+import {fields, where} from 'ts-igdb-client';
 import {RawRoutes} from 'ts-igdb-client/dist/types';
 import {
+  Ctx,
   FieldResolver,
   Query,
   Resolver,
@@ -32,9 +33,9 @@ import {
   Theme,
   Website,
 } from '../../entity';
-import { CacheControl } from '../../utils/cache-control';
+import {CacheControl} from '../../utils/cache-control';
 import {CheckToken} from '../../utils/tokenMiddleware';
-import {RLoader} from '../../utils/types';
+import {MyContext, RLoader} from '../../utils/types';
 import {loaderResolver} from '../../utils/utils';
 
 @Resolver(() => Game)
@@ -345,14 +346,11 @@ export class GameResolver {
 
   @Query(() => [Game], {nullable: true})
   @UseMiddleware(CheckToken)
-  @CacheControl({ maxAge: 20 })
-  async games() {
-    const client = igdb(process.env.CLIENT_ID!, process.env.ACCESS_TOKEN!);
-
-    const array = [fields(['*']), where('hypes', '>', 100)];
+  @CacheControl({maxAge: 20})
+  async games(@Ctx() {client}: MyContext) {
     const {data} = await client
       .request('games')
-      .pipe(...array)
+      .pipe(fields(['*']), where('hypes', '>', 100))
       .execute();
 
     return data;

@@ -1,7 +1,8 @@
 import DataLoader from 'dataloader';
-import {fields, igdb} from 'ts-igdb-client';
+import {fields} from 'ts-igdb-client';
 import {RawRoutes} from 'ts-igdb-client/dist/types';
 import {
+  Ctx,
   FieldResolver,
   Query,
   Resolver,
@@ -11,7 +12,7 @@ import {
 import {Loader} from 'type-graphql-dataloader';
 import {Company, GameEngine, Platform} from '../../entity';
 import {CheckToken} from '../../utils/tokenMiddleware';
-import {RLoader} from '../../utils/types';
+import {MyContext, RLoader} from '../../utils/types';
 import {loaderResolver} from '../../utils/utils';
 
 @Resolver(() => GameEngine)
@@ -37,8 +38,7 @@ export class GameEngineResolver {
   @Query(() => [GameEngine], {nullable: true})
   @UseMiddleware(CheckToken)
   // @CacheControl({ maxAge: 1 })
-  async gameEngines() {
-    const client = igdb(process.env.CLIENT_ID!, process.env.ACCESS_TOKEN!);
+  async gameEngines(@Ctx() {client}: MyContext) {
     const {data} = await client
       .request('game_engines')
       .pipe(fields(['*']))

@@ -1,7 +1,8 @@
 import DataLoader from 'dataloader';
-import {fields, igdb} from 'ts-igdb-client';
+import {fields} from 'ts-igdb-client';
 import {RawRoutes} from 'ts-igdb-client/dist/types';
 import {
+  Ctx,
   FieldResolver,
   Query,
   Resolver,
@@ -11,7 +12,7 @@ import {
 import {Loader} from 'type-graphql-dataloader';
 import {AlternativeName, Game} from '../entity';
 import {CheckToken} from '../utils/tokenMiddleware';
-import {RLoader} from '../utils/types';
+import {MyContext, RLoader} from '../utils/types';
 import {loaderResolver} from '../utils/utils';
 
 @Resolver(() => AlternativeName)
@@ -28,8 +29,7 @@ export class AlternativeNameResolver {
   @Query(() => [AlternativeName], {nullable: true})
   @UseMiddleware(CheckToken)
   // @CacheControl({ maxAge: 1 })
-  async alternativeNames() {
-    const client = igdb(process.env.CLIENT_ID!, process.env.ACCESS_TOKEN!);
+  async alternativeNames(@Ctx() {client}: MyContext) {
     const {data} = await client
       .request('alternative_names')
       .pipe(fields(['*']))

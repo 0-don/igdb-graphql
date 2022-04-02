@@ -15,7 +15,7 @@ export const loaderResolver = async (
   );
 
   if (extractedIds.size) {
-    const client = igdb(process.env.CLIENT_ID!, process.env.ACCESS_TOKEN!);
+    const client = igdb(process.env.CLIENT_ID, process.env.ACCESS_TOKEN);
 
     const req = client
       .request(request)
@@ -34,7 +34,7 @@ export const loaderResolver = async (
       } catch (error) {
         statusCode = error.response.status;
       }
-      console.log(statusCode)
+      console.log(statusCode);
     }
 
     const {data} = res!;

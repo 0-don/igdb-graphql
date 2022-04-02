@@ -1,7 +1,8 @@
 import DataLoader from 'dataloader';
-import {fields, igdb} from 'ts-igdb-client';
+import {fields} from 'ts-igdb-client';
 import {RawRoutes} from 'ts-igdb-client/dist/types';
 import {
+  Ctx,
   FieldResolver,
   Query,
   Resolver,
@@ -11,7 +12,7 @@ import {
 import {Loader} from 'type-graphql-dataloader';
 import {Game, Website} from '../entity';
 import {CheckToken} from '../utils/tokenMiddleware';
-import {RLoader} from '../utils/types';
+import {MyContext, RLoader} from '../utils/types';
 import {loaderResolver} from '../utils/utils';
 
 @Resolver(() => Website)
@@ -28,8 +29,7 @@ export class WebsiteResolver {
   @Query(() => [Website], {nullable: true})
   @UseMiddleware(CheckToken)
   // @CacheControl({ maxAge: 1 })
-  async websites() {
-    const client = igdb(process.env.CLIENT_ID!, process.env.ACCESS_TOKEN!);
+  async websites(@Ctx() {client}: MyContext) {
     const {data} = await client
       .request('websites')
       .pipe(fields(['*']))
