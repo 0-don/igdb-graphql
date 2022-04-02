@@ -11,8 +11,8 @@ export class MultiplayerMode {
   @Field(() => Boolean, {nullable: true})
   campaigncoop?: boolean;
 
-  @Field(() => [Game], {nullable: true})
-  dropin?: Game[] | number[];
+  @Field(() => Boolean, {nullable: true})
+  dropin?: boolean;
 
   @Field(() => Game, {nullable: true})
   game?: Game | number;

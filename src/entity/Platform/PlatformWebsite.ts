@@ -4,8 +4,8 @@ import { WebsiteCategoryEnum } from '../../utils/enum';
 
 @ObjectType()
 export class PlatformWebsite {
-  @Field(() => ID)
-  id: number;
+  @Field(() => ID, {nullable: true})
+  id?: number;
 
   @Field(() => WebsiteCategoryEnum, {nullable: true})
   category?: WebsiteCategoryEnum;

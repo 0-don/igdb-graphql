@@ -1,10 +1,11 @@
-import {Field, ID, ObjectType} from 'type-graphql';
-import {Company} from '../Company/Company';
+import { Field, ID, ObjectType } from 'type-graphql';
+
+import { Company } from '../Company/Company';
 
 @ObjectType()
 export class PlatformVersionCompany {
-  @Field(() => ID)
-  id: number;
+  @Field(() => ID, {nullable: true})
+  id?: number;
 
   @Field({nullable: true})
   comment?: string;

@@ -1,14 +1,15 @@
-import {Field, ID, Int, ObjectType} from 'type-graphql';
-import {PlatformCategoryEnum} from '../../utils/enum';
-import {PlatformFamily} from './PlatformFamily';
-import {PlatformLogo} from './PlatformLogo';
-import {PlatformVersion} from './PlatformVersion';
-import {PlatformWebsite} from './PlatformWebsite';
+import { Field, ID, Int, ObjectType } from 'type-graphql';
+
+import { PlatformCategoryEnum } from '../../utils/enum';
+import { PlatformFamily } from './PlatformFamily';
+import { PlatformLogo } from './PlatformLogo';
+import { PlatformVersion } from './PlatformVersion';
+import { PlatformWebsite } from './PlatformWebsite';
 
 @ObjectType()
 export class Platform {
-  @Field(() => ID)
-  id: number;
+  @Field(() => ID, {nullable: true})
+  id?: number;
 
   @Field({nullable: true})
   abbreviation?: string;
