@@ -11,7 +11,7 @@ import {
 import {Loader} from 'type-graphql-dataloader';
 import {Company, PlatformVersionCompany} from '../../entity';
 import {CheckToken} from '../../utils/tokenMiddleware';
-import {RLoader} from '../../utils/types';
+import {RLoader} from '../../@types/types';
 import {loaderResolver} from '../../utils/utils';
 
 @Resolver(() => PlatformVersionCompany)

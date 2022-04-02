@@ -2,7 +2,7 @@ import {fields} from 'ts-igdb-client';
 import {Ctx, Query, Resolver, UseMiddleware} from 'type-graphql';
 import {GameMode} from '../../entity';
 import {CheckToken} from '../../utils/tokenMiddleware';
-import {MyContext} from '../../utils/types';
+import {MyContext} from '../../@types/types';
 
 @Resolver(() => GameMode)
 export class GameModeResolver {

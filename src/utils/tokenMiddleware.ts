@@ -2,7 +2,7 @@ import axios from 'axios';
 import dayjs from 'dayjs';
 import {igdb} from 'ts-igdb-client';
 import {MiddlewareFn, NextFn} from 'type-graphql';
-import {AuthResponse, MyContext} from './types';
+import {AuthResponse, MyContext} from '../@types/types';
 
 export const CheckToken: MiddlewareFn<MyContext> = async ({context}, next) =>
   await createToken(context, next);

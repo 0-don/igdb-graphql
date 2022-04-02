@@ -1,7 +1,7 @@
 import {AxiosResponse} from 'axios';
 import {fields, igdb, limit, whereIn, WhereInFlags} from 'ts-igdb-client';
 import {RawRoutes} from 'ts-igdb-client/dist/types';
-import {RLoader} from './types';
+import {RLoader} from '../@types/types';
 
 export const loaderResolver = async (
   ids: readonly RLoader[],

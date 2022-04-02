@@ -12,7 +12,7 @@ import {
 import {Loader} from 'type-graphql-dataloader';
 import {Cover, Game} from '../entity';
 import {CheckToken} from '../utils/tokenMiddleware';
-import {MyContext, RLoader} from '../utils/types';
+import {MyContext, RLoader} from '../@types/types';
 import {loaderResolver} from '../utils/utils';
 
 @Resolver(() => Cover)

@@ -35,7 +35,7 @@ import {
 } from '../../entity';
 import {CacheControl} from '../../utils/cache-control';
 import {CheckToken} from '../../utils/tokenMiddleware';
-import {MyContext, RLoader} from '../../utils/types';
+import {MyContext, RLoader} from '../../@types/types';
 import {loaderResolver} from '../../utils/utils';
 
 @Resolver(() => Game)
