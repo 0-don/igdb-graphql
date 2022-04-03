@@ -294,6 +294,17 @@ export enum ExternalGameMediaEnum {
   EXTERNALGAME_PHYSICAL = 2,
 }
 
+export enum SortOrder {
+  asc = "asc",
+  desc = "desc"
+}
+
+registerEnumType(SortOrder, {
+  name: "SortOrder",
+  description: undefined,
+});
+
+
 export enum ImageTypeEnum {
   'cover_small' = 'cover_small',
   'screenshot_med' = 'screenshot_med',
