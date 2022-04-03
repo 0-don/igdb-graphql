@@ -17,15 +17,10 @@ export class GamesWhereInput {
   })
   OR?: GamesWhereInput[] | undefined;
 
-  @Field(_type => [GamesWhereInput], {
+  @Field(_type => IntFilter, {
     nullable: true,
   })
-  NOT?: GamesWhereInput[] | undefined;
-
-  @Field(_type => StringFilter, {
-    nullable: true,
-  })
-  id?: StringFilter | undefined;
+  id?: IntFilter | undefined;
 
   @Field(_type => FloatFilter, {
     nullable: true,

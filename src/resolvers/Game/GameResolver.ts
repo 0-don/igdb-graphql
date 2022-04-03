@@ -378,20 +378,18 @@ export class GameResolver {
       Object.keys(args.where).forEach(key => {
         if (gameFields.includes(key as GameEnum)) {
           const filterWithValue = args.where?.[key as GameEnum];
-
           if (filterWithValue) {
-            // console.log(key, args.where?.name, field);
-            wherePipe(filterWithValue, key)
+            pipe.push(wherePipe(filterWithValue, key));
           }
         }
       });
     }
 
-    // console.log(args);
     const {data} = await client
       .request('games')
       .pipe(
         fields('*'),
+        ...pipe,
         // and(
         //   where('status', '=', null),
         //   or(where('id', '=', 124448), where('id', '=', 28204)),

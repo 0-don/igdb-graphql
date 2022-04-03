@@ -58,7 +58,8 @@ export const wherePipe = (
 ) => {
   switch (Object.keys(filterWithValue)[0]) {
     case 'equals':
-      return where(field, '~', filterWithValue.equals);
+      console.log(field, filterWithValue.equals)
+      return where(field, '=', filterWithValue.equals);
     default:
       return undefined;
   }
