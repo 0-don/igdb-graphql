@@ -53,13 +53,26 @@ export const loaderResolver = async (
 };
 
 export const wherePipe = (
-  filterWithValue: StringFilter | FloatFilter | IntFilter,
+  typeAndValue: StringFilter | FloatFilter | IntFilter,
   field: string,
 ) => {
-  switch (Object.keys(filterWithValue)[0]) {
+  switch (Object.keys(typeAndValue)[0]) {
     case 'equals':
-      console.log(field, filterWithValue.equals)
-      return where(field, '=', filterWithValue.equals);
+      return where(field, '=', typeAndValue.equals);
+    case 'in':
+      return whereIn(field, typeAndValue.in || [], WhereInFlags.OR);
+    case 'notIn':
+      return whereIn(field, typeAndValue.notIn || [], WhereInFlags.NOR);
+    case 'lt':
+      return where(field, '<', typeAndValue.lt);
+    case 'lte':
+      return where(field, '<=', typeAndValue.lte);
+    case 'gt':
+      return where(field, '>', typeAndValue.gt);
+    case 'gte':
+      return where(field, '>=', typeAndValue.gte);
+    case 'not':
+      return where(field, '!=', typeAndValue.not);
     default:
       return undefined;
   }

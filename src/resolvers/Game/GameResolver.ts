@@ -377,9 +377,9 @@ export class GameResolver {
     if (args.where) {
       Object.keys(args.where).forEach(key => {
         if (gameFields.includes(key as GameEnum)) {
-          const filterWithValue = args.where?.[key as GameEnum];
-          if (filterWithValue) {
-            pipe.push(wherePipe(filterWithValue, key));
+          const typeAndValue = args.where?.[key as GameEnum];
+          if (typeAndValue) {
+            pipe.push(wherePipe(typeAndValue, key));
           }
         }
       });
