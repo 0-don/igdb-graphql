@@ -1,8 +1,8 @@
-import {Field, ID, Int, ObjectType} from 'type-graphql';
+import {Field, Int, ObjectType} from 'type-graphql';
 
 @ObjectType()
 export class PlayerPerspective {
-  @Field(() => ID, {nullable: true})
+  @Field(() => Int, {nullable: true})
   id?: number;
 
   @Field(() => Int, {nullable: true})

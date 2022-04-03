@@ -1,4 +1,4 @@
-import {Field, Float, ID, Int, ObjectType} from 'type-graphql';
+import {Field, Float, Int, ObjectType} from 'type-graphql';
 import {GameCategoryEnum, GameStatusEnum} from '../../@types/enum';
 import {AgeRating} from '../AgeRating';
 import {AlternativeName} from '../AlternativeName';
@@ -23,7 +23,7 @@ import {GameVideo} from './GameVideo';
 
 @ObjectType()
 export class Game {
-  @Field(() => ID, {nullable: true})
+  @Field(() => Int, {nullable: true})
   id?: number;
 
   @Field(() => [AgeRating], {nullable: true})

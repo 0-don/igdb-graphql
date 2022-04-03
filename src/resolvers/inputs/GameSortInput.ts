@@ -1,7 +1,7 @@
 import {Field, InputType} from 'type-graphql';
 import {SortOrder} from '../../@types/enum';
 
-@InputType('PostOrderByWithRelationInput', {
+@InputType('GamesSortInput', {
   isAbstract: true,
 })
 export class GamesSortInput {

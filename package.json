@@ -24,6 +24,7 @@
   "dependencies": {
     "apollo-server": "^3.6.6",
     "apollo-server-plugin-response-cache": "^3.5.2",
+    "class-validator": "^0.13.2",
     "dayjs": "^1.11.0",
     "graphql": "^15.3.0",
     "reflect-metadata": "^0.1.13",

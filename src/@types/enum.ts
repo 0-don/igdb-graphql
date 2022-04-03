@@ -295,15 +295,40 @@ export enum ExternalGameMediaEnum {
 }
 
 export enum SortOrder {
-  asc = "asc",
-  desc = "desc"
+  asc = 'asc',
+  desc = 'desc',
 }
 
+export const gameFields = [
+  'id',
+  'aggregated_rating',
+  'aggregated_rating_count',
+  'category',
+  'created_at',
+  'first_release_date',
+  'follows',
+  'hypes',
+  'name',
+  'rating',
+  'rating_count',
+  'slug',
+  'status',
+  'storyline',
+  'summary',
+  'total_rating',
+  'total_rating_count',
+  'updated_at',
+  'url',
+  'version_title',
+  'checksum',
+] as const;
+
+export type GameEnum = typeof gameFields[number];
+
 registerEnumType(SortOrder, {
-  name: "SortOrder",
+  name: 'SortOrder',
   description: undefined,
 });
-
 
 export enum ImageTypeEnum {
   'cover_small' = 'cover_small',

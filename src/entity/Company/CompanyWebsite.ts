@@ -1,9 +1,9 @@
-import {Field, ID, ObjectType} from 'type-graphql';
+import {Field, Int, ObjectType} from 'type-graphql';
 import {WebsiteCategoryEnum} from '../../@types/enum';
 
 @ObjectType()
 export class CompanyWebsite {
-  @Field(() => ID, {nullable: true})
+  @Field(() => Int, {nullable: true})
   id?: number;
 
   @Field(() => WebsiteCategoryEnum, {nullable: true})

@@ -1,7 +1,10 @@
 import {AxiosResponse} from 'axios';
-import {fields, limit, whereIn, WhereInFlags} from 'ts-igdb-client';
+import {fields, limit, where, whereIn, WhereInFlags} from 'ts-igdb-client';
 import {RawRoutes} from 'ts-igdb-client/dist/types';
 import {MyContext, RLoader} from '../@types/types';
+import {FloatFilter} from '../resolvers/inputs/filters/FloatFilter';
+import {IntFilter} from '../resolvers/inputs/filters/IntFilter';
+import {StringFilter} from '../resolvers/inputs/filters/StringFilter';
 
 export const loaderResolver = async (
   ids: readonly RLoader[],
@@ -47,4 +50,16 @@ export const loaderResolver = async (
   }
 
   return ids.map(_ => null) as unknown as RawRoutes[][];
+};
+
+export const wherePipe = (
+  filterWithValue: StringFilter | FloatFilter | IntFilter,
+  field: string,
+) => {
+  switch (Object.keys(filterWithValue)[0]) {
+    case 'equals':
+      return where(field, '~', filterWithValue.equals);
+    default:
+      return undefined;
+  }
 };

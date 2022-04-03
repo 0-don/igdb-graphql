@@ -1,10 +1,10 @@
-import {Field, ID, Int, ObjectType} from 'type-graphql';
+import {Field, Int, ObjectType} from 'type-graphql';
 import {Game} from './Game/Game';
 import {Platform} from './Platform/Platform';
 
 @ObjectType()
 export class MultiplayerMode {
-  @Field(() => ID, {nullable: true})
+  @Field(() => Int, {nullable: true})
   id?: number;
 
   @Field(() => Boolean, {nullable: true})

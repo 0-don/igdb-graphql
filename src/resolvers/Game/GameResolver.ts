@@ -1,7 +1,8 @@
 import DataLoader from 'dataloader';
-import {fields, where} from 'ts-igdb-client';
+import {fields} from 'ts-igdb-client';
 import {RawRoutes} from 'ts-igdb-client/dist/types';
 import {
+  Args,
   Ctx,
   FieldResolver,
   Query,
@@ -10,6 +11,7 @@ import {
   UseMiddleware,
 } from 'type-graphql';
 import {Loader} from 'type-graphql-dataloader';
+import {GameEnum, gameFields} from '../../@types/enum';
 import {MyContext, RLoader} from '../../@types/types';
 import {
   AgeRating,
@@ -34,9 +36,9 @@ import {
   Theme,
   Website,
 } from '../../entity';
-import {CacheControl} from '../../utils/cache-control';
 import {CheckToken} from '../../utils/tokenMiddleware';
-import {loaderResolver} from '../../utils/utils';
+import {loaderResolver, wherePipe} from '../../utils/utils';
+import {GamesArgs} from '../inputs/GameArgs';
 
 @Resolver(() => Game)
 export class GameResolver {
@@ -368,11 +370,33 @@ export class GameResolver {
 
   @Query(() => [Game], {nullable: true})
   @UseMiddleware(CheckToken)
-  @CacheControl({maxAge: 20})
-  async games(@Ctx() {client}: MyContext) {
+  // @CacheControl({maxAge: 20})
+  async games(@Ctx() {client}: MyContext, @Args() args: GamesArgs) {
+    let pipe: any[] = [];
+
+    if (args.where) {
+      Object.keys(args.where).forEach(key => {
+        if (gameFields.includes(key as GameEnum)) {
+          const filterWithValue = args.where?.[key as GameEnum];
+
+          if (filterWithValue) {
+            // console.log(key, args.where?.name, field);
+            wherePipe(filterWithValue, key)
+          }
+        }
+      });
+    }
+
+    // console.log(args);
     const {data} = await client
       .request('games')
-      .pipe(fields(['*']), where('hypes', '>', 100))
+      .pipe(
+        fields('*'),
+        // and(
+        //   where('status', '=', null),
+        //   or(where('id', '=', 124448), where('id', '=', 28204)),
+        // ),
+      )
       .execute();
 
     return data;

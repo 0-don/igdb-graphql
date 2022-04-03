@@ -1,4 +1,4 @@
-import {Field, ID, Int, ObjectType} from 'type-graphql';
+import {Field, Int, ObjectType} from 'type-graphql';
 import {PlatformCategoryEnum} from '../../@types/enum';
 import {PlatformFamily} from './PlatformFamily';
 import {PlatformLogo} from './PlatformLogo';
@@ -7,7 +7,7 @@ import {PlatformWebsite} from './PlatformWebsite';
 
 @ObjectType()
 export class Platform {
-  @Field(() => ID, {nullable: true})
+  @Field(() => Int, {nullable: true})
   id?: number;
 
   @Field({nullable: true})

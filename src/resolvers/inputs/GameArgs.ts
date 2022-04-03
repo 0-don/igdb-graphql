@@ -2,7 +2,7 @@ import {ArgsType, Field, Int} from 'type-graphql';
 import {GamesSortInput} from './GameSortInput';
 import {GamesWhereInput} from './GameWhereInput';
 
-ArgsType();
+@ArgsType()
 export class GamesArgs {
   @Field(_type => GamesWhereInput, {
     nullable: true,

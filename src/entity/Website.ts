@@ -1,10 +1,10 @@
-import {Field, ID, ObjectType} from 'type-graphql';
+import {Field, Int, ObjectType} from 'type-graphql';
 import {WebsiteCategoryEnum} from '../@types/enum';
 import {Game} from './Game/Game';
 
 @ObjectType()
 export class Website {
-  @Field(() => ID, {nullable: true})
+  @Field(() => Int, {nullable: true})
   id?: number;
 
   @Field(() => WebsiteCategoryEnum, {nullable: true})

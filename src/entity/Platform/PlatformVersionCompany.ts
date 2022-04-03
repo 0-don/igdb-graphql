@@ -1,9 +1,9 @@
-import {Field, ID, ObjectType} from 'type-graphql';
+import {Field, Int, ObjectType} from 'type-graphql';
 import {Company} from '../Company/Company';
 
 @ObjectType()
 export class PlatformVersionCompany {
-  @Field(() => ID, {nullable: true})
+  @Field(() => Int, {nullable: true})
   id?: number;
 
   @Field({nullable: true})

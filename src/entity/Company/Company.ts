@@ -1,4 +1,4 @@
-import {Field, ID, Int, ObjectType} from 'type-graphql';
+import {Field, Int, ObjectType} from 'type-graphql';
 import {DateFormatChangeDateCategoryEnum} from '../../@types/enum';
 import {Game} from '../Game/Game';
 import {CompanyLogo} from './CompanyLogo';
@@ -6,7 +6,7 @@ import {CompanyWebsite} from './CompanyWebsite';
 
 @ObjectType()
 export class Company {
-  @Field(() => ID, {nullable: true})
+  @Field(() => Int, {nullable: true})
   id?: number;
 
   @Field(() => Int, {nullable: true})

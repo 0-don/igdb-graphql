@@ -1,4 +1,4 @@
-import {Field, ID, Int, ObjectType} from 'type-graphql';
+import {Field, Int, ObjectType} from 'type-graphql';
 import {
   DateFormatChangeDateCategoryEnum,
   RegionRegionEnum,
@@ -8,7 +8,7 @@ import {Platform} from './Platform/Platform';
 
 @ObjectType()
 export class ReleaseDate {
-  @Field(() => ID, {nullable: true})
+  @Field(() => Int, {nullable: true})
   id?: number;
 
   @Field(() => DateFormatChangeDateCategoryEnum, {nullable: true})
