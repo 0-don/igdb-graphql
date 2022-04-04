@@ -87,9 +87,9 @@ export const wherePipe = (
     case 'contains':
       return where(field, '=', typeAndValue.contains, WhereFlags.CONTAINS);
     case 'startsWith':
-      return where(field, '=', typeAndValue.not, WhereFlags.STARTSWITH);
+      return where(field, '=', typeAndValue.startsWith, WhereFlags.STARTSWITH);
     case 'endsWith':
-      return where(field, '=', typeAndValue.not, WhereFlags.ENDSWITH);
+      return where(field, '=', typeAndValue.endsWith, WhereFlags.ENDSWITH);
     case 'not':
       return where(field, '!=', typeAndValue.not);
     default:

@@ -9,10 +9,10 @@ export class GamesArgs {
   })
   where?: GamesWhereInput | undefined;
 
-  @Field(_type => [GamesSortInput], {
+  @Field(_type => GamesSortInput, {
     nullable: true,
   })
-  sort?: GamesSortInput[] | undefined;
+  sort?: GamesSortInput | undefined;
 
   @Field(_type => Int, {
     nullable: true,
