@@ -92,6 +92,11 @@ export class GamesWhereInput {
   })
   summary?: StringFilter | undefined;
 
+  @Field(_type => IntFilter, {
+    nullable: true,
+  })
+  tags?: IntFilter | undefined;
+
   @Field(_type => FloatFilter, {
     nullable: true,
   })

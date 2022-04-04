@@ -10,7 +10,6 @@ import {
   UseMiddleware,
 } from 'type-graphql';
 import {Loader} from 'type-graphql-dataloader';
-import {gameFields} from '../../@types/enum';
 import {MyContext, RLoader} from '../../@types/types';
 import {
   AgeRating,
@@ -371,8 +370,8 @@ export class GameResolver {
   @UseMiddleware(CheckToken)
   // @CacheControl({maxAge: 20})
   async games(@Ctx() {client}: MyContext, @Args() args: GamesArgs) {
-    const res = client.request('games').pipe(...pipeFactory(args, gameFields));
-    console.log(res.toApicalypseString())
+    const res = client.request('games').pipe(...pipeFactory(args));
+
     return (await res.execute()).data;
   }
 }

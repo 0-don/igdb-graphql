@@ -83,7 +83,7 @@ export class GamesSortInput {
   @Field(_type => SortOrder, {
     nullable: true,
   })
-  tags?: 'asc' | 'desc' | undefined; // ARRAY
+  tags?: 'asc' | 'desc' | undefined;
 
   @Field(_type => SortOrder, {
     nullable: true,

@@ -1,5 +1,6 @@
 import {igdb} from 'ts-igdb-client';
 import * as entities from '../entity';
+import {GameFields} from '../entity/Game/Game';
 import {BoolFilter} from '../resolvers/inputs/filters/BoolFilter';
 import {DateTimeFilter} from '../resolvers/inputs/filters/DateTimeFilter';
 import {FloatFilter} from '../resolvers/inputs/filters/FloatFilter';
@@ -8,7 +9,6 @@ import {StringFilter} from '../resolvers/inputs/filters/StringFilter';
 import {GamesArgs} from '../resolvers/inputs/GameArgs';
 import {GamesSortInput} from '../resolvers/inputs/GameSortInput';
 import {GamesWhereInput} from '../resolvers/inputs/GameWhereInput';
-import {GameFieldsEnum} from './enum';
 
 export type AuthResponse = {
   access_token: string;
@@ -41,4 +41,4 @@ export type EntityWhereInput = GamesWhereInput; // ADD MORE TYPES HERE
 
 export type EntitySortInput = GamesSortInput; // ADD MORE TYPES HERE
 
-export type EntityField = GameFieldsEnum; // ADD MORE TYPES HERE
+export type EntityField = keyof GameFields; // ADD MORE TYPES HERE

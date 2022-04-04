@@ -67,14 +67,11 @@ export const loaderResolver = async (
   return ids.map(_ => null) as unknown as RawRoutes[][];
 };
 
-export const pipeFactory = (
-  args: EntityArgs,
-  entityFields: readonly EntityField[],
-) => {
+export const pipeFactory = (args: EntityArgs) => {
   let pipe: any[] = [fields('*')];
 
   if (args.where) {
-    pipe = [...pipe, ...whereFactory(args.where, entityFields)];
+    pipe = [...pipe, ...whereFactory(args.where)];
   }
 
   if (args.sort) {
@@ -87,21 +84,18 @@ export const pipeFactory = (
 export const sortFactory = (sortInput: EntitySortInput) =>
   Object.keys(sortInput).map(key => sort(key, sortInput[key as EntityField]));
 
-export const whereFactory = (
-  where: EntityWhereInput,
-  entityFields: readonly EntityField[],
-) => {
+export const whereFactory = (where: EntityWhereInput) => {
   let pipe: any[] = [];
 
   Object.keys(where).forEach(key => {
-    if (entityFields.includes(key as EntityField)) {
+    if (key === 'AND') {
+      pipe.push(and(...whereFactory(where.AND!)));
+    } else if (key === 'OR') {
+      pipe.push(or(...whereFactory(where.OR!)));
+    } else {
       const typeAndValue = where[key as EntityField] as InputFilter;
       pipe.push(wherePipe(typeAndValue, key as EntityField));
     }
-
-    key === 'AND' && pipe.push(and(...whereFactory(where.AND!, entityFields)));
-
-    key === 'OR' && pipe.push(or(...whereFactory(where.OR!, entityFields)));
   });
 
   return pipe;
