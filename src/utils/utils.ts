@@ -1,7 +1,16 @@
 import {AxiosResponse} from 'axios';
-import {fields, limit, where, whereIn, WhereInFlags} from 'ts-igdb-client';
+import {
+  fields,
+  limit,
+  where,
+  WhereFlags,
+  whereIn,
+  WhereInFlags,
+} from 'ts-igdb-client';
 import {RawRoutes} from 'ts-igdb-client/dist/types';
 import {MyContext, RLoader} from '../@types/types';
+import {BoolFilter} from '../resolvers/inputs/filters/BoolFilter';
+import {DateTimeFilter} from '../resolvers/inputs/filters/DateTimeFilter';
 import {FloatFilter} from '../resolvers/inputs/filters/FloatFilter';
 import {IntFilter} from '../resolvers/inputs/filters/IntFilter';
 import {StringFilter} from '../resolvers/inputs/filters/StringFilter';
@@ -53,7 +62,11 @@ export const loaderResolver = async (
 };
 
 export const wherePipe = (
-  typeAndValue: StringFilter | FloatFilter | IntFilter,
+  typeAndValue: StringFilter &
+    FloatFilter &
+    IntFilter &
+    DateTimeFilter &
+    BoolFilter,
   field: string,
 ) => {
   switch (Object.keys(typeAndValue)[0]) {
@@ -71,6 +84,12 @@ export const wherePipe = (
       return where(field, '>', typeAndValue.gt);
     case 'gte':
       return where(field, '>=', typeAndValue.gte);
+    case 'contains':
+      return where(field, '=', typeAndValue.contains, WhereFlags.CONTAINS);
+    case 'startsWith':
+      return where(field, '=', typeAndValue.not, WhereFlags.STARTSWITH);
+    case 'endsWith':
+      return where(field, '=', typeAndValue.not, WhereFlags.ENDSWITH);
     case 'not':
       return where(field, '!=', typeAndValue.not);
     default:

@@ -1,5 +1,4 @@
 import {Field, InputType} from 'type-graphql';
-import {NestedBoolFilter} from './NestedBoolFilter';
 
 @InputType('BoolFilter', {
   isAbstract: true,
@@ -10,8 +9,8 @@ export class BoolFilter {
   })
   equals?: boolean | undefined;
 
-  @Field(_type => NestedBoolFilter, {
+  @Field(_type => Boolean, {
     nullable: true,
   })
-  not?: NestedBoolFilter | undefined;
+  not?: boolean | undefined;
 }

@@ -382,6 +382,9 @@ export class GameResolver {
             pipe.push(wherePipe(typeAndValue, key));
           }
         }
+        if (key === 'AND' || key === 'OR') {
+          
+        }
       });
     }
 

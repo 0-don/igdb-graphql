@@ -1,5 +1,4 @@
 import {Field, InputType, Int} from 'type-graphql';
-import {NestedIntFilter} from './NestedIntFilter';
 
 @InputType('IntFilter', {
   isAbstract: true,
@@ -40,8 +39,23 @@ export class IntFilter {
   })
   gte?: number | undefined;
 
-  @Field(_type => NestedIntFilter, {
+  @Field(_type => Int, {
     nullable: true,
   })
-  not?: NestedIntFilter | undefined;
+  contains?: number | undefined;
+
+  @Field(_type => Int, {
+    nullable: true,
+  })
+  startsWith?: number | undefined;
+
+  @Field(_type => Int, {
+    nullable: true,
+  })
+  endsWith?: number | undefined;
+
+  @Field(_type => Int, {
+    nullable: true,
+  })
+  not?: number | undefined;
 }

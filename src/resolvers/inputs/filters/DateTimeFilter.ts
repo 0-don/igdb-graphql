@@ -1,5 +1,4 @@
 import {Field, InputType} from 'type-graphql';
-import { NestedDateTimeFilter } from './NestedDateTimeFilter';
 
 @InputType('DateTimeFilter', {
   isAbstract: true,
@@ -40,8 +39,8 @@ export class DateTimeFilter {
   })
   gte?: Date | undefined;
 
-  @Field(_type => NestedDateTimeFilter, {
+  @Field(_type => Date, {
     nullable: true,
   })
-  not?: NestedDateTimeFilter | undefined;
+  not?: Date | undefined;
 }

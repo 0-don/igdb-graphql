@@ -1,5 +1,4 @@
 import {Field, Float, InputType} from 'type-graphql';
-import { NestedFloatFilter } from './NestedFloatFilter';
 
 @InputType('FloatFilter', {
   isAbstract: true,
@@ -40,8 +39,23 @@ export class FloatFilter {
   })
   gte?: number | undefined;
 
-  @Field(_type => NestedFloatFilter, {
+  @Field(_type => Float, {
     nullable: true,
   })
-  not?: NestedFloatFilter | undefined;
+  contains?: number | undefined;
+
+  @Field(_type => Float, {
+    nullable: true,
+  })
+  startsWith?: number | undefined;
+
+  @Field(_type => Float, {
+    nullable: true,
+  })
+  endsWith?: number | undefined;
+
+  @Field(_type => Float, {
+    nullable: true,
+  })
+  not?: number | undefined;
 }

@@ -1,5 +1,4 @@
 import {Field, InputType} from 'type-graphql';
-import { NestedStringFilter } from './NestedStringFilter';
 
 @InputType('StringFilter', {
   isAbstract: true,
@@ -55,8 +54,8 @@ export class StringFilter {
   })
   endsWith?: string | undefined;
 
-  @Field(_type => NestedStringFilter, {
+  @Field(_type => String, {
     nullable: true,
   })
-  not?: NestedStringFilter | undefined;
+  not?: string | undefined;
 }
