@@ -3,6 +3,7 @@ import {
   and,
   fields,
   limit,
+  offset,
   or,
   sort,
   where,
@@ -18,6 +19,7 @@ import {
   EntityWhereInput,
   InputFilter,
   MyContext,
+  PipeFactory,
   RLoader,
 } from '../@types/types';
 
@@ -68,7 +70,7 @@ export const loaderResolver = async (
 };
 
 export const pipeFactory = (args: EntityArgs) => {
-  let pipe: any[] = [fields('*')];
+  let pipe: PipeFactory[] = [fields('*')];
 
   if (args.where) {
     pipe = [...pipe, ...whereFactory(args.where)];
@@ -78,6 +80,14 @@ export const pipeFactory = (args: EntityArgs) => {
     pipe = [...pipe, ...sortFactory(args.sort)];
   }
 
+  if (args.limit) {
+    pipe = [...pipe, limit(args.limit)];
+  }
+
+  if (args.offset) {
+    pipe = [...pipe, offset(args.offset)];
+  }
+
   return pipe;
 };
 
@@ -85,7 +95,7 @@ export const sortFactory = (sortInput: EntitySortInput) =>
   Object.keys(sortInput).map(key => sort(key, sortInput[key as EntityField]));
 
 export const whereFactory = (where: EntityWhereInput) => {
-  let pipe: any[] = [];
+  const pipe: PipeFactory[] = [];
 
   Object.keys(where).forEach(key => {
     if (key === 'AND') {
@@ -94,7 +104,7 @@ export const whereFactory = (where: EntityWhereInput) => {
       pipe.push(or(...whereFactory(where.OR!)));
     } else {
       const typeAndValue = where[key as EntityField] as InputFilter;
-      pipe.push(wherePipe(typeAndValue, key as EntityField));
+      pipe.push(wherePipe(typeAndValue, key as EntityField)!);
     }
   });
 

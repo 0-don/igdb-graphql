@@ -21,6 +21,8 @@ import {GameEngine} from './GameEngine';
 import {GameMode} from './GameMode';
 import {GameVideo} from './GameVideo';
 
+// DECOUPLE ALL ENITTIES FIELDS FROM RELATIONS TO ALLOW INPUT ARGUMENTS
+
 @ObjectType()
 export class GameFields {
   @Field(() => Int, {nullable: true})

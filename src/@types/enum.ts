@@ -9,6 +9,7 @@ export enum AgeRatingCategoryEnum {
   GRAC = 5,
   CLASS_IND = 6,
   ACB = 7,
+
   NULL8 = 8,
   NULL9 = 9,
   NULL10 = 10,
@@ -299,11 +300,6 @@ export enum SortOrder {
   desc = 'desc',
 }
 
-registerEnumType(SortOrder, {
-  name: 'SortOrder',
-  description: undefined,
-});
-
 export enum ImageTypeEnum {
   'cover_small' = 'cover_small',
   'screenshot_med' = 'screenshot_med',
@@ -316,6 +312,11 @@ export enum ImageTypeEnum {
   'HD' = '720p',
   'FullHD' = '1080p',
 }
+
+registerEnumType(SortOrder, {
+  name: 'SortOrder',
+  description: undefined,
+});
 
 registerEnumType(ImageTypeEnum, {
   name: 'ImageTypeEnum', // this one is mandatory

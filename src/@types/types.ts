@@ -1,4 +1,4 @@
-import {igdb} from 'ts-igdb-client';
+import {BuilderOperator, igdb} from 'ts-igdb-client';
 import * as entities from '../entity';
 import {GameFields} from '../entity/Game/Game';
 import {BoolFilter} from '../resolvers/inputs/filters/BoolFilter';
@@ -34,6 +34,13 @@ export type RLoader = {
   id: number | undefined;
   ids: number[] | number | undefined | EnitityTypes | EnitityTypes[];
 };
+
+export type PipeFactory = BuilderOperator<
+  Record<any, any>,
+  Record<any, any>
+>;
+
+// FOR FUTURE UPDATES ADD TYPES WITH & CHAIN
 
 export type EntityArgs = GamesArgs; // ADD MORE TYPES HERE
 
