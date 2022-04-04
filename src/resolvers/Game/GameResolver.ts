@@ -1,5 +1,4 @@
 import DataLoader from 'dataloader';
-import {fields} from 'ts-igdb-client';
 import {RawRoutes} from 'ts-igdb-client/dist/types';
 import {
   Args,
@@ -11,7 +10,7 @@ import {
   UseMiddleware,
 } from 'type-graphql';
 import {Loader} from 'type-graphql-dataloader';
-import {GameEnum, gameFields} from '../../@types/enum';
+import {gameFields} from '../../@types/enum';
 import {MyContext, RLoader} from '../../@types/types';
 import {
   AgeRating,
@@ -37,7 +36,7 @@ import {
   Website,
 } from '../../entity';
 import {CheckToken} from '../../utils/tokenMiddleware';
-import {loaderResolver, wherePipe} from '../../utils/utils';
+import {loaderResolver, pipeFactory} from '../../utils/utils';
 import {GamesArgs} from '../inputs/GameArgs';
 
 @Resolver(() => Game)
@@ -372,34 +371,8 @@ export class GameResolver {
   @UseMiddleware(CheckToken)
   // @CacheControl({maxAge: 20})
   async games(@Ctx() {client}: MyContext, @Args() args: GamesArgs) {
-    let pipe: any[] = [];
-
-    if (args.where) {
-      Object.keys(args.where).forEach(key => {
-        if (gameFields.includes(key as GameEnum)) {
-          const typeAndValue = args.where?.[key as GameEnum];
-          if (typeAndValue) {
-            pipe.push(wherePipe(typeAndValue, key));
-          }
-        }
-        if (key === 'AND' || key === 'OR') {
-          
-        }
-      });
-    }
-
-    const {data} = await client
-      .request('games')
-      .pipe(
-        fields('*'),
-        ...pipe,
-        // and(
-        //   where('status', '=', null),
-        //   or(where('id', '=', 124448), where('id', '=', 28204)),
-        // ),
-      )
-      .execute();
-
-    return data;
+    const res = client.request('games').pipe(...pipeFactory(args, gameFields));
+    console.log(res.toApicalypseString())
+    return (await res.execute()).data;
   }
 }

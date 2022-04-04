@@ -1,19 +1,25 @@
 import {AxiosResponse} from 'axios';
 import {
+  and,
   fields,
   limit,
+  or,
+  sort,
   where,
   WhereFlags,
   whereIn,
   WhereInFlags,
 } from 'ts-igdb-client';
 import {RawRoutes} from 'ts-igdb-client/dist/types';
-import {MyContext, RLoader} from '../@types/types';
-import {BoolFilter} from '../resolvers/inputs/filters/BoolFilter';
-import {DateTimeFilter} from '../resolvers/inputs/filters/DateTimeFilter';
-import {FloatFilter} from '../resolvers/inputs/filters/FloatFilter';
-import {IntFilter} from '../resolvers/inputs/filters/IntFilter';
-import {StringFilter} from '../resolvers/inputs/filters/StringFilter';
+import {
+  EntityArgs,
+  EntityField,
+  EntitySortInput,
+  EntityWhereInput,
+  InputFilter,
+  MyContext,
+  RLoader,
+} from '../@types/types';
 
 export const loaderResolver = async (
   ids: readonly RLoader[],
@@ -61,14 +67,47 @@ export const loaderResolver = async (
   return ids.map(_ => null) as unknown as RawRoutes[][];
 };
 
-export const wherePipe = (
-  typeAndValue: StringFilter &
-    FloatFilter &
-    IntFilter &
-    DateTimeFilter &
-    BoolFilter,
-  field: string,
+export const pipeFactory = (
+  args: EntityArgs,
+  entityFields: readonly EntityField[],
 ) => {
+  let pipe: any[] = [fields('*')];
+
+  if (args.where) {
+    pipe = [...pipe, ...whereFactory(args.where, entityFields)];
+  }
+
+  if (args.sort) {
+    pipe = [...pipe, ...sortFactory(args.sort)];
+  }
+
+  return pipe;
+};
+
+export const sortFactory = (sortInput: EntitySortInput) =>
+  Object.keys(sortInput).map(key => sort(key, sortInput[key as EntityField]));
+
+export const whereFactory = (
+  where: EntityWhereInput,
+  entityFields: readonly EntityField[],
+) => {
+  let pipe: any[] = [];
+
+  Object.keys(where).forEach(key => {
+    if (entityFields.includes(key as EntityField)) {
+      const typeAndValue = where[key as EntityField] as InputFilter;
+      pipe.push(wherePipe(typeAndValue, key as EntityField));
+    }
+
+    key === 'AND' && pipe.push(and(...whereFactory(where.AND!, entityFields)));
+
+    key === 'OR' && pipe.push(or(...whereFactory(where.OR!, entityFields)));
+  });
+
+  return pipe;
+};
+
+export const wherePipe = (typeAndValue: InputFilter, field: EntityField) => {
   switch (Object.keys(typeAndValue)[0]) {
     case 'equals':
       return where(field, '=', typeAndValue.equals);

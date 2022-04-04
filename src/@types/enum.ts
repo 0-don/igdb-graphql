@@ -323,7 +323,7 @@ export const gameFields = [
   'checksum',
 ] as const;
 
-export type GameEnum = typeof gameFields[number];
+export type GameFieldsEnum = typeof gameFields[number];
 
 registerEnumType(SortOrder, {
   name: 'SortOrder',
