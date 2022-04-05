@@ -371,7 +371,7 @@ export class GameResolver {
   // @CacheControl({maxAge: 20})
   async games(@Ctx() {client}: MyContext, @Args() args: GamesArgs) {
     const res = client.request('games').pipe(...pipeFactory(args));
-    console.log(res.toApicalypseString())
+    console.log('QUERY: games', 'INPUT:', res.toApicalypseString());
     return (await res.execute()).data;
   }
 }
