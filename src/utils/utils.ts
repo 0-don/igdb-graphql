@@ -94,20 +94,35 @@ export const pipeFactory = (args: EntityArgs) => {
 export const sortFactory = (sortInput: EntitySortInput) =>
   Object.keys(sortInput).map(key => sort(key, sortInput[key as EntityField]));
 
-export const whereFactory = (where: EntityWhereInput) => {
+export const whereFactory = (where: EntityWhereInput | EntityWhereInput[]) => {
   const pipe: PipeFactory[] = [];
 
-  Object.keys(where).forEach(key => {
-    if (key === 'AND') {
-      pipe.push(and(...whereFactory(where.AND!)));
-    } else if (key === 'OR') {
-      pipe.push(or(...whereFactory(where.OR!)));
-    } else {
-      const typeAndValue = where[key as EntityField] as InputFilter;
-      pipe.push(wherePipe(typeAndValue, key as EntityField)!);
-    }
-  });
+  if (Array.isArray(where)) {
 
+    where.forEach(w => {
+      Object.keys(w).forEach(key => {
+        if (key === 'AND') {
+          pipe.push(and(...whereFactory(w.AND!)));
+        } else if (key === 'OR') {
+          pipe.push(or(...whereFactory(w.OR!)));
+        } else {
+          const typeAndValue = w[key as EntityField] as InputFilter;
+          pipe.push(wherePipe(typeAndValue, key as EntityField)!);
+        }
+      });
+    });
+  } else {
+    Object.keys(where).forEach(key => {
+      if (key === 'AND') {
+        pipe.push(and(...whereFactory(where.AND!)));
+      } else if (key === 'OR') {
+        pipe.push(or(...whereFactory(where.OR!)));
+      } else {
+        const typeAndValue = where[key as EntityField] as InputFilter;
+        pipe.push(wherePipe(typeAndValue, key as EntityField)!);
+      }
+    });
+  }
   return pipe;
 };
 

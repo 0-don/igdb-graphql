@@ -7,15 +7,15 @@ import {StringFilter} from './filters/StringFilter';
   isAbstract: true,
 })
 export class GamesWhereInput {
-  @Field(_type => GamesWhereInput, {
+  @Field(_type => [GamesWhereInput], {
     nullable: true,
   })
-  AND?: GamesWhereInput | undefined;
+  AND?: GamesWhereInput[] | undefined;
 
-  @Field(_type => GamesWhereInput, {
+  @Field(_type => [GamesWhereInput], {
     nullable: true,
   })
-  OR?: GamesWhereInput | undefined;
+  OR?: GamesWhereInput[] | undefined;
 
   @Field(_type => IntFilter, {
     nullable: true,
