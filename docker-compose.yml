@@ -4,7 +4,7 @@ services:
   igdb:
     container_name: igdb
     ports:
-      - 6969:6969
+      - 6969
     build:
       context: .
       dockerfile: Dockerfile
