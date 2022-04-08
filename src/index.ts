@@ -18,6 +18,8 @@ async function start() {
 
   const server = new ApolloServer({
     schema,
+    introspection: true,
+
     plugins: [ApolloServerLoaderPlugin(), responseCachePlugin()],
     context: () => ({client}),
   });
