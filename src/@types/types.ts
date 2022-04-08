@@ -35,10 +35,7 @@ export type RLoader = {
   ids: number[] | number | undefined | EnitityTypes | EnitityTypes[];
 };
 
-export type PipeFactory = BuilderOperator<
-  Record<any, any>,
-  Record<any, any>
->;
+export type PipeFactory = BuilderOperator<Record<any, any>, Record<any, any>>;
 
 // FOR FUTURE UPDATES ADD TYPES WITH & CHAIN
 

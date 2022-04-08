@@ -1,5 +1,5 @@
 import DataLoader from 'dataloader';
-import {fields, igdb} from 'ts-igdb-client';
+import {fields} from 'ts-igdb-client';
 import {RawRoutes} from 'ts-igdb-client/dist/types';
 import {
   Ctx,

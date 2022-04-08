@@ -77,8 +77,6 @@ export class CompanyResolver {
       dataloader.load({id, ids: websites});
   }
 
-
-
   @Query(() => [Company], {nullable: true})
   @UseMiddleware(CheckToken)
   // @CacheControl({ maxAge: 1 })
