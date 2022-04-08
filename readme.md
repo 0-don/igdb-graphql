@@ -23,63 +23,98 @@ IGDB.com wrapper Graphql API with working relation fetch.
 Currently only games inputs finished, everything else works fine feel free to add more to it.
 
 
+### [Test the queries here](https://studio.apollographql.com/sandbox/explorer?endpoint=https://igdb.myngz.com/)
+
 ### Example
 
-- **Query**
-```graphql
-query Games($where: GamesWhereInput, $sort: GamesSortInput, $limit: Int, $offset: Int) {
-  games(where: $where, sort: $sort, limit: $limit, offset: $offset) {
-    id
-    aggregated_rating
-    aggregated_rating_count
-    category
-    created_at
-    first_release_date
-    follows
-    hypes
-    name
-    rating
-    rating_count
-    slug
-    status
-    storyline
-    summary
-    tags
-    total_rating
-    total_rating_count
-    updated_at
-    url
-    version_title
-    checksum
-  }
-}
-```
-- **Variables**
-```json
-{
-  "where": {
-    "AND": [
-      {
-        "follows": {
-          "gt": 100
-        },
-        "hypes": {
-          "gt": 100
-        },
-        "OR": [
+1. Simple
+    - **Query**
+    ```graphql
+    query Games($where: GamesWhereInput) {
+      games(where: $where) {
+          id
+            follows
+            hypes
+            name
+            status
+      }
+    }
+    ```
+    - **Variables**
+    ```json
+    {
+    "where": {
+      "name": {
+        "contains": "god"
+      }
+    }
+    }
+    ```
+2. Advanced
+    - **Query**
+    ```graphql
+    query Games($where: GamesWhereInput, $sort: GamesSortInput, $limit: Int, $offset: Int) {
+      games(where: $where, sort: $sort, limit: $limit, offset: $offset) {
+        id
+        follows
+        hypes
+        name
+        status
+      }
+    }
+    ```
+    - **Variables**
+    ```json
+    {
+      "where": {
+        "AND": [
           {
-            "status": {
-              "equals": null
-            }
+            "follows": {
+              "gt": 100
+            },
+            "hypes": {
+              "gt": 100
+            },
+            "OR": [
+              {
+                "status": {
+                  "equals": null
+                }
+              }
+            ]
           }
         ]
+      },
+      "sort": {
+        "id": "asc"
+      },
+      "limit": 100,
+      "offset": 10
+    }
+    ```
+3. Relations
+    - **Query**
+    ```graphql
+    query Games {
+      games {
+        id
+        follows
+        hypes
+        name
+        status
+        artworks {
+          id
+          url
+          width
+          height
+        }
+        cover {
+          id
+          url
+          image_id
+          width
+          height
+        }
       }
-    ]
-  },
-  "sort": {
-    "id": "asc"
-  },
-  "limit": 100,
-  "offset": 10
-}
-```
+    }
+    ```
