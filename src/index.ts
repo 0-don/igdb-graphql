@@ -19,7 +19,10 @@ async function start() {
   const server = new ApolloServer({
     schema,
     introspection: true,
-
+    cors: {
+      origin: '*', // <- allow request from all domains
+      credentials: true,
+    },
     plugins: [ApolloServerLoaderPlugin(), responseCachePlugin()],
     context: () => ({client}),
   });
