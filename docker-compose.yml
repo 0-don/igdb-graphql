@@ -5,8 +5,6 @@ services:
     ports:
       - 6969
     build:
-      context: /
-      dockerfile: /Dockerfile
       target: prod
     restart: always
     networks:
