@@ -22,7 +22,7 @@ async function start() {
     context: () => ({client}),
   });
 
-  const {url} = await server.listen(4000);
+  const {url} = await server.listen(6969);
   log(`Server is running, GraphQL Playground available at ${url}`);
 }
 
