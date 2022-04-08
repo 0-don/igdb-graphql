@@ -19,4 +19,4 @@ jobs:
           cat .env
 
       - name: Docker run
-        run: docker-compose -f docker-compose.yml up -d --force-recreate --build
+        run: docker-compose up -d --force-recreate --build
