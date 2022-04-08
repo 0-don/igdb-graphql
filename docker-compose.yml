@@ -2,6 +2,7 @@ version: "3.8"
 
 services:
   igdb:
+    container_name: igdb
     ports:
       - 6969:6969
     build:
@@ -13,10 +14,10 @@ services:
       - proxy
     labels:
       - 'traefik.enable=true'
-      - 'traefik.http.routers.echat-server.rule=Host(`igdb.myngz.com`)'
-      - 'traefik.http.routers.echat-server.entrypoints=websecure'
-      - 'traefik.http.routers.echat-server.tls.certresolver=letsencrypt'
-      - 'traefik.http.services.echat-server.loadbalancer.server.port=6969'
+      - 'traefik.http.routers.igdb.rule=Host(`igdb.myngz.com`)'
+      - 'traefik.http.routers.igdb.entrypoints=websecure'
+      - 'traefik.http.routers.igdb.tls.certresolver=letsencrypt'
+      - 'traefik.http.services.igdb.loadbalancer.server.port=6969'
 
 networks:
   proxy:
