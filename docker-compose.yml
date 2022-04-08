@@ -6,7 +6,7 @@ services:
       - 6969
     build:
       context: /
-      dockerfile: Dockerfile
+      dockerfile: /Dockerfile
       target: prod
     restart: always
     networks:
