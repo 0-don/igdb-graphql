@@ -3,7 +3,7 @@ version: "3.8"
 services:
   igdb:
     ports:
-      - 6969
+      - 6969:6969
     build:
       context: .
       dockerfile: Dockerfile
