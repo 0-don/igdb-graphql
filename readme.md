@@ -25,9 +25,9 @@ Currently only games inputs finished, everything else works fine feel free to ad
 
 ## [Test the queries here](https://studio.apollographql.com/sandbox/explorer?endpoint=https://igdb.myngz.com/)
 
-## Example
+## Examples
 
-## 1. Simple
+### 1. Simple
 - **Query**
 ```graphql
 query Games($where: GamesWhereInput) {
@@ -50,7 +50,7 @@ query Games($where: GamesWhereInput) {
 }
 }
 ```
-## 2. Advanced
+### 2. Advanced
 - **Query**
 ```graphql
 query Games($where: GamesWhereInput, $sort: GamesSortInput, $limit: Int, $offset: Int) {
@@ -92,7 +92,7 @@ query Games($where: GamesWhereInput, $sort: GamesSortInput, $limit: Int, $offset
   "offset": 10
 }
 ```
-## 3. Relations
+### 3. Relations
 - **Query**
 ```graphql
 query Games {
