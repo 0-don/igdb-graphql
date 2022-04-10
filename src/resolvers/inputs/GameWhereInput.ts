@@ -1,4 +1,5 @@
 import {Field, InputType} from 'type-graphql';
+import {GameCategoryEnum} from '../../@types/enum';
 import {FloatFilter} from './filters/FloatFilter';
 import {IntFilter} from './filters/IntFilter';
 import {StringFilter} from './filters/StringFilter';
@@ -32,10 +33,10 @@ export class GamesWhereInput {
   })
   aggregated_rating_count?: IntFilter | undefined;
 
-  @Field(_type => StringFilter, {
+  @Field(_type => GameCategoryEnum, {
     nullable: true,
   })
-  category?: StringFilter | undefined; // GAME CATEGORY ENUM
+  category?: GameCategoryEnum | undefined; // GAME CATEGORY ENUM
 
   @Field(_type => IntFilter, {
     nullable: true,
