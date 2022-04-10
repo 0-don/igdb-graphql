@@ -26,7 +26,8 @@ export type InputFilter = StringFilter &
   FloatFilter &
   IntFilter &
   DateTimeFilter &
-  BoolFilter;
+  BoolFilter &
+  String;
 
 export type EnitityTypes = InstanceType<typeof entities[keyof typeof entities]>;
 

@@ -146,6 +146,7 @@ export const wherePipe = (typeAndValue: InputFilter, field: EntityField) => {
     case 'not':
       return where(field, '!=', typeAndValue.not);
     default:
-      return undefined;
+      // DEFAULT MUST BE ENUM
+      return where(field, '=', typeAndValue);
   }
 };
