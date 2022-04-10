@@ -138,11 +138,11 @@ export const wherePipe = (typeAndValue: InputFilter, field: EntityField) => {
     case 'gte':
       return where(field, '>=', typeAndValue.gte);
     case 'contains':
-      return where(field, '=', typeAndValue.contains, WhereFlags.CONTAINS);
+      return where(field, '~', typeAndValue.contains, WhereFlags.CONTAINS);
     case 'startsWith':
-      return where(field, '=', typeAndValue.startsWith, WhereFlags.STARTSWITH);
+      return where(field, '~', typeAndValue.startsWith, WhereFlags.STARTSWITH);
     case 'endsWith':
-      return where(field, '=', typeAndValue.endsWith, WhereFlags.ENDSWITH);
+      return where(field, '~', typeAndValue.endsWith, WhereFlags.ENDSWITH);
     case 'not':
       return where(field, '!=', typeAndValue.not);
     default:
