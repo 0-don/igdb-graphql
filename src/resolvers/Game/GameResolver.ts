@@ -366,6 +366,7 @@ export class GameResolver {
       dataloader.load({id, ids: forks});
   }
 
+  // many games
   @Query(() => [Game], {nullable: true})
   @UseMiddleware(CheckToken)
   // @CacheControl({maxAge: 20})
@@ -373,5 +374,15 @@ export class GameResolver {
     const res = client.request('games').pipe(...pipeFactory(args));
     console.log('QUERY: games', 'INPUT:', res.toApicalypseString());
     return (await res.execute()).data;
+  }
+
+  // one game
+  @Query(() => Game, {nullable: true})
+  @UseMiddleware(CheckToken)
+  // @CacheControl({maxAge: 20})
+  async game(@Ctx() {client}: MyContext, @Args() args: GamesArgs) {
+    const res = client.request('games').pipe(...pipeFactory(args));
+    console.log('QUERY: games', 'INPUT:', res.toApicalypseString());
+    return (await res.execute()).data[0];
   }
 }
