@@ -380,9 +380,9 @@ export class GameResolver {
   @Query(() => Game, {nullable: true})
   @UseMiddleware(CheckToken)
   // @CacheControl({maxAge: 20})
-  async getGame(@Ctx() {client}: MyContext, @Args() args: GamesArgs) {
+  async game(@Ctx() {client}: MyContext, @Args() args: GamesArgs) {
     const res = client.request('games').pipe(...pipeFactory(args));
-    console.log('QUERY: games', 'INPUT:', res.toApicalypseString());
+    console.log('QUERY: game', 'INPUT:', res.toApicalypseString());
     return (await res.execute()).data[0];
   }
 }
