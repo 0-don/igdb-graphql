@@ -12,7 +12,7 @@ services:
       - proxy
     labels:
       - 'traefik.enable=true'
-      - 'traefik.http.routers.igdb.rule=Host(`igdb.myngz.com`)'
+      - 'traefik.http.routers.igdb.rule=Host(`$DOMAIN`)'
       - 'traefik.http.routers.igdb.entrypoints=websecure'
       - 'traefik.http.routers.igdb.tls.certresolver=letsencrypt'
       - 'traefik.http.services.igdb.loadbalancer.server.port=6969'
