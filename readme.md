@@ -8,7 +8,7 @@
     <h1 align="center">igdb-graphql</h1>
 
   <p align="center">
-    <a  href="https://studio.apollographql.com/sandbox/explorer?endpoint=https://igdb.myngz.com/">Test it out</a>
+    <a  href="https://studio.apollographql.com/sandbox/explorer?endpoint=https://igdb.coding.global/">Test it out</a>
     ·
     <a  href="https://github.com/Don-Cryptus/igdb-graphql/issues">Report Bug</a>
     ·
