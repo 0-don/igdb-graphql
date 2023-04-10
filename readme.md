@@ -24,7 +24,7 @@ IGDB.com wrapper Graphql API with working relation fetch.
 Currently only games inputs finished, everything else works fine feel free to add more to it.
 
 
-## [Test the queries here](https://studio.apollographql.com/sandbox/explorer?endpoint=https://igdb.myngz.com/)
+## [Test the queries here](https://studio.apollographql.com/sandbox/explorer?endpoint=https://igdb.coding.global/)
 
 ## Examples
 
