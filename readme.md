@@ -1,6 +1,6 @@
 
 <p align="center">
-  <a href="https://github.com/Don-Cryptus/traefik">
+  <a href="https://github.com/0-don/traefik">
     <img src="img/igdb-graphql.png" alt="Logo" width=400 />
   </a>
 
@@ -10,9 +10,9 @@
   <p align="center">
     <a  href="https://studio.apollographql.com/sandbox/explorer?endpoint=https://igdb.coding.global/">Test it out</a>
     ·
-    <a  href="https://github.com/Don-Cryptus/igdb-graphql/issues">Report Bug</a>
+    <a  href="https://github.com/0-don/igdb-graphql/issues">Report Bug</a>
     ·
-    <a href="https://github.com/Don-Cryptus/igdb-graphql/issues">Request Feature</a>
+    <a href="https://github.com/0-don/igdb-graphql/issues">Request Feature</a>
   </p>
 
 </p>
