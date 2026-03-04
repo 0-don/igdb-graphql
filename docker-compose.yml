@@ -8,9 +8,16 @@ services:
       dockerfile: Dockerfile
       target: prod
     restart: always
+    healthcheck:
+      test: ["CMD", "wget", "-q", "-O", "/dev/null", "--post-data", "{\"query\":\"{ __typename }\"}", "--header", "Content-Type: application/json", "http://localhost:6969/graphql"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
     networks:
       - proxy
     labels:
+      - 'autoheal=true'
       - 'traefik.enable=true'
       - 'traefik.http.routers.igdb.rule=Host(`$DOMAIN`)'
       - 'traefik.http.routers.igdb.entrypoints=websecure'
