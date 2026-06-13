@@ -12,6 +12,7 @@
     "prettier": "npx prettier --write ./src"
   },
   "devDependencies": {
+    "@types/minimatch": "^3.0.5",
     "@types/node": "^17.0.23",
     "cross-env": "^7.0.3",
     "dotenv": "^16.0.0",
